@@ -1,0 +1,6 @@
+﻿.sw-flowcontrol.panel.panel-default(ng-controller="GroupViewController"
+ ng-init="viewid=#{item.ListViewId}; navid='group-nav-#{item.ListViewId}-#{i}';tabid='group-tab-#{item.ListViewId}-#{i}'" 
+ id ="groupview-#{item.ListViewId}-#{i}")
+    ul.nav.nav-tabs(role="tablist",
+    id="group-nav-#{item.ListViewId}-#{i}")
+    .tab-content(id="group-tab-#{item.ListViewId}-#{i}")

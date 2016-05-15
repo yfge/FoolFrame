@@ -1,0 +1,18 @@
+﻿sw-flowcontrol.panel.panel-default(ng-controller="QuerylistdataController" )
+            ul.nav.nav-tabs
+              li.active 
+                a(href='#' data-toggle="tab")  #{item.Name}
+            .tab-content
+                .tab-pane.active
+                    .panel
+                        table.table.table-hover(id = "listview-#{item.ListViewId}-#{i}" ng-init="viewid='#{item.ListViewId}';tableid='listview-#{item.ListViewId}-#{i}'; page='1' ;size='5';count='0';pages='0';orderitem='0';ordertype='0';filter=''")
+                            tr
+                            tr
+                            tr
+                            tr
+                            tr
+                            tr
+                        p.pull-right 更新时间 
+                            span(ng-bind="querytime") 
+                            a(ng-click="query()" taget='_self' ) 刷新
+        

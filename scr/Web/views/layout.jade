@@ -1,0 +1,51 @@
+﻿doctype html
+html( lang="en")
+  head
+    meta(charset="gb2312")
+    meta(name='viewport', content='width=device-width, initial-scale=1.0' )
+    if data.Token 
+        title #{title} #{data.App.AppName}
+    else
+        title #{data.AppName}
+
+    link(rel='stylesheet', type='text/css', media="screen", href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/soway.css')
+    script(src="javascripts/lib/require.js")
+    script(src="javascripts/app/reqconfig.js")
+    base(href='' target="_self")
+     
+  body
+      if data.Token 
+      
+       .navbar.navbar-inverse.navbar-fixed-top
+         .container
+                .navbar-header
+                  a.navbar-brand(href='/') #{data.App.AppName}
+                    small  #{data.App.AppVer}                
+                .navbar-collapse.collapse
+                 
+                            img.img-circle.pull-right.avtar.img-thumbnail(src="#{data.User.UserAvtarUrl}")                   
+          
+    .container
+      block content
+    block modals
+    .modal.fade#error-dialog(role="dialog")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    H4.modal-title 发生错误
+                .modal-body
+                    p#errorCode
+                    p#errorInfo
+                        
+                .modal-footer
+                    button.btn.btn-default(type="button" data-dismiss="modal")  关闭
+
+
+    block scripts
+  hr
+footer
+    if data.Token
+        p &copy;  #{data.App.AppPowerBy} 
+script  requirejs(['swapp'],function(swapp){swapp.runapp('login');});

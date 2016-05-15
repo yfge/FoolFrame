@@ -1,0 +1,59 @@
+﻿extends default
+block content
+    .panel.panel-default
+        .panel-heading #{view.data.Name}
+        
+        .panel-body
+            for op in view.data.Operations
+                    .hidden(ng-init="addop(#{op.ID},#{op.RequireSelect},#{op.ViewID},'#{op.Name}')")
+
+
+            form.navbar-form(role="search" ng-controller="ViewWithChartController" ng-init="tabpan='table';chartpan='chart';token='#{view.Token}'; detailId='#{view.data.DetailViewId}'")
+                            .form-group
+                                input.form-control(type="text" ng-model="filter" nplaceholder="输入条件")
+                            button.btn.btn-default(ng-click="query()")  查找   
+            nav
+                ul.nav-bar.nav.nav-tabs(role="tablist",id="tabid")
+                        li.active
+                                            a(href='#table' 
+                                            data-toggle="tab"
+                                            taget="_self") 数据
+                        li
+                                            a(href='#chart' 
+                                            data-toggle="tab"
+                                            taget="_self") 图表
+             .tab-content
+                     .tab-pane.active(role="tab-pane",id="table" ng-controller="QuerylistdataController" ng-init="viewid='#{view.data.ID}';tableid = 'datalist'; page='1' ; size='10';count='0';pages='0';orderitem='0';ordertype='0';filter=''")
+                            table.table.table-striped.table-hover.table-condensed#datalist
+                              tr
+                                -for(i=0;i<view.data.Items.length;i++){
+                                    -if(view.data.Items[i].EditType != 10){
+                                        th(style="width:#{view.data.Items[i].Width}px")  #{view.data.Items[i].Name}
+                                    -}
+                                -}
+                                -for(i=0;i<view.data.Operations.length;i++){
+                                    -if(view.data.Operations[i].RequireSelect){
+                                        -i=view.data.Operations.length;
+                                        th 操作
+                                    -}
+                                -}
+                     .tab-pane(role="tab-pane",id="chart")
+                        p 这里放图表
+            nav(ng-controller="NavbarController" ng-init="navId='pagenav';infoId='info'")
+                #info  记录数未知,请查询  
+                ul.pagination#pagenav
+block dialog
+    .modal.fade#query-dialog(role="dialog")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        H4.modal-title 查询
+                    .modal-body
+                        #query-panel
+                            #selectform
+                                .form-group
+                       
+                        
+                        
+                    .modal-footer
+                        button.btn.btn-default(type="button" data-dismiss="modal")  关闭

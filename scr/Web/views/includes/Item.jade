@@ -1,0 +1,7 @@
+﻿.sw-flowcontrol.panel.panel-default(
+ ng-controller="GetItemController" 
+ ng-init="viewid=#{item.ListViewId};tabid='item-tab-#{item.ListViewId}'" id ="item-tab-#{item.ListViewId}")
+        .panel-heading 
+            h3.panel-title #{item.Name}
+                span.pull-right 
+                    a  详细                                                                                            
