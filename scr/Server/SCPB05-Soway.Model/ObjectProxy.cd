@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Soway.Model.ObjectProxy">
+    <Position X="1.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>ObjectProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.ModelHelper">
+    <Position X="2.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAACAAAIAEAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ModelHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.Model">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAFAACAACEAAAFgAgISAQACAgABDACEABADAADBgA=</HashCode>
+      <FileName>Model.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ShowProperty" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.ReflectionPropertyOperation">
+    <Position X="7.75" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABBABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RefectionPropertyOperation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.PropertyOperation" Collapsed="true">
+    <Position X="10.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>IPropertyOperation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.Operation" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIAAAAAAAEAAAQABBAAAAQAgAABAAgAAAA=</HashCode>
+      <FileName>Operation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.Property" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QIAABAABBgAAAAAEACAIAARACBgAAAAAAAwCAADgAAA=</HashCode>
+      <FileName>Property.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

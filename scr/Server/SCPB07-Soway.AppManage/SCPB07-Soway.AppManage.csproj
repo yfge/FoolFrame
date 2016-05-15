@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{680777D6-7F90-45BE-8E3D-2DA3C947240C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Soway.AppManage</RootNamespace>
+    <AssemblyName>SCPB07</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppFac.cs" />
+    <Compile Include="App\Application.cs" />
+    <Compile Include="App\AppType.cs" />
+    <Compile Include="App\StoreDataBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SCPB01-Soway.Data\SCPB01-Soway.Data.csproj">
+      <Project>{6ab018a9-5bdb-48b1-819e-d633378266ac}</Project>
+      <Name>SCPB01-Soway.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB02-Soway.DB\SCPB02-Soway.DB.csproj">
+      <Project>{ddcc77ba-5351-45ca-a73d-080fe3252577}</Project>
+      <Name>SCPB02-Soway.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB05-Soway.Model\SCPB05-Soway.Model.csproj">
+      <Project>{c9642cdc-0f65-484e-8174-9d950498af87}</Project>
+      <Name>SCPB05-Soway.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SWUA01-SOWAY.ORM.AUTH\SWUA01-SOWAY.ORM.AUTH.csproj">
+      <Project>{11220dae-9380-4559-95b6-9370e6b97c15}</Project>
+      <Name>SWUA01-SOWAY.ORM.AUTH</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Soway.Model.Triggers.PropertyTrigger">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIAAAAAAAEgAAQABAAAAAQAgAABAQgIAAA=</HashCode>
+      <FileName>Triggers\PropertyTriggers.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PropertyTriggerType" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.Triggers.ModelTrigger">
+    <Position X="7" Y="3.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIAAAAAAAEAAAAABAAAAAQAgAEBACgAAAA=</HashCode>
+      <FileName>ModelTrigger.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ModelTriggerType" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.PropertyMaps" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PropertyMaps.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.Trigger" Collapsed="true">
+    <Position X="4.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAgQAAAAAAAAAAAABAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Trigger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.Operation">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIAAAAAAAEAAAQABBAAAAQAgAABAAgAAAA=</HashCode>
+      <FileName>Operation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BaseOperationType" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.Model" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAFAACAACEAAAFgAgISAQACAgABDACEABADAADBgA=</HashCode>
+      <FileName>Model.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.ObjectProxy" Collapsed="true">
+    <Position X="3.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>ObjectProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Soway.Model.IOperation" Collapsed="true">
+    <Position X="4.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAABAAAAAQAgAABAAgAAAA=</HashCode>
+      <FileName>IOperation.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Soway.Model.PropertyTriggerType">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAEAAAAAAAABAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>PropertyTriggerType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Model.ModelTriggerType">
+    <Position X="7.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAACAAAAAAAEAAAAAAAAEAAEAAAAEAAAAAAAA=</HashCode>
+      <FileName>ModelTriggerType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Model.CommandsType">
+    <Position X="0.5" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAIAAAAAAAAAgAAAAAAAAAgADAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>CommandsType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Model.BaseOperationType" Collapsed="true">
+    <Position X="2" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAEAAAAAAAAEAAMAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseOperationType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Model.OperationType">
+    <Position X="6.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>OperationType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

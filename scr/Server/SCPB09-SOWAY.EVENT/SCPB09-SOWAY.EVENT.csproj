@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A9904673-4FFE-4248-88F4-2296648E07CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Soway.Event</RootNamespace>
+    <AssemblyName>SCPB09</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AllMessageFac.cs" />
+    <Compile Include="CompanyMessageFactory.cs" />
+    <Compile Include="DepMessageFactory.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="EventCheckFactory.cs" />
+    <Compile Include="EventDefFactory.cs" />
+    <Compile Include="EventDefination.cs" />
+    <Compile Include="EventFactory.cs" />
+    <Compile Include="EventLog.cs" />
+    <Compile Include="EventMakeService.cs" />
+    <Compile Include="EventState.cs" />
+    <Compile Include="MessageFactory.cs" />
+    <Compile Include="ModelFac.cs" />
+    <Compile Include="ModelRefType.cs" />
+    <Compile Include="MsgNotifyType.cs" />
+    <Compile Include="MsgState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleMessageFactory.cs" />
+    <Compile Include="SqlHelper.cs" />
+    <Compile Include="UserMessageFacotry.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SCPB01-Soway.Data\SCPB01-Soway.Data.csproj">
+      <Project>{6ab018a9-5bdb-48b1-819e-d633378266ac}</Project>
+      <Name>SCPB01-Soway.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB02-Soway.DB\SCPB02-Soway.DB.csproj">
+      <Project>{ddcc77ba-5351-45ca-a73d-080fe3252577}</Project>
+      <Name>SCPB02-Soway.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB03 -Soway.DB.Manage\SCPB03 -Soway.DB.Manage.csproj">
+      <Project>{93b9600c-b146-43e1-8216-705d2ff3a289}</Project>
+      <Name>SCPB03 -Soway.DB.Manage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB05-Soway.Model\SCPB05-Soway.Model.csproj">
+      <Project>{c9642cdc-0f65-484e-8174-9d950498af87}</Project>
+      <Name>SCPB05-Soway.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB07-Soway.AppManage\SCPB07-Soway.AppManage.csproj">
+      <Project>{680777d6-7f90-45be-8e3d-2da3c947240c}</Project>
+      <Name>SCPB07-Soway.AppManage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB08-Soway.AppManage\SCPB08-Soway.AppManage.csproj">
+      <Project>{0a81ce6f-018d-418a-a6de-427927c3f024}</Project>
+      <Name>SCPB08-Soway.AppManage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SWDQ01-Soway.Query\SWDQ01-Soway.Query.csproj">
+      <Project>{5f31918a-63dc-4231-86d1-ce733e1e6407}</Project>
+      <Name>SWDQ01-Soway.Query</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SWUA01-SOWAY.ORM.AUTH\SWUA01-SOWAY.ORM.AUTH.csproj">
+      <Project>{11220dae-9380-4559-95b6-9370e6b97c15}</Project>
+      <Name>SWUA01-SOWAY.ORM.AUTH</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SWUA02-SOWAY.ORM.AUTH\SWUA02-SOWAY.ORM.AUTH.csproj">
+      <Project>{5265421a-67bf-450b-984b-0becbe6f1dbf}</Project>
+      <Name>SWUA02-SOWAY.ORM.AUTH</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

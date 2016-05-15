@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SowayService", "SowayService.csproj", "{A618A5B5-5F18-4503-9A2D-42B8CF847C86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHandler", "..\TestHandler\TestHandler.csproj", "{1882A088-8D3E-4F27-8A46-009C31E45C87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCPB09-SOWAY.EVENT", "..\..\Soway.ORM.Framework.ORM\SCPB09-SOWAY.EVENT\SCPB09-SOWAY.EVENT.csproj", "{A9904673-4FFE-4248-88F4-2296648E07CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A618A5B5-5F18-4503-9A2D-42B8CF847C86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A618A5B5-5F18-4503-9A2D-42B8CF847C86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A618A5B5-5F18-4503-9A2D-42B8CF847C86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A618A5B5-5F18-4503-9A2D-42B8CF847C86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1882A088-8D3E-4F27-8A46-009C31E45C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1882A088-8D3E-4F27-8A46-009C31E45C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1882A088-8D3E-4F27-8A46-009C31E45C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1882A088-8D3E-4F27-8A46-009C31E45C87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9904673-4FFE-4248-88F4-2296648E07CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9904673-4FFE-4248-88F4-2296648E07CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9904673-4FFE-4248-88F4-2296648E07CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9904673-4FFE-4248-88F4-2296648E07CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

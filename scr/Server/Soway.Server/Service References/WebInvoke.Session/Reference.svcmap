@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bed90d08-2001-4181-9296-ad639acc1e9e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://10.0.10.2:8081/session.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SessionService1.wsdl" MetadataType="Wsdl" ID="b4d228f5-2e0e-4f0b-b24c-c09a3b5b194c" SourceId="1" SourceUrl="http://10.0.10.2:8081/Session.svc?wsdl" />
+    <MetadataFile FileName="Session3.xsd" MetadataType="Schema" ID="5a40db63-f542-456c-9630-537b2166f506" SourceId="1" SourceUrl="http://10.0.10.2:8081/Session.svc?xsd=xsd0" />
+    <MetadataFile FileName="Session31.xsd" MetadataType="Schema" ID="cde4493d-46c9-44fd-b0c4-0083c9d1f042" SourceId="1" SourceUrl="http://10.0.10.2:8081/Session.svc?xsd=xsd1" />
+    <MetadataFile FileName="Session32.xsd" MetadataType="Schema" ID="ada0988d-b711-46bc-a0ea-8864d61625ab" SourceId="1" SourceUrl="http://10.0.10.2:8081/Session.svc?xsd=xsd2" />
+    <MetadataFile FileName="Session1.wsdl" MetadataType="Wsdl" ID="9e3ac480-228a-4f8c-853e-0965239a042d" SourceId="1" SourceUrl="http://10.0.10.2:8081/Session.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="Session1.disco" MetadataType="Disco" ID="7b6e1faa-501c-412c-bc55-dfca6313feeb" SourceId="1" SourceUrl="http://10.0.10.2:8081/Session.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C9642CDC-0F65-484E-8174-9D950498AF87}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Soway.Model</RootNamespace>
+    <AssemblyName>SCPB05</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'trace|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\trace\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyModelFactory.cs" />
+    <Compile Include="AssemblyModuleSource.cs" />
+    <Compile Include="BaseOperationType.cs" />
+    <Compile Include="ConnectionType.cs" />
+    <Compile Include="Context\CurrentContext.cs" />
+    <Compile Include="Context\ICurrentContextFactory.cs" />
+    <Compile Include="Expressions\GetValueExpression.cs" />
+    <Compile Include="IObjectFactory.cs" />
+    <Compile Include="IObjectProxy.cs" />
+    <Compile Include="ItemEditType.cs" />
+    <Compile Include="LoadType.cs" />
+    <Compile Include="Manage\SqlServerModelFactory.cs" />
+    <Compile Include="MemoryCache\CacheList.cs" />
+    <Compile Include="MemoryCache\CacheItem.cs" />
+    <Compile Include="MemoryCache\MemoryCacheFac.cs" />
+    <Compile Include="MemoryCache\ModelCache.cs" />
+    <Compile Include="MemoryCache\ObjCache.cs" />
+    <Compile Include="MemoryCache\StoreDbCache.cs" />
+    <Compile Include="Message\Message.cs" />
+    <Compile Include="ModelFactory.cs" />
+    <Compile Include="ModelRefType.cs" />
+    <Compile Include="ModelTriggerCommand.cs" />
+    <Compile Include="ObjectHash.cs" />
+    <Compile Include="ObjectProxyClass.cs" />
+    <Compile Include="Operation\OperationCommand.cs" />
+    <Compile Include="CommandsType.cs" />
+    <Compile Include="Context\ItemQueryContext.cs" />
+    <Compile Include="Context\InputContext.cs" />
+    <Compile Include="Context\InputQueryResult.cs" />
+    <Compile Include="Context\ListViewQueryContext.cs" />
+    <Compile Include="Context\ViewResultItem.cs" />
+    <Compile Include="DynamicPropertyOperation.cs" />
+    <Compile Include="EncryptionClass.cs" />
+    <Compile Include="EnumValues.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Operation\ICommand.cs" />
+    <Compile Include="Manage\IModelFactory.cs" />
+    <Compile Include="Manage\IModelInstaller.cs" />
+    <Compile Include="Manage\IModelSource.cs" />
+    <Compile Include="Manage\IModelSqlFactory.cs" />
+    <Compile Include="Operation\IOperation.cs" />
+    <Compile Include="IPropertyOperation.cs" />
+    <Compile Include="ModelBindingList.cs" />
+    <Compile Include="ModelHelper.cs" />
+    <Compile Include="ModelMethodContext.cs" />
+    <Compile Include="ModelRunType.cs" />
+    <Compile Include="ModelSqlServerFactory.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="ModelTrigger.cs" />
+    <Compile Include="ModelTriggerType.cs" />
+    <Compile Include="ModelType.cs" />
+    <Compile Include="Module.cs" />
+    <Compile Include="MultiDBMap.cs" />
+    <Compile Include="ObectDynamicObject.cs" />
+    <Compile Include="ObjectPropertyCanSetChanged.cs" />
+    <Compile Include="ObjectProxy.cs" />
+    <Compile Include="ObjectValueChangedEventArgs.cs" />
+    <Compile Include="Operation\Operation.cs" />
+    <Compile Include="OperationType.cs" />
+    <Compile Include="Operation\OperationParam.cs" />
+    <Compile Include="OrderByType.cs" />
+    <Compile Include="PassWord.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Property.cs" />
+    <Compile Include="PropertyData.cs" />
+    <Compile Include="PropertyMaps.cs" />
+    <Compile Include="PropertyShowType.cs" />
+    <Compile Include="PropertyTriggerCommand.cs" />
+    <Compile Include="PropertyTriggerType.cs" />
+    <Compile Include="QueryContext.cs" />
+    <Compile Include="Context\ViewQueryResult.cs" />
+    <Compile Include="QueryView.cs" />
+    <Compile Include="QueryViewItem.cs" />
+    <Compile Include="Query\ModelQueryCol.cs" />
+    <Compile Include="Report\AddedView.cs" />
+    <Compile Include="Report\BoolExp.cs" />
+    <Compile Include="Report\Param.cs" />
+    <Compile Include="Query\QueryFac .cs" />
+    <Compile Include="Query\QueryModel.cs" />
+    <Compile Include="Query\QueryModelView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Query\QueryTable.cs" />
+    <Compile Include="RandomNo.cs" />
+    <Compile Include="RefectionPropertyOperation.cs" />
+    <Compile Include="Relation.cs" />
+    <Compile Include="RelationType.cs" />
+    <Compile Include="Report\Report.cs" />
+    <Compile Include="Report\ReportCol.cs" />
+    <Compile Include="SaveType.cs" />
+    <Compile Include="Script\KeyWords.cs" />
+    <Compile Include="SerialNo.cs" />
+    <Compile Include="View\ViewItem.cs" />
+    <Compile Include="SqlCon.cs" />
+    <Compile Include="Manage\SqlServerModuleInstaller.cs" />
+    <Compile Include="SqlDataProxy.cs" />
+    <Compile Include="SqlServer\dbContext.cs" />
+    <Compile Include="SqlServer\ObjectContext.cs" />
+    <Compile Include="SqlServer\SqlConnectionContext.cs" />
+    <Compile Include="SqlServer\SqlContext.cs" />
+    <Compile Include="SqlServer\SqlDataLoader.cs" />
+    <Compile Include="SqlServer\SqlHelper.cs" />
+    <Compile Include="SqlServer\SqlParameter.cs" />
+    <Compile Include="SqlServer\SqlProxy.cs" />
+    <Compile Include="SqlServer\SqlServerCommandCreator.cs" />
+    <Compile Include="Triggers\PropertyTriggers.cs" />
+    <Compile Include="ViewTemplateFile.cs" />
+    <Compile Include="View\OperationView.cs" />
+    <Compile Include="View\OperationViewItem.cs" />
+    <Compile Include="View\VewOperationLocation.cs" />
+    <Compile Include="View\View.cs" />
+    <Compile Include="View\ViewFactory.cs" />
+    <Compile Include="View\ViewOperation.cs" />
+    <Compile Include="ViewOperationTyp.cs" />
+    <Compile Include="ViewPorxy.cs" />
+    <Compile Include="ViewShowTime.cs" />
+    <Compile Include="ViewType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AssemblyToModel.cd" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
+    <None Include="Message\ClassDiagram1.cd" />
+    <None Include="method.cd" />
+    <None Include="ObjectProxy.cd" />
+    <None Include="Model.cd" />
+    <None Include="ModelManager.cd" />
+    <None Include="Report\Report.cd" />
+    <None Include="Trigger.cd" />
+    <None Include="View\View.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Script\NewFolder1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SCPB01-Soway.Data\SCPB01-Soway.Data.csproj">
+      <Project>{6ab018a9-5bdb-48b1-819e-d633378266ac}</Project>
+      <Name>SCPB01-Soway.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB02-Soway.DB\SCPB02-Soway.DB.csproj">
+      <Project>{ddcc77ba-5351-45ca-a73d-080fe3252577}</Project>
+      <Name>SCPB02-Soway.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SWDQ01-Soway.Query\SWDQ01-Soway.Query.csproj">
+      <Project>{5f31918a-63dc-4231-86d1-ce733e1e6407}</Project>
+      <Name>SWDQ01-Soway.Query</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

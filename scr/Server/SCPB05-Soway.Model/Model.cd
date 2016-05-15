@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Soway.Model.Model">
+    <Position X="3" Y="0.5" Width="1.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="BaseModel" Type="Soway.Model.Model" ManuallyRouted="true">
+      <Path>
+        <Point X="3.443" Y="0.5" />
+        <Point X="3.443" Y="0.156" />
+        <Point X="3.815" Y="0.156" />
+        <Point X="3.815" Y="0.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Properties" Type="Soway.Model.Property" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="1.581" />
+        <Point X="4.625" Y="1.581" />
+        <Point X="4.625" Y="4.274" />
+        <Point X="6.25" Y="4.274" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="ModelType" Type="Soway.Model.ModelType" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="1.19" />
+        <Point X="8.105" Y="1.19" />
+        <Point X="8.105" Y="1.286" />
+        <Point X="10.5" Y="1.286" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="EnumValues" Type="Soway.Model.EnumValues" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3" Y="1.373" />
+        <Point X="2.625" Y="1.373" />
+        <Point X="2.625" Y="3.137" />
+        <Point X="2.25" Y="3.137" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Relations" Type="Soway.Model.Relation" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.052" Y="1.882" />
+        <Point X="3.052" Y="4.5" />
+        <Point X="4" Y="4.5" />
+        <Point X="4" Y="5.193" />
+        <Point X="3.75" Y="5.193" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAFAACAACEAAAFgAgISAQACAgABDACEABADAADBgA=</HashCode>
+      <FileName>Model.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BaseModel" />
+      <Property Name="Module" />
+      <Property Name="ModelType" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Properties" />
+      <Property Name="EnumValues" />
+      <Property Name="Relations" />
+      <Property Name="Operations" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.EnumValues" Collapsed="true">
+    <Position X="0.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>EnumValues.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.Module" Collapsed="true">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAgEAAAAQAAAAAAIAAEAACAABAAAA=</HashCode>
+      <FileName>Module.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.Property" Collapsed="true">
+    <Position X="6.25" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Model" Type="Soway.Model.Model" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7" Y="4" />
+        <Point X="7" Y="1.386" />
+        <Point X="4.25" Y="1.386" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>QIAABAABBgAAAAAEACAIAARACBgAAAAAAAwCAADgAAA=</HashCode>
+      <FileName>Property.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Model" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="DBMaps" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Soway.Model.MultiDBMap" Collapsed="true">
+    <Position X="8.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>MultiDBMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.Relation">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAgAABAAAAAAAAAAEAAAAAAAAAAAAAAAQAAAQAACgA=</HashCode>
+      <FileName>Relation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.Operation" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIAAAAAAAEAAAQABBAAAAQAgAABAAgAAAA=</HashCode>
+      <FileName>Operation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Enum Name="Soway.Model.ModelType">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAIAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>ModelType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Model.PropertyType">
+    <Position X="8.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAACAEAAQAgAAgQQQIAAAAABAACACQRAAAAACCgASA=</HashCode>
+      <FileName>PropertyType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

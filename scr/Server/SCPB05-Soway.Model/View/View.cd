@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Soway.Model.View.View">
+    <Position X="3.25" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAiAAEAAAAAAQIABAAIAAABAgACAABAAA=</HashCode>
+      <FileName>View\View.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Model" />
+      <Property Name="ViewType" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Items" />
+      <Property Name="Operations" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Soway.Model.Model" Collapsed="true">
+    <Position X="4.5" Y="5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAFAACAACEgAAFgAgISAQICAgABDACEABADAADBAA=</HashCode>
+      <FileName>Model.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.ViewItem">
+    <Position X="6" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAEQAAAgAEACAgAAKAQECAAA=</HashCode>
+      <FileName>View\ViewItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Property" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Soway.Model.Property" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UIAABAABBgAAAAAEACAIAARICBgAAAAAAAwCAADgAAA=</HashCode>
+      <FileName>Property.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.ViewPorxy" Collapsed="true">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewPorxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.View.AutoViewFactory">
+    <Position X="0.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABACAAEAAAAAQAAAgAAAAAAAAAEAAIAAAAABAAIAAAA=</HashCode>
+      <FileName>View\ViewFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.ViewOperation">
+    <Position X="3" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAIABBQAAAAAABAAAAEAAAAAAAA=</HashCode>
+      <FileName>View\ViewOperation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.View.ViewTemplateFile">
+    <Position X="5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAIAAAAAAAQAAAAAAAAAAQAAAABAAAA=</HashCode>
+      <FileName>ViewTemplateFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Soway.Model.ViewType" Collapsed="true">
+    <Position X="6.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAIAARAICAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Model.ViewOperationTyp" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewOperationTyp.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Model.BaseOperationType" Collapsed="true">
+    <Position X="8.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAEAAEAAAAAAEAEAAMAAAAAAAAAAQAA=</HashCode>
+      <FileName>BaseOperationType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Model.VewOperationLocation" Collapsed="true">
+    <Position X="6.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>View\VewOperationLocation.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

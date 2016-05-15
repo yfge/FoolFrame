@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Soway.Service.Detail.DataDetail">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAQAAAAAQAAAAggAAAAAAAE=</HashCode>
+      <FileName>Detail\DataDetail.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Items" />
+      <Property Name="SimpleData" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Soway.Service.ViewData">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAiAAAIEAAAAQAAAAAAAAQCQAAAAAAAAA=</HashCode>
+      <FileName>ListView\ViewData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Items" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Soway.Service.ViewItem">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAgGAQAAAAAEQABAgAMAAAAAAAIABAAAA=</HashCode>
+      <FileName>ListView\ViewItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Detail.PropertyDataItems">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAECAAAAAAACAAIAEAAAAQAAAAAAAAAAAAAIAACAAA=</HashCode>
+      <FileName>Detail\PropertyDataItems.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Properties" />
+      <Property Name="Items" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Soway.Service.Detail.ObjValuePair">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACABAAAAEAAAAAAAAAAAQAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Detail\ObjValuePair.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Detail.ReadItemViewItem">
+    <Position X="3.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACABgAAAAAAAAAQAAAAAAAAAAAUAAAAAAAA=</HashCode>
+      <FileName>ItemView\ReadItemViewItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Detail.DataItem">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Detail\DataItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Values" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A618A5B5-5F18-4503-9A2D-42B8CF847C86}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Soway.Service</RootNamespace>
+    <AssemblyName>Soway.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Thrift, Version=0.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ApacheThrift.0.9.2\lib\Thrift.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataService.svc" />
+    <Content Include="Global.asax" />
+    <Content Include="ObjDetail\obj.cd" />
+    <Content Include="ClassDiagram2.cd" />
+    <Content Include="query.cd" />
+    <None Include="Service References\WebInvoke.Session\configuration91.svcinfo" />
+    <None Include="Service References\WebInvoke.Session\configuration.svcinfo" />
+    <None Include="Service References\WebInvoke.Session\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\WebInvoke.Session\Session1.disco" />
+    <Content Include="ReadMe.txt" />
+    <Content Include="XmlDataService.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="bean\CheckCode.cs" />
+    <Compile Include="bean\ConHelper.cs" />
+    <Compile Include="Context\ContextFac.cs" />
+    <Compile Include="DataService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Detail\DataDetail.cs" />
+    <Compile Include="Detail\DataItem.cs" />
+    <Compile Include="Detail\ObjValuePair.cs" />
+    <Compile Include="Detail\PropertyDataItems.cs" />
+    <Compile Include="Detail\PropertyViewItem.cs" />
+    <Compile Include="Enum\GetEnumOption.cs" />
+    <Compile Include="Enum\GetEnumResult.cs" />
+    <Compile Include="Enum\HandlerGetEnum.cs" />
+    <Compile Include="EvtConfac.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HandlerCheckCode.cs" />
+    <Compile Include="ILocalSessionDaoStub.cs" />
+    <Compile Include="Init\StoreBaseInfo.cs" />
+    <Compile Include="InputQuery\HandlerInputQuery.cs" />
+    <Compile Include="InputQuery\InputQueryOption.cs" />
+    <Compile Include="InputQuery\QueryItem.cs" />
+    <Compile Include="InputQuery\ResultInputQuery.cs" />
+    <Compile Include="ItemView\HandlerGetEditItemView.cs" />
+    <Compile Include="ItemView\HandlerGetReadItemView.cs" />
+    <Compile Include="ItemView\ReadItemView.cs" />
+    <Compile Include="ItemView\ReadItemViewDetailProperty.cs" />
+    <Compile Include="ItemView\ReadItemViewItem.cs" />
+    <Compile Include="ListView\GetViewOption.cs" />
+    <Compile Include="LocaTokenAoStub.cs" />
+    <Compile Include="Login\V1\CheckCodeFac.cs" />
+    <Compile Include="Login\V1\ChkCodeImg.cs" />
+    <Compile Include="Init\HandlerInitApp.cs" />
+    <Compile Include="Authenticate.cs" />
+    <Compile Include="DataFormator.cs" />
+    <Compile Include="EnumValues.cs" />
+    <Compile Include="ErrorDescription.cs" />
+    <Compile Include="ErrorInfo.cs" />
+    <Compile Include="Handler.cs" />
+    <Compile Include="DataBase.cs" />
+    <Compile Include="ListView\HandlerGetListView.cs" />
+    <Compile Include="Message\GetMessageResult.cs" />
+    <Compile Include="Message\GetNotifyResult.cs" />
+    <Compile Include="Message\HandlerGetMessage.cs" />
+    <Compile Include="Message\HandlerGetNotifyCount.cs" />
+    <Compile Include="Message\MessageInfo.cs" />
+    <Compile Include="Message\NotifyInfo.cs" />
+    <Compile Include="ModelAdapter\ViewAdaper.cs" />
+    <Compile Include="New\HandlerInitNew.cs" />
+    <Compile Include="New\HandlerSaveNew.cs" />
+    <Compile Include="New\InitNewOption.cs" />
+    <Compile Include="New\NewObjOption.cs" />
+    <Compile Include="ObjDetail\HandlerSaveObj.cs" />
+    <Compile Include="ObjDetail\Item.cs" />
+    <Compile Include="ObjDetail\ItemProperty.cs" />
+    <Compile Include="ObjDetail\Obj.cs" />
+    <Compile Include="ObjDetail\SaveKeypair.cs" />
+    <Compile Include="ObjDetail\SaveObjOption.cs" />
+    <Compile Include="Querylist\HandlerQueryData.cs" />
+    <Compile Include="Detail\HandlerQueryDataDetail.cs" />
+    <Compile Include="HandlerRunOperation.cs" />
+    <Compile Include="Login\V1\LoginHandler.cs" />
+    <Compile Include="Login\V1\AuthItem.cs" />
+    <Compile Include="Login\V1\AuthType.cs" />
+    <Compile Include="Handlers1.0\Login\GetSubAuthHandler.cs" />
+    <Compile Include="Handlers1.0\Login\LoginHandlerV2.cs" />
+    <Compile Include="Login\LoginOption.cs" />
+    <Compile Include="Login\V1\ViewType.cs" />
+    <Compile Include="Login\V2\GetSubAuthOption.cs" />
+    <Compile Include="Login\V2\HandlerGetSubAuth.cs" />
+    <Compile Include="Login\V2\HandlerLogin.cs" />
+    <Compile Include="Login\V2\ResultGetSubAuth.cs" />
+    <Compile Include="Login\V2\AuthItem.cs" />
+    <Compile Include="IDataService.cs" />
+    <Compile Include="IHandler.cs" />
+    <Compile Include="ImageHelper.cs" />
+    <Compile Include="InitOperation.cs" />
+    <Compile Include="IXmlDataService.cs" />
+    <Compile Include="JsonFormator.cs" />
+    <Compile Include="KeyValueStoreService.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="ModelTrigger.cs" />
+    <Compile Include="ModelType.cs" />
+    <Compile Include="ObjectKeyValuePair.cs" />
+    <Compile Include="Operation.cs" />
+    <Compile Include="OperationOption.cs" />
+    <Compile Include="PostDataOption.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ModelAdapter\Property.cs" />
+    <Compile Include="Querylist\QueryDataDetailOption.cs" />
+    <Compile Include="Querylist\QueryDataOption.cs" />
+    <Compile Include="Report\AddBoolExp.cs" />
+    <Compile Include="Report\BoolExpAdapter.cs" />
+    <Compile Include="Report\CompareOpItem.cs" />
+    <Compile Include="Report\ComplexBoolExp.cs" />
+    <Compile Include="Report\GetReportModelOption.cs" />
+    <Compile Include="Report\HandlerGetReportModel.cs" />
+    <Compile Include="Report\HandlerMakeReport.cs" />
+    <Compile Include="Report\HandlerSaveReport.cs" />
+    <Compile Include="Report\IBoolExp.cs" />
+    <Compile Include="Report\MakeReportOption.cs" />
+    <Compile Include="Report\QueryCache.cs" />
+    <Compile Include="Report\QueryCol.cs" />
+    <Compile Include="Report\QueryType.cs" />
+    <Compile Include="Report\ReportCell.cs" />
+    <Compile Include="Report\ReportCol.cs" />
+    <Compile Include="Report\ReportResult.cs" />
+    <Compile Include="Report\ResultQueryModel.cs" />
+    <Compile Include="Report\SavedReportOption.cs" />
+    <Compile Include="Report\SimpleBoolExp.cs" />
+    <Compile Include="Result.cs" />
+    <Compile Include="EditView\ResultDataDetail.cs" />
+    <Compile Include="Init\ResultInitApp.cs" />
+    <Compile Include="Login\V1\ResultLogin.cs" />
+    <Compile Include="ResultOperation.cs" />
+    <Compile Include="Querylist\ResultQuery.cs" />
+    <Compile Include="Handlers1.0\ResultSession.cs" />
+    <Compile Include="ResultView.cs" />
+    <Compile Include="Service References\WebInvoke.Session\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ISessionDaoStub.cs" />
+    <Compile Include="SessionDaoStubFac.cs" />
+    <Compile Include="ThriftClient\ITokenAoStub.cs" />
+    <Compile Include="User\GetMainInfoHandler.cs" />
+    <Compile Include="ThriftClient\ErrorInfo.cs" />
+    <Compile Include="ThriftClient\PlatformArgs.cs" />
+    <Compile Include="ThriftClient\SessionDao.cs" />
+    <Compile Include="ThriftClient\SessionDaoStub.cs" />
+    <Compile Include="ThriftClient\ThriftServiceConstant.cs" />
+    <Compile Include="ThriftClient\TokenAo.cs" />
+    <Compile Include="ThriftClient\TokenAoStub.cs" />
+    <Compile Include="TokenResult.cs" />
+    <Compile Include="User\AppInfo.cs" />
+    <Compile Include="User\AppResult.cs" />
+    <Compile Include="User\CacheInfo.cs" />
+    <Compile Include="User\CacheStore.cs" />
+    <Compile Include="User\HandlerAppInfo.cs" />
+    <Compile Include="User\HandlerGetMain.cs" />
+    <Compile Include="User\HandlerUserInfo.cs" />
+    <Compile Include="User\LogoutHandler.cs" />
+    <Compile Include="User\MainResult.cs" />
+    <Compile Include="User\TokenKeyGenerator.cs" />
+    <Compile Include="User\UserInfo.cs" />
+    <Compile Include="User\UserResult.cs" />
+    <Compile Include="ListView\ViewData.cs" />
+    <Compile Include="ListView\ViewItem.cs" />
+    <Compile Include="ListView\ViewOperation.cs" />
+    <Compile Include="ListView\ViewOption.cs" />
+    <Compile Include="ViewType.cs" />
+    <Compile Include="XmlDataService.cs" />
+    <Compile Include="XmlDataService.svc.cs">
+      <DependentUpon>XmlDataService.svc</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="NewFolder1\" />
+    <Folder Include="Session\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Soway.GYF.LOCL.pubxml" />
+    <None Include="Properties\PublishProfiles\SowayService.pubxml" />
+    <Content Include="Service References\WebInvoke.Session\Soway.Service.WebInvoke.Session.SessionState.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\WebInvoke.Session\Session1.wsdl" />
+    <None Include="Service References\WebInvoke.Session\Session3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebInvoke.Session\Session31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebInvoke.Session\Session32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebInvoke.Session\SessionService1.wsdl" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WebInvoke.Session\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SCPB01-Soway.Data\SCPB01-Soway.Data.csproj">
+      <Project>{6ab018a9-5bdb-48b1-819e-d633378266ac}</Project>
+      <Name>SCPB01-Soway.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB02-Soway.DB\SCPB02-Soway.DB.csproj">
+      <Project>{ddcc77ba-5351-45ca-a73d-080fe3252577}</Project>
+      <Name>SCPB02-Soway.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB03 -Soway.DB.Manage\SCPB03 -Soway.DB.Manage.csproj">
+      <Project>{93b9600c-b146-43e1-8216-705d2ff3a289}</Project>
+      <Name>SCPB03 -Soway.DB.Manage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB05-Soway.Model\SCPB05-Soway.Model.csproj">
+      <Project>{c9642cdc-0f65-484e-8174-9d950498af87}</Project>
+      <Name>SCPB05-Soway.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB07-Soway.AppManage\SCPB07-Soway.AppManage.csproj">
+      <Project>{680777d6-7f90-45be-8e3d-2da3c947240c}</Project>
+      <Name>SCPB07-Soway.AppManage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB08-Soway.AppManage\SCPB08-Soway.AppManage.csproj">
+      <Project>{0a81ce6f-018d-418a-a6de-427927c3f024}</Project>
+      <Name>SCPB08-Soway.AppManage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB09-SOWAY.EVENT\SCPB09-SOWAY.EVENT.csproj">
+      <Project>{a9904673-4ffe-4248-88f4-2296648e07ce}</Project>
+      <Name>SCPB09-SOWAY.EVENT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SWDQ01-Soway.Query\SWDQ01-Soway.Query.csproj">
+      <Project>{5f31918a-63dc-4231-86d1-ce733e1e6407}</Project>
+      <Name>SWDQ01-Soway.Query</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SWRPT01-Soway.Report\SWRPT01-Soway.Report.csproj">
+      <Project>{47e97f67-8721-4a2c-b6dd-95008f2be863}</Project>
+      <Name>SWRPT01-Soway.Report</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SWUA01-SOWAY.ORM.AUTH\SWUA01-SOWAY.ORM.AUTH.csproj">
+      <Project>{11220dae-9380-4559-95b6-9370e6b97c15}</Project>
+      <Name>SWUA01-SOWAY.ORM.AUTH</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SWUA02-SOWAY.ORM.AUTH\SWUA02-SOWAY.ORM.AUTH.csproj">
+      <Project>{5265421a-67bf-450b-984b-0becbe6f1dbf}</Project>
+      <Name>SWUA02-SOWAY.ORM.AUTH</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1407</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1407/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

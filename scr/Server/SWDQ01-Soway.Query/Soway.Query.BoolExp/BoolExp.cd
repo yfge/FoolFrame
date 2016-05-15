@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Soway.Query.BoolExp.BoolExpression">
+    <Position X="1" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Soway.Query.BoolExp\BoolExpression.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Exp" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Soway.Query.BoolExp.SimpleBoolExpression">
+    <Position X="3.75" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAEAAAAAAAAAAEAAIAAAAAgAAAACAg=</HashCode>
+      <FileName>Soway.Query.BoolExp\SimpleBoolExpression.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Col" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Soway.Query.CompareCol">
+    <Position X="0.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CompareCol.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Query.BoolExp.IBoolExpressionNode">
+    <Position X="3.5" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Soway.Query.BoolExp\IBoolExpression.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Query.BoolExp.ComplexBoolExpression">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Soway.Query.BoolExp\ComplexBoolExpression.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Sequeces" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Soway.Query.BoolExp.AddBoolExpression">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Soway.Query.BoolExp\AddBoolExpression.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BoolExpression" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
