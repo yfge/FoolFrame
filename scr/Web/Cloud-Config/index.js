@@ -1,9 +1,9 @@
 ﻿fs = require('fs');
 module.exports.serverconfig =
 {
-    hostname: "www.cloud-social.com",
+    hostname: "localhost",
     
-    hostport: 8081,
+    hostport: 1407,
     rootpath: "/DataService.svc/",
     globalheaders: {
         "Content-Type": "application/json"
@@ -12,6 +12,6 @@ module.exports.serverconfig =
 module.exports.appconfig = [];
 //默认 云渠
 module.exports.appconfig['*'] = {
-    AppId: "id",
+    AppId: "E4BEE30B-F38B-41D3-8B83-4C08E5E25FDE",
     AppKey: "159753"
 };

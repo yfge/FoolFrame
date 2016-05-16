@@ -898,8 +898,9 @@ namespace Soway.Model.SqlServer
                         result.Add(property.DBName, ob);
                     }
                 }else if(property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInSert
-                    && IsCheck==false)
+                    && IsCheck==false && property.PropertyType!= PropertyType.SerialNo)
                 {
+
                     continue;
                 }
                 else if (property.PropertyType == PropertyType.Guid &&
@@ -918,28 +919,20 @@ namespace Soway.Model.SqlServer
                     if (property.PropertyType != PropertyType.BusinessObject)
                 {
                     if (String.IsNullOrEmpty((property.DBName ?? "").Replace("[", "").Replace("]", "")) == false)
-                    //if(proxy [property ] )
                     {
 
                         var valueOb = proxy[property];
-                        // if (property.PropertyType != PropertyType.DateTime
-                        //     )
-
                          if (valueOb is DateTime && (DateTime)valueOb == DateTime.MinValue)
                             result.Add(property.DBName, DBNull.Value);
                         else
                             result.Add(property.DBName, valueOb ?? "");
-                        // else if (valueOb == null)
-                        //  result.Add(property.DBName, DateTime.MinValue);
-                        //if (valueOb is DateTime == false)//|| (DateTime)valueOb != DateTime.MinValue)
-                        //    result.Add(property.DBName, valueOb ?? "");
-                        //else if ( (DateTime)valueOb == DateTime.MinValue)
-                        //    result.Add(property.DBName, DBNull.Value);
                     }
 
                 }
                 else
                 {
+                    var objValue = proxy[property];
+
                     IObjectProxy propertyProxy = proxy[property] as IObjectProxy;
                     if (propertyProxy != null)
                     {
@@ -989,6 +982,9 @@ namespace Soway.Model.SqlServer
 
                         }
 
+                    } if(objValue != null)
+                    {
+                        result.Add(property.DBName, objValue);
                     }
                     else
                     {
