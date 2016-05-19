@@ -35,7 +35,7 @@ requirejs.config({
         //libs
         jquery: 'jquery-1.10.2',
         bootstrap:'bootstrap.min',
-        angular: 'angular',
+        angular: 'angular.min',
         ngRoute: 'angular-route',
         ngCookies: 'angular-cookies.min',
         typeahead: 'typeahead.jquery',
