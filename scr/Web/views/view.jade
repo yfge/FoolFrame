@@ -4,7 +4,7 @@ block content
         .panel-heading #{view.data.Name}
         
         .panel-body(ng-controller="QuerylistdataController"
-         ng-init="viewid='#{view.data.ID}';tableid = 'datalist'; page='1' ; size=10;count='0';pages='0';orderitem='0';ordertype='0';filter=''")
+         ng-init="viewid='#{view.data.ID}';tableid = 'datalist'; page='1' ; size='10';count='0';pages='0';orderitem='0';ordertype='0';filter=''")
 
             for op in view.data.Operations
                     .hidden(ng-init="addop(#{op.ID},#{op.RequireSelect},#{op.ViewID},'#{op.Name}')")
@@ -21,17 +21,10 @@ block content
             table.table.table-striped.table-hover.table-condensed#datalist
                 tr
                     -for(i=0;i<view.data.Items.length;i++){
-                        -if(view.data.Items[i].EditType != 10){
-                            th(style="width:#{view.data.Items[i].Width}px")  #{view.data.Items[i].Name}
-                        -}
+                        th(style="width:#{view.data.Items[i].Width}px")  #{view.data.Items[i].Name}
                     -}
-                    -for(i=0;i<view.data.Operations.length;i++){
-                        -if(view.data.Operations[i].RequireSelect){
-                            -i=view.data.Operations.length;
-                            th 操作
-                        -}
-                    -}
-            nav(ng-controller="NavbarController" ng-init="navId='pagenav';infoId='info'")
+                    th 操作
+            nav
                 #info  记录数未知,请查询  
                 ul.pagination#pagenav
 block dialog
@@ -56,14 +49,12 @@ block dialog
                     button.close(type="button" data-dismiss="modal" aria-lable="Close")
                         .span &times;
                     h4.modal-title 生成报表
-                .modal-body#rptdiagbody
+                .modal-body
                     ul.nav.nav-tabs
                             li.active
                                 a(href="#mkoutput" data-toggle='tab'  taget="_self") 输出
                             li
                                 a(href="#mkcondition" data-toggle='tab'  taget="_self") 条件
-                            li
-                                a(href="#saverpt" data-toggle='tab'  taget="_self") 保存报表
                     .tab-content
                         .tab-pane.active#mkoutput
                              
@@ -116,14 +107,11 @@ block dialog
                                     th 值
                                 tr
                                     td
-                                           .glyphicon.glyphicon-plus(ng-click="addcondition()" target="_self")
+                                        .glyphicon.glyphicon-plus
                                     td
-                                     
- 
-                        .tab-pane#saverpt.form-group
-                            H4  输入报表信息以保存该报表
-                            label(for="rptname") 报表名称
-                            input.form-control#rptname 
+                                        .glyphicon.glyphicon-plus
+                                    td(colspan="3") 
+                                        a(ng-click="addcondition()" target="_self") 添加条件
                                         
                                         
                                          
@@ -133,7 +121,6 @@ block dialog
                 .modal-footer
                     button.btn.btn-default(type="button" data-dismiss="modal") 取消
                     button.btn.btn-primary(type="button" ng-click="mkrpt()") 确定
-                    button.btn.btn-info(type="button" ng-click="saverpt()") 保存报表定义
     #rptresultdiag.modal.fade
         .modal-dialog.modal-lg(ng-controller="ShowReportController")
             .modal-content
