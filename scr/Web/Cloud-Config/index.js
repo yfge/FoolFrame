@@ -12,6 +12,6 @@ module.exports.serverconfig =
 module.exports.appconfig = [];
 //默认 云渠
 module.exports.appconfig['*'] = {
-    AppId: "3C53E09F-0CE9-4289-BA7E-C918A5F0C076",
+    AppId: "E4BEE30B-F38B-41D3-8B83-4C08E5E25FDE",
     AppKey: "159753"
 };
