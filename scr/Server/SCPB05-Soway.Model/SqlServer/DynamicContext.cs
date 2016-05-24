@@ -6,7 +6,7 @@ using Soway.Model.Context;
 
 namespace Soway.Model.SqlServer
 {
-    class DynamicContext
+    public class DynamicContext
     {
         private ICurrentContextFactory Fac;
         private string ConStr;
@@ -14,19 +14,19 @@ namespace Soway.Model.SqlServer
         private SqlCon SqlCon;
         private static Model getModel(Type type)
         {
-            var model = models.FirstOrDefault(p => p.ClassName == type.Name);
+            var model = models.FirstOrDefault(p => p.ClassName == type.FullName);
             if(model == null)
             {
                 var itemsToAdd = new AssemblyModuleSource(new AssemblyModelFactory(type)).GetModels();
-                foreach(var item in itemsToAdd)
+                foreach (var item in itemsToAdd)
                 {
-                    if(models.Count(p=>p.ClassName == item.ClassName) == 0)
+                    if (models.Count(p => p.ClassName == item.ClassName) == 0)
                     {
                         models.Add(item);
                     }
-
-                    model = models.FirstOrDefault(p => p.ClassName == type.Name);
                 }
+                model = models.FirstOrDefault(p => p.ClassName == type.FullName);
+
             }
             return model;
         }
@@ -86,6 +86,17 @@ namespace Soway.Model.SqlServer
             var model = getModel(refType);
             return new Soway.Model.SqlServer.dbContext(this.SqlCon, this.Fac).GetDetail(
           model, id);
+        }
+
+        public dynamic InitNew(Type refType)
+        {
+            var model = getModel(refType);
+            return new SqlDataProxy(model, this.Fac, LoadType.Complete, this.SqlCon);
+        }
+
+        public dynamic IsExists(dynamic ob)
+        {
+            return new Soway.Model.SqlServer.dbContext(this.SqlCon, Fac).IsExits(ob);
         }
     }
 }
