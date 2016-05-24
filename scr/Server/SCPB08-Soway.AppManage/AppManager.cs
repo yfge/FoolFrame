@@ -24,8 +24,7 @@ namespace Soway.AppManage
             var dbContext = new Soway.Model.SqlServer.ObjectContext<Soway.Model.App.Application>
                 (this.Con,this.ConFac);
             //1 创建应用
-
-            var newApp =dbContext.Create(App);
+            var newApp = new Soway.Model.ModelHelper(this.ConFac).GetFromProxy(dbContext.Create(App)) as Soway.Model.App.Application;
 
             //2 创建应用系统库
 

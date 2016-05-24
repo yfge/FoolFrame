@@ -12,7 +12,7 @@ namespace SOWAY.ORM.AUTH
         public User Login(String UserName,String Pwd)
         {
 
-            var db = new Soway.Model.SqlServer.SqlContext<User>(this.Con,this.ConFac);
+            var db = new Soway.Model.SqlServer.ObjectContext<User>(this.Con,this.ConFac);
             var user = db.GetDetail(UserName);
 
             if (user.PassWord == ToMD5(Pwd))

@@ -28,7 +28,7 @@ namespace Soway.Model.App
         public Application GetApp(String Appid, String AppPwd)
         {
 
-            var fac = new SqlServer.SqlContext<Soway.Model.App.Application>(this.SqlCon,this.ConFac);
+            var fac = new SqlServer.ObjectContext<Soway.Model.App.Application>(this.SqlCon,this.ConFac);
 
             var app =  fac.GetDetail(Appid);
 
@@ -48,7 +48,7 @@ namespace Soway.Model.App
 
         public Application GetApp(String Appid)
         {
-                  var fac = new SqlServer.SqlContext<Soway.Model.App.Application>(this.SqlCon,this.ConFac);
+                  var fac = new SqlServer.ObjectContext<Soway.Model.App.Application>(this.SqlCon,this.ConFac);
 
             return fac.GetDetail(Appid);
         }

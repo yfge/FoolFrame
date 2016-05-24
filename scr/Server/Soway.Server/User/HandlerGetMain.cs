@@ -27,7 +27,7 @@ namespace Soway.Service.User
             result.TopMenu = new List<Login.V2.AuthItem>();
 
 
-            var user = new Soway.Model.SqlServer.SqlContext<SOWAY.ORM.AUTH.User>(new bean.ConHelper().GetSysCon(),this).GetDetail(info.User.UserId);
+            var user = new Soway.Model.SqlServer.ObjectContext<SOWAY.ORM.AUTH.User>(new bean.ConHelper().GetSysCon(),this).GetDetail(info.User.UserId);
             if (user != null)
             {
 

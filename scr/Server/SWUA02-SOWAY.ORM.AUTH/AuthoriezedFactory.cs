@@ -22,7 +22,7 @@ namespace SOWAY.ORM.AUTH
         
         public AuthorizedUser GetAuthrizedUser(SOWAY.ORM.AUTH.User user)
         {
-            return  new Soway.Model.SqlServer.SqlContext<AuthorizedUser>(App.SysCon,this.ConFac).GetDetail(user.UserID);
+            return  new Soway.Model.SqlServer.ObjectContext<AuthorizedUser>(App.SysCon,this.ConFac).GetDetail(user.UserID);
 
         }
 

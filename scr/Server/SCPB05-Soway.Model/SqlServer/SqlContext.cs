@@ -7,9 +7,9 @@ using Soway.Model.Manage;
 
 namespace Soway.Model.SqlServer
 {
-    public class SqlContext <T>
+    public class ObjectContext <T>
     {
-        public SqlContext(SqlCon con,Context.ICurrentContextFactory conFac){
+        public ObjectContext(SqlCon con,Context.ICurrentContextFactory conFac){
              this.Con = con;
             this.ConFac = conFac;
             this.Fac = new Manage.SqlServerModelFactory(con,this.ConFac);
@@ -33,7 +33,7 @@ namespace Soway.Model.SqlServer
             return (T)new ModelHelper(this.ConFac).GetFromProxy(objectProxy);
         }
 
-        public void  Create(T obj,  Soway.Model.SqlCon con = null)
+        public dynamic  Create(T obj,  Soway.Model.SqlCon con = null)
         {
             
 
@@ -41,8 +41,9 @@ namespace Soway.Model.SqlServer
             IObjectProxy proxy = new ObjectProxy(this.Model,this.ConFac);
             new  ModelHelper(this.ConFac).SetProxy(ref proxy, obj);
             new Soway.Model.SqlServer.dbContext(GetCon(con),this.ConFac).Create(proxy);
-        
 
+
+            return proxy;
         }
 
         private SqlCon GetCon(SqlCon con=null)
@@ -69,5 +70,14 @@ namespace Soway.Model.SqlServer
         public SqlServerModelFactory Fac { get; private set; }
         public Model Model { get; private set; }
         public ICurrentContextFactory ConFac { get; private set; }
+
+
+        public void Save(T ob)
+        {
+            IObjectProxy proxy = new ObjectProxy(Model, this.ConFac);
+            new ModelHelper(this.ConFac).SetProxy(ref proxy, ob);
+
+            new dbContext(this.Con, this.ConFac).Save(proxy);
+        }
     }
 }

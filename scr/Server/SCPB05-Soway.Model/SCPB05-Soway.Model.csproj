@@ -149,12 +149,12 @@
     <Compile Include="SaveType.cs" />
     <Compile Include="Script\KeyWords.cs" />
     <Compile Include="SerialNo.cs" />
+    <Compile Include="SqlServer\DynamicContext.cs" />
     <Compile Include="View\ViewItem.cs" />
     <Compile Include="SqlCon.cs" />
     <Compile Include="Manage\SqlServerModuleInstaller.cs" />
     <Compile Include="SqlDataProxy.cs" />
     <Compile Include="SqlServer\dbContext.cs" />
-    <Compile Include="SqlServer\ObjectContext.cs" />
     <Compile Include="SqlServer\SqlConnectionContext.cs" />
     <Compile Include="SqlServer\SqlContext.cs" />
     <Compile Include="SqlServer\SqlDataLoader.cs" />

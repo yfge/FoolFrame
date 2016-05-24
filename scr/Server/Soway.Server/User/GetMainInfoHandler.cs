@@ -18,9 +18,9 @@ namespace Soway.Service.Session
             var info = new CacheStore().Get(this.PostData.Token);
             if (info != null && info.User != null)
             {
-      
 
-                var user = new Soway.Model.SqlServer.SqlContext<SOWAY.ORM.AUTH.User>(new bean.ConHelper().GetSysCon(),this).GetDetail(info.User.UserId);
+
+                var user = new Soway.Model.SqlServer.ObjectContext<SOWAY.ORM.AUTH.User>(new bean.ConHelper().GetSysCon(),this).GetDetail(info.User.UserId);
                 if (user != null)
                 {
                     var authuser = new SOWAY.ORM.AUTH.AuthoriezedFactory(new Model.App.Application() { SysCon = info.AppSqlCon },this).GetAuthrizedUser(user);

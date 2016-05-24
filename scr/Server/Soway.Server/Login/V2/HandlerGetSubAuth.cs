@@ -34,7 +34,7 @@ namespace Soway.Service.Login.V2
             Data.Token = this.PostData.Token;
 
 
-            var user = new Soway.Model.SqlServer.SqlContext<SOWAY.ORM.AUTH.User>(new bean.ConHelper().GetSysCon(),this).GetDetail(info.User.UserId);
+            var user = new Soway.Model.SqlServer.ObjectContext<SOWAY.ORM.AUTH.User>(new bean.ConHelper().GetSysCon(),this).GetDetail(info.User.UserId);
             if (user != null)
             {
 
