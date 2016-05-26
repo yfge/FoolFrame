@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Soway.Session" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Soway.Session" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="SessionState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Null" />
+      <xs:enumeration value="TimeOut" />
+      <xs:enumeration value="Removed" />
+      <xs:enumeration value="Success" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SessionState" nillable="true" type="tns:SessionState" />
+</xs:schema>

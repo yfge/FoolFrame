@@ -1,0 +1,33 @@
+﻿extends default
+block content
+    script(src='/javascripts/itemreadonly.js')
+    .panel.panel-default
+        .panel-heading #{view.ViewName}
+        .panel-body
+            .container
+                .row
+                    -for(i=0;i<view.Items.length;i++){
+                            .col-md-2
+                                p #{view.Items[i].Name}
+                            .col-md-4
+                                p 你好
+                     
+                    -}
+                .row
+                     ul#detail-tab.nav.nav-tabs(role="tablist")
+                       
+                        -for(i=0;i<view.DetailViews.length;i++){
+                            li(role="presentation")
+                                a(href='##{view.DetailViews[i].Name}' data-toggle="tab" id="tabbtn-#{view.DetailViews[i].Name}" taget="_self" aria-controls="#{view.DetailViews[i].Name}") #{view.DetailViews[i].Name}
+                        -}
+                    .tab-content
+                        -for(i=0;i<view.DetailViews.length;i++){
+                           .tab-pane(role="tab-pane",id="#{view.DetailViews[i].Name}")
+                                table.table
+                                    tr
+                                        -for(j=0;j<view.DetailViews[i].Items.length;j++){
+                                            th #{view.DetailViews[i].Items[j].Name}
+                                        -}
+                                        th 操作
+
+                        -}

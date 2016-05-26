@@ -1,0 +1,11 @@
+﻿.sw-flowcontrol.panel.panel-default(ng-controller="LineChartController" )
+            ul.nav.nav-tabs
+              li.active 
+                a(href='#' data-toggle="tab")  #{item.Name}
+            .tab-content
+                .tab-pane.active
+                    .panel
+                        div.sw-partialchart(id = "listview-#{item.ListViewId}-#{i}" ng-init="viewid='#{item.ListViewId}';chartid='listview-#{item.ListViewId}-#{i}';chartname='#{item.Name}'; page='1' ;size='5';count='0';pages='0';orderitem='0';ordertype='0';filter=''")
+                        p.pull-right 更新时间 
+                            span(ng-bind="querytime") 
+                            a(taget='_self' ) 刷新

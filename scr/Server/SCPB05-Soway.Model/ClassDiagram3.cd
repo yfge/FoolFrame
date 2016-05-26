@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Soway.Model.ObjectProxy" Collapsed="true">
+    <Position X="7.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>ObjectProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.ObjectProxyClass">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>QAAAGACAAAAAgAAEDABABIBACGAABIBAAAwAAAIAAhA=</HashCode>
+      <FileName>ObjectProxyClass.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.SqlDataProxy" Collapsed="true">
+    <Position X="7.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SqlDataProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.ModelHelper">
+    <Position X="4.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAACAAAIAEAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ModelHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Soway.Model.IObjectProxy" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAgAAECABABAAACCAABIAAAAwAAAIAABA=</HashCode>
+      <FileName>IObjectProxy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

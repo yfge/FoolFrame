@@ -1,0 +1,94 @@
+﻿doctype html
+html( lang="en")
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    if data.Token 
+        title #{title} #{data.App.AppName}
+    link(rel='stylesheet', type='text/css', media="screen", href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/soway.css')
+    script(src="../javascripts/lib/require.js")
+    script(src="../javascripts/app/reqconfig.js")
+    base(href=" " target="_self")
+     
+  body
+    nav.navbar.navbar-default.navbar-static-top
+        if data.Token 
+            div.container.navbar-header          
+                          
+                            
+                            button.sr-only(type="button" class="navbar-toggle collapsed" 
+                            data-toggle="collapse" data-target="#navbar" 
+                            aria-expanded="false" 
+                            aria-controls="navbar" 
+                           )显示/收起
+                           
+                            a.navbar-brand(href='/') #{data.App.AppName}
+                                small #{data.App.AppVer}
+            div.navbar-collapse.collapse(id="navbar")
+                                        
+                                   include ./includes/tbar.jade  
+ 
+             
+          
+    block content
+    block dialog
+      
+ 
+ 
+    #modaldiag.modal.fade
+        .modal-dialog.modal-lg
+            .modal-content
+                .modal-header
+                    button.close(type="button" data-dismiss="modal" aria-lable="Close")
+                        .span &times;
+               
+
+                    h4.modal-title 测试
+                    .nav
+                         button.btn.btn-primary(type="button") 保存
+                .modal-body
+                    p Hello world
+                .modal-footer
+                    button.btn.btn-default(type="button" data-dismiss="modal") 关闭
+                    button.btn.btn-primary(type="button") 保存
+    .modal.fade#error-dialog(role="dialog")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        H4.modal-title 发生错误
+                    .modal-body
+                        p#errorCode
+                        p#errorInfo
+                        
+                    .modal-footer
+                        button.btn.btn-default(type="button" data-dismiss="modal")  关闭
+    .modal.fade#info-dialog(role="dialog")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        H4.modal-title#info-title 操作提示
+                    .modal-body
+                        p#inforesult
+                        p#infoCode
+                        p#infoMsg
+                        
+                    .modal-footer
+                        button.btn.btn-default(type="button" data-dismiss="modal")  确定
+    .modal.fade#loading-dialog(role="dialog")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        H4.modal-title#loading-title 保存中
+                    .modal-body
+                        p#loading-msg 保存中,请稍后。。。。
+                    .modal-footer
+                         
+    block scripts
+      
+    footer
+        if data.Token
+            p &copy;  #{data.App.AppPowerBy} 
+if(app)
+script  requirejs(['swapp'],function(swapp){swapp.runapp('#{app}');});

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5265421A-67BF-450B-984B-0BECBE6F1DBF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SOWAY.ORM.AUTH</RootNamespace>
+    <AssemblyName>SWUA02</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthItem.cs" />
+    <Compile Include="AuthoriezedFactory.cs" />
+    <Compile Include="AuthorizedUser.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="CompanyFactory.cs" />
+    <Compile Include="Department.cs" />
+    <Compile Include="DepFactory.cs" />
+    <Compile Include="MenuItem.cs" />
+    <Compile Include="MenuItemFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="RoleFactory.cs" />
+    <Compile Include="UserFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Fac.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SCPB01-Soway.Data\SCPB01-Soway.Data.csproj">
+      <Project>{6ab018a9-5bdb-48b1-819e-d633378266ac}</Project>
+      <Name>SCPB01-Soway.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB02-Soway.DB\SCPB02-Soway.DB.csproj">
+      <Project>{ddcc77ba-5351-45ca-a73d-080fe3252577}</Project>
+      <Name>SCPB02-Soway.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB03 -Soway.DB.Manage\SCPB03 -Soway.DB.Manage.csproj">
+      <Project>{93b9600c-b146-43e1-8216-705d2ff3a289}</Project>
+      <Name>SCPB03 -Soway.DB.Manage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB05-Soway.Model\SCPB05-Soway.Model.csproj">
+      <Project>{c9642cdc-0f65-484e-8174-9d950498af87}</Project>
+      <Name>SCPB05-Soway.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCPB07-Soway.AppManage\SCPB07-Soway.AppManage.csproj">
+      <Project>{680777d6-7f90-45be-8e3d-2da3c947240c}</Project>
+      <Name>SCPB07-Soway.AppManage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SWUA01-SOWAY.ORM.AUTH\SWUA01-SOWAY.ORM.AUTH.csproj">
+      <Project>{11220dae-9380-4559-95b6-9370e6b97c15}</Project>
+      <Name>SWUA01-SOWAY.ORM.AUTH</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Soway.Model.Model" Collapsed="true">
+    <Position X="5" Y="0.75" Width="1.5" />
+    <AssociationLine Name="Module" Type="Soway.Model.Module" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="1.141" />
+        <Point X="4.625" Y="1.141" />
+        <Point X="4.625" Y="1.774" />
+        <Point X="2.25" Y="1.774" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAFAACAACEAAAFgAgISAQACAgABDACEABADAADBgA=</HashCode>
+      <FileName>Model.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Module" />
+      <Property Name="ModelType" />
+      <Property Name="SqlCon" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Properties" />
+      <Property Name="EnumValues" />
+      <Property Name="Operations" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.Property">
+    <Position X="6.75" Y="4.5" Width="1.5" />
+    <AssociationLine Name="DBMaps" Type="Soway.Model.MultiDBMap">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.1" Y="0.133" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>QIAABAABBgAAAAAEACAIAARACBgAAAAAAAwCAADgAAA=</HashCode>
+      <FileName>Property.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Model" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="DBMaps" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Soway.Model.Operation">
+    <Position X="11.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIAAAAAAAEAAAQABBAAAAQAgAABAAgAAAA=</HashCode>
+      <FileName>Operation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.AssemblyModelFactory">
+    <Position X="14" Y="6.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAABAAAgACBAAAAAAAICAAIAAEAAIAAAARAAAAIAAA=</HashCode>
+      <FileName>AssemblyModelFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.MultiDBMap">
+    <Position X="0.75" Y="11" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>MultiDBMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.Module" Collapsed="true">
+    <Position X="0.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAgEAAAAQAAAAAAIAAEAACAABAAAA=</HashCode>
+      <FileName>Module.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SqlCon" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.ModelSqlServerFactory">
+    <Position X="15.5" Y="1" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAAAgAAARgAAAAAIAAAAQAAAAAAAAACkABAAAQAAAAA=</HashCode>
+      <FileName>ModelSqlServerFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Model.EnumValues" Collapsed="true">
+    <Position X="6" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>EnumValues.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.ObjectProxy">
+    <Position X="10.75" Y="6.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>ObjectProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.Trigger" Collapsed="true">
+    <Position X="11" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAgQAAAAAAAAAAAABAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Trigger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.ReflectionPropertyOperation">
+    <Position X="11.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABBABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RefectionPropertyOperation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.DynamicPropertyOperation">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DynamicPropertyOperation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.ModelRunType" Collapsed="true">
+    <Position X="11.5" Y="3.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAAAAA=</HashCode>
+      <FileName>ModelRunType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.View.View">
+    <Position X="0.5" Y="5.25" Width="2" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAACAAEAAAAAAQAABAAAAAABAgACAABAgA=</HashCode>
+      <FileName>View.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Model" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Items" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Soway.Model.PropertyShowType">
+    <Position X="8.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PropertyShowType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.ViewItem">
+    <Position X="0.75" Y="8" Width="1.5" />
+    <AssociationLine Name="Property" Type="Soway.Model.Property" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.25" Y="8.905" />
+        <Point X="3.177" Y="8.905" />
+        <Point X="3.177" Y="6.91" />
+        <Point X="6.75" Y="6.91" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAEQAAAgAAACIgAAIAQAAAAA=</HashCode>
+      <FileName>ShowProperty.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Property" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Soway.Model.QueryContext" Collapsed="true">
+    <Position X="8.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAABAAAAAAAAgAAAAEAAA=</HashCode>
+      <FileName>QueryContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.QueryViewItem">
+    <Position X="9.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAABAAAAAAAAAAAAAQAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>QueryViewItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.SerialNo">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SerialNo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.RandomNo">
+    <Position X="8.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RandomNo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.Relation">
+    <Position X="9.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAABAAAAAAAAAAEAAAAAAAAAAAAAAAQAAAQAACgA=</HashCode>
+      <FileName>Relation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="RelationType" />
+      <Property Name="Property" />
+      <Property Name="TargetProperty" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Soway.Model.SqlCon" Collapsed="true">
+    <Position X="3.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAwAEAAAAAAgAAAAAAIACAAEAAAAAAAA=</HashCode>
+      <FileName>SqlCon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Model.PassWord">
+    <Position X="6.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PassWord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Soway.Model.IModelFactory">
+    <Position X="13.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAACAAAAAAAAAAAAAAAEAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>IModelFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Soway.Model.IModelSqlFactory">
+    <Position X="15.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IModelSqlFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Soway.Model.PropertyType" Collapsed="true">
+    <Position X="3.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAACAEAAQAgAAgQQQIAAAAABAACACQRAAAAACCgASA=</HashCode>
+      <FileName>PropertyType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Model.ModelType" Collapsed="true">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAIAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>ModelType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Model.ViewShowType">
+    <Position X="7" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ViewShowTime.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Model.RelationType" Collapsed="true">
+    <Position X="9.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAEAAAAAAAgAAAAAAAgA=</HashCode>
+      <FileName>RelationType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

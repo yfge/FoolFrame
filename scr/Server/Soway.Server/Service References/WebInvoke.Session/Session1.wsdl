@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="www.cloud-social.com" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="www.cloud-social.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="www.cloud-social.com/Imports">
+      <xsd:import schemaLocation="http://10.0.10.2:8081/Session.svc?xsd=xsd0" namespace="www.cloud-social.com" />
+      <xsd:import schemaLocation="http://10.0.10.2:8081/Session.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://10.0.10.2:8081/Session.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Soway.Session" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="session_RegSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegSession" />
+  </wsdl:message>
+  <wsdl:message name="session_RegSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="session_CheckSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckSession" />
+  </wsdl:message>
+  <wsdl:message name="session_CheckSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="session_RemoveSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveSession" />
+  </wsdl:message>
+  <wsdl:message name="session_RemoveSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="session_ClearSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClearSession" />
+  </wsdl:message>
+  <wsdl:message name="session_ClearSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClearSessionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="session">
+    <wsdl:operation name="RegSession">
+      <wsdl:input wsaw:Action="www.cloud-social.com/session/RegSession" message="tns:session_RegSession_InputMessage" />
+      <wsdl:output wsaw:Action="www.cloud-social.com/session/RegSessionResponse" message="tns:session_RegSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckSession">
+      <wsdl:input wsaw:Action="www.cloud-social.com/session/CheckSession" message="tns:session_CheckSession_InputMessage" />
+      <wsdl:output wsaw:Action="www.cloud-social.com/session/CheckSessionResponse" message="tns:session_CheckSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSession">
+      <wsdl:input wsaw:Action="www.cloud-social.com/session/RemoveSession" message="tns:session_RemoveSession_InputMessage" />
+      <wsdl:output wsaw:Action="www.cloud-social.com/session/RemoveSessionResponse" message="tns:session_RemoveSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClearSession">
+      <wsdl:input wsaw:Action="www.cloud-social.com/session/ClearSession" message="tns:session_ClearSession_InputMessage" />
+      <wsdl:output wsaw:Action="www.cloud-social.com/session/ClearSessionResponse" message="tns:session_ClearSession_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,24 @@
+﻿li.dropdown(role="navigation" ng-controller= "MenuController" id="top2-menu")
+ 
+    
+    -for(var i =0;i<data.TopMenu.length-1;i++){
+        
+            if data.TopMenu[i].ImageUrl
+                    .media-left.media-middle.navbar-header
+                        image.media-object.sw-menuimg(src="#{data.TopMenu[i].ImageUrl}")
+                a(  role="dropdown-toggle" 
+                    taget="_self"
+                    data-toggle="dropdown" 
+                    data-parent="#top2-menu" 
+                   
+                    data-target="#panel-#{data.TopMenu[i].AuthNo}" 
+                    aria-expanded="true" 
+                    aria-controls="panel-#{data.TopMenu[i].AuthNo}" 
+                    id="btn-#{data.TopMenu[i].AuthNo}" 
+                    ng-click="getSub('#{data.TopMenu[i].AuthNo}','ul-#{data.TopMenu[i].AuthNo}','panel-#{data.TopMenu[i].AuthNo}','#{data.TopMenu[i].ViewId}')")
+                    p #{data.TopMenu[i].Text}                  
+        
+            ul.dropdown-menu(id = "ul-#{data.TopMenu[i].AuthNo}")    
+             
+    -}
+    

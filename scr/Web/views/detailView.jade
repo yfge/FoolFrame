@@ -1,0 +1,152 @@
+﻿extends default
+block content
+    link(rel='stylesheet', type='text/css', href='/stylesheets/typeahead.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/jquery.ui.datepicker.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/timepicki.css')
+    link(rel='stylesheet', id="skin", href='/stylesheets/jquery-ui-1.9.2.custom.min3.css')
+    .panel.row.panel-default(ng-controller="DetailViewController" 
+    ng-init="viewName = '#{view.Data.Name}' ;prpid='#{prpid}';ownerviewid='#{ownerviewid}';viewid='#{viewid}';opt='#{opt}';ownerid='#{parentid}';isedit=false;obj.Id='#{view.Data.ObjId}';obj.Model='#{view.Data.Model}';obj.ViewID='#{view.Data.Name}'")
+        -if(opt=='new'){ 
+        .panel-heading #{view.Data.Name} -新建
+        -}else{
+         .panel-heading #{view.Data.Name} -#{view.Data.ObjId}
+         -}
+        .panel-body
+            .container.row.col-md-10.form-group.input-group
+                -if(opt=='new'){ 
+                .navbar
+                    .btn-group
+                       #btn-save.button.btn.btn-default(ng-click="beginsave()" disabled="false")
+                            span.glyphicon.glyphicon-ok 保存
+                -}else if (view.CanEdit){
+                .navbar
+                    .btn-group
+                        #btn-edit.button.btn.btn-default(ng-click="beginedit()")
+                            span.glyphicon.glyphicon-pencil 编辑
+                        #btn-save.button.btn.btn-default(ng-click="beginsave()" disabled="false")
+                            span.glyphicon.glyphicon-ok 保存
+                        -for(i=0;i<view.Operations.length;i++){
+                        .button.btn.btn-default(ng-click="exuteop(#{view.Operations[i].ID})" )
+                            span.glyphicon.glyphicon-ok #{view.Operations[i].Name}
+                        -}
+
+                -}
+                .row.col-md-10
+                    -for(i=0;i<view.Data.SimpleData.length;i++){
+                            .col-md-2
+                                label  #{view.Data.SimpleData[i].PrpShowName}
+                            .col-md-4.visible-md-4-block( 
+                             data-property=     "#{view.Data.SimpleData[i].PrpId}"
+                             data-propertyvalue="#{view.Data.SimpleData[i].ObjId}"
+                             data-fmtvalue=     "#{view.Data.SimpleData[i].FmtValue}"
+                             data-propertyModel="#{view.Data.SimpleData[i].PrpModelId}"
+                             data-viewitem=     "#{view.Data.SimpleData[i].PrpShowName}"
+                             data-propertyType= "#{view.Data.SimpleData[i].PrpType}")
+                                -if (view.Data.SimpleData[i].FmtValue) {
+                                    p #{view.Data.SimpleData[i].FmtValue} 
+                                -}else{
+                                    p &nbsp;
+                                -}
+                     
+                    -}
+                .row.col-md-10
+
+                    -if(view.Data.Items){
+                         ul#detail-tab.nav.nav-tabs(role="tablist")
+                            -for(i=0;i<view.Data.Items.length;i++){
+                                li(role="presentation")
+                                    a(href='##{view.Data.Items[i].Name}' 
+                                    data-toggle="tab" id="tabbtn-#{view.Data.Items[i].Name}"
+                                    taget="_self" aria-controls="#{view.Data.Items[i].Name}") #{view.Data.Items[i].ItemName}
+                            -}
+                        .tab-content
+                            -for(i=0;i<view.Data.Items.length;i++){
+                               .tab-pane(role="tab-pane",id="#{view.Data.Items[i].Name}")
+                                    .btn-group
+                                         button.btn.btn-default
+                                            
+                                            span.glyphicon.glyphicon-plus(ng-click="additem('#{view.Data.Items[i].SelectedView}','#{view.Data.Items[i].Name}','#{view.Data.Items[i].PrpId}',#{view.Data.Items[i].SelectFromExists},'#{view.Data.Items[i].ListViewId}')") 增加
+                                    table.table(role="tab-pane",id="#{view.Data.Items[i].Name}-table")
+                                        tr
+                                            -for(j=0;j<view.Data.Items[i].Properties.length;j++){
+                                                th(  data-property=     "#{view.Data.Items[i].Properties[j].PrpId}"
+                                                     data-propertyModel="#{view.Data.Items[i].Properties[j].PrpModelId}"
+                                                     data-viewitem=     "#{view.Data.Items[i].Properties[j].PrpShowName}"
+                                                     data-propertyType= "#{view.Data.Items[i].Properties[j].PrpType}")   #{view.Data.Items[i].Properties[j].Name}
+                                            -}
+                                            th(colspan="2") 操作
+                                        -for(j=0;j<view.Data.Items[i].Items.length;j++){
+                                            tr(data-itemid='#{view.Data.Items[i].Items[j].DataID}' data-itemview="#{view.Data.Items[i].Name}" data-operation="edit")
+                                                -for(k=0;k<view.Data.Items[i].Items[j].Values.length;k++){
+                                                    td( 
+                                                     data-propertyvalue="#{view.Data.Items[i].Items[j].Values[k].ObjId}"
+                                                     data-fmtvalue=     "#{view.Data.Items[i].Items[j].Values[k].FmtValue}"
+                                                     data-property=     "#{view.Data.Items[i].Properties[k].PrpId}"
+                                                     data-propertyModel="#{view.Data.Items[i].Properties[k].PrpModelId}"
+                                                     data-viewitem=     "#{view.Data.Items[i].Properties[k].PrpShowName}"
+                                                     data-propertyType= "#{view.Data.Items[i].Properties[k].PrpType}") 
+                                                        p   #{view.Data.Items[i].Items[j].Values[k].FmtValue}
+                                                -}
+                                                td 
+                                                    -if(view.Data.Items[i].SelectFromExists ==false){
+                                                    -if (view.Data.Items[i].DetailViewId =="0") {
+
+                                                         a(id="edit-#{view.Data.Items[i].Name}-#{view.Data.Items[i].Items[j].DataID}" 
+                                                           ng-click="edititem('#{view.Data.Items[i].DetailViewId}','#{view.Data.Items[i].Items[j].DataID}','#{view.Data.Items[i].Name}','#{view.Data.Items[i].PrpId}','edit')") 编辑 
+                                                    -}else{
+                                                         a(href="../view#{view.Data.Items[i].DetailViewId}/#{view.Data.Items[i].Items[j].DataID}" target="_self") 编辑 
+                                                    -}
+                                                    -}
+
+
+                                                td
+                                                    a(id="delete-#{view.Data.Items[i].Name}-#{view.Data.Items[i].Items[j].DataID}" ng-click="deleteitem('#{view.Data.Items[i].Items[j].DataID}','#{view.Data.Items[i].Name}','#{view.Data.Items[i].PrpId}')")  删除 
+                                                -if(view.Data.Items[i].DetailViewId){
+                                                td 
+                                                    a(href="../view#{view.Data.Items[i].DetailViewId}/#{view.Data.Items[i].Items[j].DataID}" target="_self")  详细
+                                                -}
+
+                                        -}
+                                                
+                            -}
+                        -}
+block dialog
+     #selectdialog.modal.fade
+        .modal-dialog.modal-lg
+            .modal-content
+                .modal-header
+                    button.close(type="button" data-dismiss="modal" aria-lable="Close")
+                        .span &times;
+                    h4.modal-title 测试
+                  
+                .modal-body(ng-controller="QuerylistdataController"
+                         ng-init="viewid='0'; page='1' ;tableid ='datalist';size='10';count='0';pages='0';orderitem='0';ordertype='0';filter=''")
+             
+                            form.navbar-form.navbar-right(role="search" ng-init="token='#{view.Token}'; detailId='0'")
+                                .form-group
+                                    input.form-control(type="text" ng-model="filter" nplaceholder="输入条件")
+                                button.btn.btn-default(ng-click="query()")  查找    
+                            table.table.table-striped.table-hover#datalist
+                                tbody
+                                
+
+                            
+                            nav
+                                #info  记录数未知,请查询  
+                        ul.pagination#pagenav
+                  
+                .modal-footer
+                    button.btn.btn-default(type="button" data-dismiss="modal") 取消
+                    button.btn.btn-primary(type="button") 确定
+     #rptdiag.modal.fade
+        .modal-dialog.modal-lg
+            .modal-content
+                .modal-header
+                    button.close(type="button" data-dismiss="modal" aria-lable="Close")
+                        .span &times;
+                    h4.modal-title 测试
+ 
+                  
+                .modal-footer
+                    button.btn.btn-default(type="button" data-dismiss="modal") 取消
+                    button.btn.btn-primary(type="button") 确定

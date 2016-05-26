@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Soway.Service.Authenticate" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAEAAAAAAAAIAAAEAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Authenticate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.DataBase" Collapsed="true">
+    <Position X="27" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAABABAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.DataDetail" Collapsed="true">
+    <Position X="28.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.DataFormator" Collapsed="true">
+    <Position X="30.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>DataFormator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.DataService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAgAEABAAAAAAAAAAAAAAAAIAAQAARAAAAAAA=</HashCode>
+      <FileName>DataService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Soway.Service.EnumValues" Collapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>EnumValues.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ErrorDescription" Collapsed="true">
+    <Position X="25.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABQAAAAAAAQAAAEAAAAAAAACAAAAAAAAASAQQAAAAQ=</HashCode>
+      <FileName>ErrorDescription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ErrorInfo" Collapsed="true">
+    <Position X="27" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ErrorInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.GlobalHandler" Collapsed="true">
+    <Position X="13.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GlobalHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Handler" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAJAAAAAAAgAAQACAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Handler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Soway.Service.HandlerGetView" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAACAAIABIAAAAAAAAAAAA=</HashCode>
+      <FileName>HandlerGetView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.HandlerQueryData" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAIABIAAAAAAAAAgAA=</HashCode>
+      <FileName>HandlerQueryData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.HandlerQueryDataDetail" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAIABIAAAAAAAAAAAA=</HashCode>
+      <FileName>HandlerQueryDataDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.HandlerRunOperation" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAACAAIgBIAAAAAAAAAAAA=</HashCode>
+      <FileName>HandlerRunOperation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ResultSession" Collapsed="true">
+    <Position X="5.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABQAAAAAAAAAAAAAAAgIAAAAAEAAAAAAAAAAAAI=</HashCode>
+      <FileName>Handlers1.0\ResultSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ImageHelper" Collapsed="true">
+    <Position X="30.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ImageHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.HandlerInitApp" Collapsed="true">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAACAAAABIAAAAAAAQAAAA=</HashCode>
+      <FileName>Init\HandlerInitApp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ResultInitApp" Collapsed="true">
+    <Position X="5.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADAAAARAAAAAAAAIAAAAAAAAAAIAAAEAAAAAAAAAEAA=</HashCode>
+      <FileName>Init\ResultInitApp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.InitOption" Collapsed="true">
+    <Position X="0.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>InitOperation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.JsonFormator" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>JsonFormator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.KeyValueStoreService" Collapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAABAAAAAAAAAAAAAAAAQIAAAA=</HashCode>
+      <FileName>KeyValueStoreService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ObjectKeyValuePair" Collapsed="true">
+    <Position X="27" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>ObjectKeyValuePair.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Operation" Collapsed="true">
+    <Position X="28.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Operation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.OperationOption" Collapsed="true">
+    <Position X="30.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>OperationOption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.PostDataOption" Collapsed="true">
+    <Position X="3" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PostDataOption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Property" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAAACAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Property.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Result" Collapsed="true">
+    <Position X="7.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Result.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ResultDataDetail" Collapsed="true">
+    <Position X="10" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>ResultDataDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ResultOperation" Collapsed="true">
+    <Position X="12.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>ResultOperation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ResultQuery" Collapsed="true">
+    <Position X="14.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIEAAAAAAAAFAAAAAAAAAAAAA=</HashCode>
+      <FileName>ResultQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.QueryKeyValueResult" Collapsed="true">
+    <Position X="23.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAgAAAAAAAAAA=</HashCode>
+      <FileName>ResultQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ResultView" Collapsed="true">
+    <Position X="1" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>ResultView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ServiceFactory" Collapsed="true">
+    <Position X="25.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.SqlConContext" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SqlConContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Soway.Service.SqlConHelper" Collapsed="true">
+    <Position X="30.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>SqlConHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.UserInfo" Collapsed="true">
+    <Position X="21.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAABAAAAAAAAAAAAAAAAwAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>UserInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ViewData" Collapsed="true">
+    <Position X="23.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAiAAAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>ViewData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ViewItem" Collapsed="true">
+    <Position X="25.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgEAQAAAAAEQAAAgAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>ViewItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ViewOperation" Collapsed="true">
+    <Position X="27" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewOperation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.XmlDataService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAEAAAAAAAAAAAAAAAAAAIAAQAABAAAAAAA=</HashCode>
+      <FileName>XmlDataService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Soway.Service.Handlers1._0.Login.GetSubAuthHandler" Collapsed="true">
+    <Position X="28.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers1.0\Login\GetSubAuthHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Handlers1._0.Login.LoginHandlerV2" Collapsed="true">
+    <Position X="25.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers1.0\Login\LoginHandlerV2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Login.LoginOperation" Collapsed="true">
+    <Position X="3" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAABEAA=</HashCode>
+      <FileName>Login\LoginOption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Login.V1.AuthItem" Collapsed="true">
+    <Position X="0.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAQAAAAAACAAAAAAAAAAAAAAAAAAAABAEACAkAAAA=</HashCode>
+      <FileName>Login\V1\AuthItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Login.V1.CheckCodeFac" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Login\V1\CheckCodeFac.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Login.V1.ChkCodeImg" Collapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAEAA=</HashCode>
+      <FileName>Login\V1\ChkCodeImg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Login.V1.LoginHandler" Collapsed="true">
+    <Position X="19.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACCAACAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Login\V1\LoginHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Login.V1.ResultLogin" Collapsed="true">
+    <Position X="3.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Login\V1\ResultLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Login.V2.AuthItem" Collapsed="true">
+    <Position X="0.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Login\V2\AuthItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Login.V2.GetSubAuthOption" Collapsed="true">
+    <Position X="5.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Login\V2\GetSubAuthOption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Login.V2.HandlerGetSubAuth" Collapsed="true">
+    <Position X="14.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAACAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Login\V2\HandlerGetSubAuth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Login.V2.HandlerLogin" Collapsed="true">
+    <Position X="17" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAACAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Login\V2\HandlerLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.Login.V2.ResultGetSubAuth" Collapsed="true">
+    <Position X="7.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Login\V2\ResultGetSubAuth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.WebInvoke.Session.sessionClient" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAACAIAAAAEAAAAIAEAAAABAAAAAAAAgAA=</HashCode>
+      <FileName>Service References\WebInvoke.Session\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Soway.Service.Session.GetMainInfoHandler" Collapsed="true">
+    <Position X="12.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAABAAAAAAAAABAAA=</HashCode>
+      <FileName>Session\GetMainInfoHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Soway.Service.IDataService" Collapsed="true">
+    <Position X="21.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAgAEABAAAAAAAAAAAAAAAAIAAQAARAAAAAAA=</HashCode>
+      <FileName>IDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Soway.Service.IHandler" Collapsed="true">
+    <Position X="23.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Soway.Service.IXmlDataService" Collapsed="true">
+    <Position X="25.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAEAAAAAAAAAAAAAAAAAAIAAQAABAAAAAAA=</HashCode>
+      <FileName>IXmlDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Soway.Service.WebInvoke.Session.session" Collapsed="true">
+    <Position X="8.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAACAIAAAAEAAAAIAEAAAABAAAAAAAAgAA=</HashCode>
+      <FileName>Service References\WebInvoke.Session\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Soway.Service.WebInvoke.Session.sessionChannel" Collapsed="true">
+    <Position X="8.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\WebInvoke.Session\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Soway.Service.ModelType" Collapsed="true">
+    <Position X="23.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAIAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>ModelType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Service.PropertyType" Collapsed="true">
+    <Position X="25.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAACAEAAQAgAAgQQQIAAAAABAACACQRAAAAACCgASA=</HashCode>
+      <FileName>PropertyType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Service.ViewType" Collapsed="true">
+    <Position X="28.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>ViewType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Service.Login.V1.AuthType" Collapsed="true">
+    <Position X="21.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACBAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Login\V1\AuthType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Service.Login.V1.ViewType" Collapsed="true">
+    <Position X="30.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAwQAAAACAAAACAAAAAAAAAAI=</HashCode>
+      <FileName>Login\V1\ViewType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Soway.Service.WebInvoke.Session.SessionState" Collapsed="true">
+    <Position X="27" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEIAAAAAAAAAAgAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Service References\WebInvoke.Session\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

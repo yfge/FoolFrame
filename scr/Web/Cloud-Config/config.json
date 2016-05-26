@@ -1,0 +1,9 @@
+﻿{
+  "hostname": "localhost",
+  "hostport": 1407,
+  "rootpath": "/DataService.svc/",
+  "global-headers": {
+    "Content-Type": "application/json"
+
+  }
+}

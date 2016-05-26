@@ -1,0 +1,25 @@
+﻿mixin SubView(item,i)
+    div(class = "col-md-#{item.Width} col-sm-#{item.Width}  col-lg-#{item.Width}")
+        case item.ViewFile
+            when './includes/List'
+                include ./includes/List
+            when './includes/Group'
+                include ./includes/Group
+            when './includes/Map'
+                include ./includes/Map
+            when './includes/Item'
+                include ./includes/Item
+extends default
+block content
+    .row
+        -if(view){
+            -for(i=0;i<view.data.Items.length;i++){
+      
+         
+                    +SubView(view.data.Items[i],i)
+            
+
+            -}
+        -}else{
+            p 欢迎使用SOWAY无码系统，这是默认的首页，没有配置，请参考相关说明进行设定
+        -}

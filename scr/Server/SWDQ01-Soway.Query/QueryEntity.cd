@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Soway.Query.QueryInstance">
+    <Position X="1" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAIAAAAAAAAEAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QueryInstance.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SelectedTables" />
+      <Property Name="BoolExp" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="SelectedCols" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Soway.Query.BoolExp.BoolExpression" Collapsed="true">
+    <Position X="9.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Soway.Query.BoolExp\BoolExpression.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Query.SelectedTables">
+    <Position X="1" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SelectedTables.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Query.SelectedTable">
+    <Position X="5.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SelectedTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Query.JoinTable">
+    <Position X="3.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Soway.Query.Query\JoinTables.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Query.SelectedCol">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAACAAAAAAAQAgAAAAAAgAAAAABQAIgkAAAAAAA=</HashCode>
+      <FileName>SelectedCol.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,26 @@
+﻿
+ul.nav.navbar-nav( role="tablist" id="top-menu" style="font-size:14px" ng-controller= "MenuController")
+  
+   li.dropdown
+        a(href="../"  target='_self') 首页
+    -for(var i =0;i<data.TopMenu.length;i++){
+        li.dropdown(role="presentation" id=data.TopMenu[i].AuthNo)
+            if data.TopMenu[i].ImageUrl
+                    .media-left.media-middle.navbar-header
+                        image.media-object.sw-menuimg(src="#{data.TopMenu[i].ImageUrl}")
+                a(  role="dropdown-toggle" 
+                    taget="_self"
+                    data-toggle="dropdown" 
+                    
+                    data-target="#panel-#{data.TopMenu[i].AuthNo}" 
+                    aria-expanded="true" 
+                    aria-controls="panel-#{data.TopMenu[i].AuthNo}" 
+                    id="btn-#{data.TopMenu[i].AuthNo}" 
+                    ng-click="getSub('#{data.TopMenu[i].AuthNo}','ul-#{data.TopMenu[i].AuthNo}','panel-#{data.TopMenu[i].AuthNo}','#{data.TopMenu[i].ViewId}')")
+                    p #{data.TopMenu[i].Text}
+            if !data.TopMenu[i].ViewId
+                ul.dropdown-menu(id = "ul-#{data.TopMenu[i].AuthNo}")    
+             
+    -}
+    li.dropdown
+        a( target='_self' ng-click="logout()")   安全退出

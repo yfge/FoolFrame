@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Soway.Service.ObjDetail.Obj">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ObjDetail\Obj.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Itemproperties" />
+      <Property Name="Propertyies" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Soway.Service.ObjDetail.ItemProperty">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAQAAEAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ObjDetail\ItemProperty.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="AddedItems" />
+      <Property Name="DelteItems" />
+      <Property Name="Items" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Soway.Service.ObjDetail.SaveKeypair">
+    <Position X="5.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>ObjDetail\SaveKeypair.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Service.ObjDetail.Item">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ObjDetail\Item.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Propertyies" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

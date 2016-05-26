@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Soway.Report.Views.MatrixTable">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAIAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MatrixTable.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ColHeader" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Soway.Report.TableHeader">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>TableHeader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Report.Views.MatrixResult">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MatrixResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Report.Views.Cell">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAQAAAAAgAAAgAgAAAAAAA=</HashCode>
+      <FileName>Views\Cell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Report.Report">
+    <Position X="7" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAgAAgAAAAAAAAAQAgCEAAAAAEAAAAACAAAA=</HashCode>
+      <FileName>Report.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Params" />
+      <Property Name="Result" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Soway.Report.Param" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Param.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Report.ReportFactory" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ReportFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Report.ReportResult" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAEAAAAAAAAQAEAAAAAAAAAABAAAABAA=</HashCode>
+      <FileName>ReportResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Soway.Report.ParamInput" Collapsed="true">
+    <Position X="9.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>ParamInput.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Param" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Soway.Report.ReportResultTable">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>ReportResultTable.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Columns" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Soway.Report.ReportResultTableColumn">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABIAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>ReportResultTableColumn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="System.Int32" Collapsed="true">
+    <Position X="2.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Struct>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
