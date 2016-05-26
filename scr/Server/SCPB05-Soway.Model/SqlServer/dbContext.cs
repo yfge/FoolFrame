@@ -150,7 +150,7 @@ namespace Soway.Model.SqlServer
                     }
                 else
                 {
-                    var items = GetColsAndValues(proxy, trans,true);
+                    var items = GetColsAndValues(proxy, trans, OperationType.CheckIsExits);
                     if(items==null)
                     {
                         proxy.IsSave = SaveType.UnExists;
@@ -322,7 +322,7 @@ namespace Soway.Model.SqlServer
         }
         private void save(IObjectProxy proxy, System.Data.SqlClient.SqlTransaction trans = null, string tagetCol = null, object targetId = null)
         {
-            var items = GetColsAndValues(proxy, trans);
+            var items = GetColsAndValues(proxy, trans, OperationType.Update);
             System.Data.SqlClient.SqlConnection con = null;
             if (trans != null)
             {
@@ -785,7 +785,7 @@ namespace Soway.Model.SqlServer
                 }
                  
             }
-            var items = GetColsAndValues(proxy, trans);
+            var items = GetColsAndValues(proxy, trans, OperationType.Insert);
          
             foreach (var item in items)
             {
@@ -818,8 +818,16 @@ namespace Soway.Model.SqlServer
             return command;
 
         }
+
+
+        private enum OperationType
+        {
+            Insert =0,
+            CheckIsExits=1,
+            Update =2
+        }
           private    Dictionary<String, object> 
-              GetColsAndValues(IObjectProxy proxy, System.Data.SqlClient.SqlTransaction trans = null,bool IsCheck=false)
+              GetColsAndValues(IObjectProxy proxy, System.Data.SqlClient.SqlTransaction trans, OperationType operationType)
         {
             Dictionary<String, object> result = new Dictionary<string, object>();
             List<string> temp = new List<string>();
@@ -831,9 +839,7 @@ namespace Soway.Model.SqlServer
             
                 p.IsArray == false 
                 && 
-                (string.IsNullOrEmpty(p.DBName) == false || p.IsMultiMap == true) //包含。多重映射的情况 
-                //||
-                //p.PropertyType == PropertyType.SerialNo)
+                (string.IsNullOrEmpty(p.DBName) == false || p.IsMultiMap == true)
                 ))
             {
                 if (temp.Contains(property.Name))
@@ -869,17 +875,21 @@ namespace Soway.Model.SqlServer
 
                     //日期
                     if (property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInSert
-                        && (IsCheck ==false || IsExits(proxy) == false))
+                        && (operationType== OperationType.Insert || IsExits(proxy) == false))
                     {
                         result.Add(property.DBName, DateTime.Now);
 
                     }
                     else if ((property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInsertAndUpate
-                       || property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnUpdate) && IsCheck==false    )
+                       || property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnUpdate) &&( operationType== OperationType.Update ) )
                     {
                         result.Add(property.DBName, DateTime.Now);
                     }
-                    else
+                    else if((property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInSert)
+                        && operationType!= OperationType.Insert)
+                    {
+                        continue;
+                    }else 
                     {
 
                         var str = (proxy[property] ?? DateTime.Now).ToString();
@@ -894,11 +904,10 @@ namespace Soway.Model.SqlServer
                                 ob = fmt;
                             }
                         }
-
                         result.Add(property.DBName, ob);
                     }
                 }else if(property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInSert
-                    && IsCheck==false && property.PropertyType!= PropertyType.SerialNo)
+                    && operationType!= OperationType.CheckIsExits && property.PropertyType!= PropertyType.SerialNo)
                 {
 
                     continue;
@@ -906,7 +915,7 @@ namespace Soway.Model.SqlServer
                 else if (property.PropertyType == PropertyType.Guid &&
                     (String.IsNullOrEmpty((proxy[property] ?? "").ToString()) == true
                     || Guid.Parse((proxy[property] ?? "").ToString()) == Guid.Empty)
-                    && IsCheck==false)
+                    && operationType!= OperationType.CheckIsExits)
                 {
                     proxy[property] = Guid.NewGuid();//.ToString();
                     result.Add(property.DBName, proxy[property]);
@@ -943,7 +952,7 @@ namespace Soway.Model.SqlServer
 
 
                             //???
-                            if (IsCheck == true)
+                            if (operationType== OperationType.CheckIsExits)
                                 return null;
                             //不存在,先加到里面 
                             bool chk = IsExits(propertyProxy, trans);
