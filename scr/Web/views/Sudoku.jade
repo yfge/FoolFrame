@@ -9,13 +9,13 @@
                 include ./includes/Map
             when './includes/Item'
                 include ./includes/Item
-            when './includes/linechart'
-                include ./includes/linechart
 extends default
 block content
     .row
         -if(view){
             -for(i=0;i<view.data.Items.length;i++){
+      
+         
                     +SubView(view.data.Items[i],i)
             
 
@@ -23,4 +23,3 @@ block content
         -}else{
             p 欢迎使用SOWAY无码系统，这是默认的首页，没有配置，请参考相关说明进行设定
         -}
-      .hidde( ng-controller="MessageController") 

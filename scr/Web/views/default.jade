@@ -5,11 +5,9 @@ html( lang="en")
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     if data.Token 
         title #{title} #{data.App.AppName}
-    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
     link(rel='stylesheet', type='text/css', media="screen", href='/stylesheets/bootstrap.css')
-
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
     link(rel='stylesheet', type='text/css', href='/stylesheets/soway.css')
-
     script(src="../javascripts/lib/require.js")
     script(src="../javascripts/app/reqconfig.js")
     base(href=" " target="_self")
@@ -17,19 +15,22 @@ html( lang="en")
   body
     nav.navbar.navbar-default.navbar-static-top
         if data.Token 
-            .container-fluid   
-               .navbar-header
-                 
-                     a(href='/') 
-                            H2  #{data.App.AppName}
+            div.container.navbar-header          
+                          
+                            
+                            button.sr-only(type="button" class="navbar-toggle collapsed" 
+                            data-toggle="collapse" data-target="#navbar" 
+                            aria-expanded="false" 
+                            aria-controls="navbar" 
+                           )显示/收起
+                           
+                            a.navbar-brand(href='/') #{data.App.AppName}
                                 small #{data.App.AppVer}
-
-                    include ./includes/tbar.jade  
+            div.navbar-collapse.collapse(id="navbar")
+                                        
+                                   include ./includes/tbar.jade  
  
-               ul.nav.navbar-nave.nav.nav-pills.navbar-right
-                           li
-                                    img.img-circle.avtar(src="#{data.User.UserAvtarUrl}") 
-                                    a.pull-right  #{data.User.UserName}
+             
           
     block content
     block dialog
@@ -63,19 +64,6 @@ html( lang="en")
                         
                     .modal-footer
                         button.btn.btn-default(type="button" data-dismiss="modal")  关闭
-    .modal.fade#msg-dialog(role="dialog")
-            .modal-dialog
-                .modal-content
-                    .modal-header
-                        H4.modal-title#msg-title 系统消息
-                    .modal-body
-                        p 时间
-                            span#msgdatetime
-                        p#msgcontent
-                    .modal-footer
-                        a#btnmsgview.btn.btn-default(href='#' target="_self") 查看详细
-                        button.btn.btn-default(type="button" data-dismiss="modal")  确定
-                        
     .modal.fade#info-dialog(role="dialog")
             .modal-dialog
                 .modal-content
