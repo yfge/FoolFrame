@@ -83,7 +83,7 @@ namespace Soway.Model
                 property.PropertyType =Soway.Data.PropertyTypeAdaper. GetPropertyType(propertyInfo.PropertyType);
              
                 property.IsArray = typeof(ICollection).IsAssignableFrom(propertyInfo.PropertyType);
-              //  property.ParentMode = model;
+ 
             
                 var cols = helper.GetColNameAttributes(propertyInfo);
                 if (property.PropertyType == PropertyType.BusinessObject)
@@ -105,9 +105,11 @@ namespace Soway.Model
                             property.IsCheck = true;
                         }
                         property.IsMultiMap = false;
+                        property.Format = cols[0].FormatStr;
                     }
                     else
                     {
+                        property.Format = cols[0].FormatStr;
                         property.IsMultiMap = true;
                         foreach (var col in cols)
                             property.DBMaps.Add(new MultiDBMap()
@@ -134,7 +136,7 @@ namespace Soway.Model
                         property.PropertyType = PropertyType.RadomDECS;
                     else if (cols[0].EncrpytType == Data.Discription.ORM.EncryptType.MD5)
                         property.PropertyType = PropertyType.MD5;
-                
+                    property.Format = cols[0].FormatStr;
                     property.IsMultiMap = false;
                     if (property.PropertyType == PropertyType.Enum)
                     {
@@ -249,6 +251,11 @@ namespace Soway.Model
                     && (Primary.PropertyType == PropertyType.Int || Primary.PropertyType == PropertyType.Long)))
                 {
                     Primary.PropertyType = PropertyType.IdentifyId;
+                }else if (Primary.AutoGenerationType == GenerationType.OnInSert
+                    &&String.IsNullOrEmpty(Primary.Format)==false
+                    &&Primary.PropertyType == PropertyType.String)
+                {
+                    Primary.PropertyType = PropertyType.SerialNo;
                 }
 
                 Primary.AllowDBNull = false;
