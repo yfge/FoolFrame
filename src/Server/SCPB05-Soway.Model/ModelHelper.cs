@@ -113,10 +113,7 @@ namespace Soway.Model
 
         }
 
-        internal void SetProxy<T>(ref ObjectProxy proxy, T obj)
-        {
-        
-        }
+       
 
         private      Dictionary<object, IObjectProxy> ProxyDic = new Dictionary<object, IObjectProxy>();
         private ICurrentContextFactory ConFac;

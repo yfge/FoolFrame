@@ -6,7 +6,7 @@ using Soway.Model.Context;
 
 namespace Soway.Model.Manage
 {
-    public class SqlServerModuleInstaller : IModuleInstaller
+    public class SqlServerModuleInstaller : IDbModuleInstaller
     {
         public ICurrentContextFactory ConFac { get; private set; }
 
@@ -296,6 +296,7 @@ namespace Soway.Model.Manage
         }
         private static void CreateDataBase(SqlCon DataBaseSqlCon)
         {
+  
             var createCommand = new System.Data.SqlClient.SqlCommand();
             createCommand.CommandText = String.Format(
                 @"if not exists(select * from master..sysdatabases  where name='{0}')
@@ -319,11 +320,7 @@ namespace Soway.Model.Manage
             }
         }
 
-        public bool CheckModelIsInstalled(Model model, SqlCon modelSqlCon, SqlCon dataSqlCon)
-        {
-            throw new NotImplementedException();
-        }
-
+       
         public void InstallModel(Model model,SqlCon modelSqlCon, SqlCon dataSqlCon)
         {
 
@@ -419,6 +416,74 @@ namespace Soway.Model.Manage
         {
             new Soway.Model.Manage.SqlServerModuleInstaller(this.ConFac).InstallModules(
                 new Soway.Model.AssemblyModuleSource(Global.fac), sysCon, sysCon);
+        }
+
+        public bool IsModelInstalled(Model model, SqlCon modelSqlCon, SqlCon dataSqlCon)
+        {
+
+            var db = new SqlServer.dbContext(modelSqlCon,this.ConFac);
+            IObjectProxy obj = new ObjectProxy(typeof(Model), this.ConFac);
+            new ModelHelper(this.ConFac).SetProxy(ref obj, model);
+            if (db.IsExits(obj))
+            {
+                var chkCommand = new System.Data.SqlClient.SqlCommand();
+                chkCommand.CommandText = string.Format("SELECT * FROM SYS.TABLES WHERE NAME='{0}'",model.DataTableName.Replace("[", "").Replace("]", ""));
+                using (var con = new System.Data.SqlClient.SqlConnection(
+                    new System.Data.SqlClient.SqlConnectionStringBuilder()
+                    {
+                        DataSource = dataSqlCon.DataSource,
+                        UserID = dataSqlCon.UserID,
+                        Password = dataSqlCon.Password
+                    }.ToString()))
+                {
+                    con.Open();
+                    chkCommand.Connection = con;
+                    if (chkCommand.ExecuteScalar() != null)
+                        return true;
+
+
+                }
+            }
+            return false;
+        }
+
+        public bool IsModuleInstalled(Module module, SqlCon modelSqlCon, SqlCon dataSqlCon)
+        {
+            return false;
+        }
+
+        public bool IsModelRegistered(Model model, SqlCon modelSqlCon)
+        {
+            var db = new SqlServer.dbContext(modelSqlCon, this.ConFac);
+            IObjectProxy obj = new ObjectProxy(typeof(Model), this.ConFac);
+            new ModelHelper(this.ConFac).SetProxy(ref obj, model);
+            if (db.IsExits(obj))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool IsModelInstalled(Model model, SqlCon dataSqlCon)
+        {
+            var chkCommand = new System.Data.SqlClient.SqlCommand();
+            chkCommand.CommandText = string.Format("SELECT count(*) FROM SYS.TABLES WHERE NAME='{0}'", model.DataTableName.Replace("[", "").Replace("]", ""));
+            using (var con = new System.Data.SqlClient.SqlConnection(
+                new System.Data.SqlClient.SqlConnectionStringBuilder()
+                {
+                    DataSource = dataSqlCon.DataSource,
+                    UserID = dataSqlCon.UserID,
+                    Password = dataSqlCon.Password
+                }.ToString()))
+            {
+                con.Open();
+                chkCommand.Connection = con;
+                if (chkCommand.ExecuteScalar() != null)
+                    return true;
+
+
+            }
+            return false;
         }
     }
 }

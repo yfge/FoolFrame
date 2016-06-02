@@ -891,20 +891,30 @@ namespace Soway.Model.SqlServer
                         continue;
                     }else 
                     {
-
-                        var str = (proxy[property] ?? DateTime.Now).ToString();
-                        object ob = DBNull.Value;
-                        if (String.IsNullOrEmpty(str))
-                            ob = DBNull.Value;
-                        else
+                        if (!(proxy[property] is DateTime))
                         {
-                            DateTime fmt;
-                            if(DateTime.TryParseExact(str.Replace('/',' ').Replace(':',' ').Replace(" ",""),"yyyyMMddHHmmss",null,System.Globalization.DateTimeStyles.AssumeLocal,out fmt) == true)
+                            var str = (proxy[property] ?? DateTime.Now).ToString();
+                            object ob = DBNull.Value;
+                            if (String.IsNullOrEmpty(str))
+                                ob = DBNull.Value;
+                            else
                             {
-                                ob = fmt;
+                                DateTime fmt;
+                                if (DateTime.TryParseExact(str.Replace('/', ' ').Replace(':', ' ').Replace(" ", ""), "yyyyMMddHHmmss", null, System.Globalization.DateTimeStyles.AssumeLocal, out fmt) == true)
+                                {
+                                    ob = fmt;
+                                }
                             }
+                            result.Add(property.DBName, ob);
+                        }else
+                        {
+                            var dt = (DateTime)proxy[property];
+                             if(dt == DateTime.MinValue)
+                                continue;
+                            else
+                                result.Add(property.DBName, dt);
+
                         }
-                        result.Add(property.DBName, ob);
                     }
                 }else if(property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInSert
                     && operationType!= OperationType.CheckIsExits && property.PropertyType!= PropertyType.SerialNo)
