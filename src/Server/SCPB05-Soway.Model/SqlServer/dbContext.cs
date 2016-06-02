@@ -891,6 +891,7 @@ namespace Soway.Model.SqlServer
                         continue;
                     }else 
                     {
+                        //判断时间
                         if (!(proxy[property] is DateTime))
                         {
                             var str = (proxy[property] ?? DateTime.Now).ToString();
