@@ -147,7 +147,7 @@ namespace Soway.Model.View
         {
           
 
-            IObjectProxy proxy = new ObjectProxy(Global.ViewMode,this.ConFac);
+            var proxy = new ObjectProxy(Global.ViewMode,this.ConFac);
             new ModelHelper(this.ConFac).SetProxy(ref proxy, obj);
             new Soway.Model.SqlServer.dbContext(this.Con,this.ConFac).Save(proxy);
 

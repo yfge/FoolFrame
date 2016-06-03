@@ -5,13 +5,15 @@ using System.Text;
 
 namespace Soway.Model.Manage
 {
-    public interface IDbModuleInstaller
+    public interface IModuleInstaller
     {
 
         void CreateSysDataBase(SqlCon sysCon);
         void InstallModules(IModuleSource Source,SqlCon modelSqlCon,SqlCon dataSqlCon );
 
- 
+
+        bool CheckModelIsInstalled(Model model, SqlCon modelSqlCon, SqlCon dataSqlCon);
+
 
         /// <summary>
         /// 安装一个模块
@@ -32,12 +34,5 @@ namespace Soway.Model.Manage
         /// </summary>
         /// <param name="model"></param>
         void DeleteMode(Model model, SqlCon modelSqlCon, SqlCon dataSqlCon);
-
-        bool IsModelInstalled(Model model, SqlCon modelSqlCon, SqlCon dataSqlCon);
-        bool IsModuleInstalled(Module module, SqlCon modelSqlCon, SqlCon dataSqlCon);
-
-
-        bool IsModelRegistered(Model mode, SqlCon modelSqlcon);
-        bool IsModelInstalled(Model mode, SqlCon dataSqlCon);
     }
 }

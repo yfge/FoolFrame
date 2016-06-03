@@ -94,7 +94,7 @@
     <Compile Include="Global.cs" />
     <Compile Include="Operation\ICommand.cs" />
     <Compile Include="Manage\IModelFactory.cs" />
-    <Compile Include="Manage\IDbModelInstaller.cs" />
+    <Compile Include="Manage\IModelInstaller.cs" />
     <Compile Include="Manage\IModelSource.cs" />
     <Compile Include="Manage\IModelSqlFactory.cs" />
     <Compile Include="Operation\IOperation.cs" />

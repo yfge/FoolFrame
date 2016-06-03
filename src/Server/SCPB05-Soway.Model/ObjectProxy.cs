@@ -9,7 +9,7 @@ using Soway.Model.Context;
 
 namespace Soway.Model
 {
-    public class ObjectProxy: ObjectProxyClass
+    public class ObjectProxy : ObjectProxyClass
     {
 
 
@@ -77,11 +77,5 @@ namespace Soway.Model
             
             }
         }
-
-
-
-       public ObjectProxy(Type refType, Context.ICurrentContextFactory conFac):base(new AssemblyModelFactory(refType).GetModel(refType),conFac,LoadType.Partial){
-          
-            }
     }
 }
