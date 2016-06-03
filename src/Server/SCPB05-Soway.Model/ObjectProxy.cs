@@ -14,9 +14,9 @@ namespace Soway.Model
 
 
         public bool SaveInDB { get; set; }
-     
 
-        public override   object this[String exp]
+
+        public override object this[String exp]
         {
             get
             {
@@ -28,8 +28,9 @@ namespace Soway.Model
 
             }
         }
-        public ObjectProxy(Model model,Context.ICurrentContextFactory conFac, LoadType isLoad= LoadType.Null) : base(model,conFac, isLoad) {
- 
+        public ObjectProxy(Model model, Context.ICurrentContextFactory conFac, LoadType isLoad = LoadType.Null) : base(model, conFac, isLoad)
+        {
+
         }
         public override object this[Property index]
         {
@@ -45,13 +46,13 @@ namespace Soway.Model
 
                 IObjectFactory.SetPropertyValue(this, index, value);
 
-                if (value != old  )
+                if (value != old)
                 {
                     Notify(index);
                     var triggers = index.Triggers.Where(p => p.PropertyTriggerType == PropertyTriggerType.Set);
                     if (triggers.Count() > 0)
                     {
-                        var method = new ModelMethodContext(this.Con,this.ConFac);
+                        var method = new ModelMethodContext(this.Con, this.ConFac);
                         foreach (var trigger in triggers)
                         {
                             method.ExcuteOperation(this, trigger);
@@ -63,10 +64,10 @@ namespace Soway.Model
 
                 ///序列号的情况 
                 if (
-                    (index.PropertyType == Data.PropertyType.SerialNo  
-                    &&value != null
-                    && string.IsNullOrEmpty(value.ToString())==false
-                    )||(
+                    (index.PropertyType == Data.PropertyType.SerialNo
+                    && value != null
+                    && string.IsNullOrEmpty(value.ToString()) == false
+                    ) || (
                     index.PropertyType == Data.PropertyType.IdentifyId //自增ID 
                     ))
                 {
@@ -74,8 +75,15 @@ namespace Soway.Model
 
                 }
 
-            
+
             }
+        }
+
+
+
+        public ObjectProxy(Type refType, Context.ICurrentContextFactory conFac) : base(new AssemblyModelFactory(refType).GetModel(refType), conFac, LoadType.Partial)
+        {
+
         }
     }
 }

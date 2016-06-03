@@ -16,7 +16,7 @@ namespace Soway.Model
         /// <returns></returns>
         List<Model> GetModels(Module Module);
 
-       // List<Property> GetModelProperties(ArgModel model);
+        // List<Property> GetModelProperties(ArgModel model);
         /// <summary>
         /// 得到所有模块
         /// </summary>
@@ -40,8 +40,8 @@ namespace Soway.Model
 
         Model GetModel(Type type);
 
-         
-         
- 
+
+
+
     }
 }

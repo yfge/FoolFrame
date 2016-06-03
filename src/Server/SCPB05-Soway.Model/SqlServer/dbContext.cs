@@ -3,29 +3,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Soway.Model.Context;
-using System.Data; 
+using System.Data;
 
 namespace Soway.Model.SqlServer
 {
     public class dbContext
     {
-       
-
-       
 
 
-       
+
+
+
+
         private SqlCon sqlCon = null;
 
         public ICurrentContextFactory ConFac { get; private set; }
 
-        public dbContext(SqlCon con,Context.ICurrentContextFactory conFac)
+        public dbContext(SqlCon con, Context.ICurrentContextFactory conFac)
         {
-          
+
             sqlCon = con;
             ConFac = conFac;
-        
-             
+
+
         }
 
         #region 判断一个实例是否已经存在
@@ -40,10 +40,10 @@ namespace Soway.Model.SqlServer
                 proxy.IsSave = SaveType.Exists;
                 return true;
             }
-            if (proxy.Model != null&&proxy.Model.IdProperty !=null && proxy.Model.IdProperty.PropertyType == PropertyType.Guid
+            if (proxy.Model != null && proxy.Model.IdProperty != null && proxy.Model.IdProperty.PropertyType == PropertyType.Guid
                 )
             {
-                if (String.IsNullOrEmpty((proxy.ID ??"").ToString().Trim())  || (Guid)proxy.ID == Guid.Empty)
+                if (String.IsNullOrEmpty((proxy.ID ?? "").ToString().Trim()) || (Guid)proxy.ID == Guid.Empty)
                 {
                     if (proxy.Model.Properties.Count
                         (p => p.IsCheck == true && String.IsNullOrEmpty(p.IXGroup) == false) == 0)
@@ -53,10 +53,10 @@ namespace Soway.Model.SqlServer
                     }
                 }
             }
-            if (proxy.Model !=null && proxy.Model.AutoSysId == true)
+            if (proxy.Model != null && proxy.Model.AutoSysId == true)
             {
 
-                if (proxy.ID !=null &&System.Convert.ToInt64(proxy.ID) != 0  
+                if (proxy.ID != null && System.Convert.ToInt64(proxy.ID) != 0
                     )
                 {
                     if (proxy.Model.Properties.Count(p => p.IsCheck
@@ -101,17 +101,17 @@ namespace Soway.Model.SqlServer
                     }
                 }
 
-             
-                commnad.CommandText = "SELECT [" + SqlHelper.GetKeyCol(proxy.Model) + "] FROM " + 
+
+                commnad.CommandText = "SELECT [" + SqlHelper.GetKeyCol(proxy.Model) + "] FROM " +
                     proxy.Model.DataTableName + " WHERE '1'='2'";
 
-                var keyGroups = proxy.Model.Properties.Where(p => p.IsCheck 
+                var keyGroups = proxy.Model.Properties.Where(p => p.IsCheck
                     && p != proxy.Model.IdProperty).Select(p => p.IXGroup).Distinct();
                 if (keyGroups.Count() > 0)
                     foreach (var i in keyGroups)
                     {
 
-                        var goupProperty = proxy.Model.Properties.Where(p => p.IsCheck && p.IXGroup == i );//&& items.ContainsKey(p.DBName));
+                        var goupProperty = proxy.Model.Properties.Where(p => p.IsCheck && p.IXGroup == i);//&& items.ContainsKey(p.DBName));
                         if (goupProperty.Count() > 0)
                         {
 
@@ -120,29 +120,29 @@ namespace Soway.Model.SqlServer
                             {
 
 
-                                if (property.PropertyType == PropertyType.BusinessObject && proxy[property] !=null)
-                               {
-                                   if(IsExits(proxy[property] as IObjectProxy,trans)==false )
-                                       Create(proxy[property] as IObjectProxy);
-                               }
+                                if (property.PropertyType == PropertyType.BusinessObject && proxy[property] != null)
+                                {
+                                    if (IsExits(proxy[property] as IObjectProxy, trans) == false)
+                                        Create(proxy[property] as IObjectProxy);
+                                }
 
 
-                               if (property.PropertyType == PropertyType.BusinessObject
-                                   && proxy[property] as IObjectProxy != null
-                                   &&IsExits(proxy[property] as IObjectProxy) == false)
-                                   return false;
-                               var value = property.PropertyType == PropertyType.BusinessObject ?
-                                  (proxy[property] as IObjectProxy == null ? DBNull.Value : (proxy[property] as IObjectProxy).ID) : (proxy[property] ?? DBNull.Value);
-                                    ;
+                                if (property.PropertyType == PropertyType.BusinessObject
+                                    && proxy[property] as IObjectProxy != null
+                                    && IsExits(proxy[property] as IObjectProxy) == false)
+                                    return false;
+                                var value = property.PropertyType == PropertyType.BusinessObject ?
+                                   (proxy[property] as IObjectProxy == null ? DBNull.Value : (proxy[property] as IObjectProxy).ID) : (proxy[property] ?? DBNull.Value);
+                                ;
                                 commnad.Parameters.Add(new System.Data.SqlClient.SqlParameter(property.DBName,
                                    value));
-                                if(value != DBNull.Value)
-                                    
-                                commnad.CommandText += "\r\nAND [" + property.DBName + "]=@" + property.DBName;
+                                if (value != DBNull.Value)
+
+                                    commnad.CommandText += "\r\nAND [" + property.DBName + "]=@" + property.DBName;
                                 else
 
-                                    
-                                commnad.CommandText += "\r\nAND [" + property.DBName + "] is NULL";// + property.DBName;
+
+                                    commnad.CommandText += "\r\nAND [" + property.DBName + "] is NULL";// + property.DBName;
 
                             }
                             commnad.CommandText += ")";
@@ -151,7 +151,7 @@ namespace Soway.Model.SqlServer
                 else
                 {
                     var items = GetColsAndValues(proxy, trans, OperationType.CheckIsExits);
-                    if(items==null)
+                    if (items == null)
                     {
                         proxy.IsSave = SaveType.UnExists;
                         return false;
@@ -159,19 +159,19 @@ namespace Soway.Model.SqlServer
                     commnad.CommandText += "\r\n or ( '1'='1'  ";
                     foreach (var i in items.Keys.Where(p => p.ToUpper() != SqlHelper.GetKeyCol(proxy.Model).ToUpper()))
                     {
-                       
+
                         var value = items[i] ?? DBNull.Value;
-                        commnad.Parameters.Add(new System.Data.SqlClient.SqlParameter(i, items[i]??DBNull.Value));
-                        if(value != DBNull.Value)
+                        commnad.Parameters.Add(new System.Data.SqlClient.SqlParameter(i, items[i] ?? DBNull.Value));
+                        if (value != DBNull.Value)
                             commnad.CommandText += "\r\nAND [" + i + "]=@" + i;
                         else
                             commnad.CommandText += "\r\nAND [" + i + "] IS NULL";// +i;
-                    } 
+                    }
                     commnad.CommandText += ")";
                 }
 
                 if (string.IsNullOrEmpty(parentCol) == false
-                    && commnad.Parameters.Contains(parentCol )==false )
+                    && commnad.Parameters.Contains(parentCol) == false)
                 {
                     commnad.CommandText += string.Format(" AND {0}=@{0}", parentCol);
                     commnad.Parameters.Add(new System.Data.SqlClient.SqlParameter("@" + parentCol, id ?? DBNull.Value));
@@ -211,22 +211,22 @@ namespace Soway.Model.SqlServer
         {
             using (System.Data.SqlClient.SqlConnection con = new System.Data.SqlClient.SqlConnection(this.sqlCon.ToString()))
             {
-              
-                    con.Open();
-                    System.Data.SqlClient.SqlTransaction trans = con.BeginTransaction();
-                    Create(proxy, trans);
-                    trans.Commit();
-                    proxy.IsSave =  SaveType.Exists;
+
+                con.Open();
+                System.Data.SqlClient.SqlTransaction trans = con.BeginTransaction();
+                Create(proxy, trans);
+                trans.Commit();
+                proxy.IsSave = SaveType.Exists;
             }
 
             foreach (var trigger in proxy.Model.Triggers.Where(p => p.ModelTriggerType == ModelTriggerType.Create))
-                new ModelMethodContext(this.sqlCon,this.ConFac).ExcuteOperation(proxy, trigger);
+                new ModelMethodContext(this.sqlCon, this.ConFac).ExcuteOperation(proxy, trigger);
             MemoryCache.StoreDbCache.UpdateOrAddDbMemoryCache(
                 this.sqlCon, proxy.Model, proxy.ID, proxy);
         }
 
 
-        private void Create(IObjectProxy proxy, 
+        private void Create(IObjectProxy proxy,
             System.Data.SqlClient.SqlTransaction trans, String parentCol = "", object id = null)
         {
             var commnad = BuildCreateCommand(proxy, trans, parentCol, id);
@@ -234,16 +234,16 @@ namespace Soway.Model.SqlServer
             commnad.Connection = trans.Connection;
             if (proxy.IsSave != SaveType.Exists)
             {
-                var ob= commnad.ExecuteScalar();
+                var ob = commnad.ExecuteScalar();
                 long tempID;
-                long.TryParse((proxy.ID ?? "").ToString(), out  tempID);
+                long.TryParse((proxy.ID ?? "").ToString(), out tempID);
 
                 if (ob != null && ob != DBNull.Value && string.IsNullOrEmpty(ob.ToString()) == false
-                    &&(proxy.ID ==null|| tempID == 0||(proxy.ID??"").ToString() ==Guid.Empty.ToString()))
+                    && (proxy.ID == null || tempID == 0 || (proxy.ID ?? "").ToString() == Guid.Empty.ToString()))
                 {
 
-        
-                    proxy.ID =System.Convert.ToInt64( ob);
+
+                    proxy.ID = System.Convert.ToInt64(ob);
                 }
                 proxy.IsSave = SaveType.Exists;
             }
@@ -251,23 +251,23 @@ namespace Soway.Model.SqlServer
             {
                 save(proxy, trans, parentCol, id);
             }
-            if (proxy.Model.AutoSysId == false &&proxy.Model.IdProperty!= null)
+            if (proxy.Model.AutoSysId == false && proxy.Model.IdProperty != null)
                 proxy[proxy.Model.IdProperty] = proxy.ID;
-             
+
             foreach (var property in proxy.Model.Properties.Where(p => p.IsArray))
             {
                 dynamic items = proxy[property];
                 var relation = proxy.Model.Relations.First(p => p.Property == property);
 
                 if (relation.RelationType == RelationType.One2Many
-                    ||relation.RelationType == RelationType.Many2One)
+                    || relation.RelationType == RelationType.Many2One)
                 {
                     foreach (IObjectProxy itemProxy in items)
                     {
                         if ((proxy as ObjectProxyClass).KeyPairs.
-                            Count(p => p.Value .Data== itemProxy||p.Value.Old == itemProxy) > 0)
+                            Count(p => p.Value.Data == itemProxy || p.Value.Old == itemProxy) > 0)
                         {
-                         
+
                             save(itemProxy, trans, relation.TargetColumn, proxy.ID);
                         }
                         else
@@ -275,7 +275,7 @@ namespace Soway.Model.SqlServer
 
                             if (IsExits(itemProxy, trans, relation.TargetColumn, proxy.ID) == false)
                             {
-                                if(itemProxy.IsSave != SaveType.Exists)
+                                if (itemProxy.IsSave != SaveType.Exists)
                                     Create(itemProxy, trans, relation.TargetColumn, proxy.ID);
                                 else
                                     save(itemProxy, trans, relation.TargetColumn, proxy.ID);
@@ -285,15 +285,15 @@ namespace Soway.Model.SqlServer
                         }
                     }
                 }
-                else if(relation.RelationType == RelationType.Many2Many
-                    ||relation.RelationType == RelationType.Recurve)
+                else if (relation.RelationType == RelationType.Many2Many
+                    || relation.RelationType == RelationType.Recurve)
                 {
 
-                 
+
                     foreach (IObjectProxy item in items)
                     {
-                        if (IsExits(item,trans) == false)
-                            Create(item,trans);
+                        if (IsExits(item, trans) == false)
+                            Create(item, trans);
                         CreateComplexRelationBuild(proxy, trans, relation, item);
                     }
 
@@ -306,11 +306,11 @@ namespace Soway.Model.SqlServer
         #region 保存相关
         public void Save(IObjectProxy proxy)
         {
-            
+
             using (System.Data.SqlClient.SqlConnection con = new System.Data.SqlClient.SqlConnection(this.sqlCon.ToString()))
             {
                 con.Open();
-                 
+
                 System.Data.SqlClient.SqlTransaction trans = con.BeginTransaction();
                 save(proxy, trans);
                 trans.Commit();
@@ -318,7 +318,7 @@ namespace Soway.Model.SqlServer
                     proxy.Model, proxy.ID, proxy);
             }
             foreach (var trigger in proxy.Model.Triggers.Where(p => p.ModelTriggerType == ModelTriggerType.Save))
-                new ModelMethodContext(this.sqlCon,this.ConFac).ExcuteOperation(proxy, trigger);
+                new ModelMethodContext(this.sqlCon, this.ConFac).ExcuteOperation(proxy, trigger);
         }
         private void save(IObjectProxy proxy, System.Data.SqlClient.SqlTransaction trans = null, string tagetCol = null, object targetId = null)
         {
@@ -340,9 +340,9 @@ namespace Soway.Model.SqlServer
 
             commnad.CommandText = string.Format("UPDATE {0} SET ", proxy.Model.DataTableName);
             var str = SqlHelper.GetKeyCol(proxy.Model);
-            foreach (var key in items.Keys.Where(p=>p!=str))
+            foreach (var key in items.Keys.Where(p => p != str))
             {
-               
+
                 commnad.CommandText += String.Format("\r\n {0}=@{0},", key);
                 commnad.Parameters.AddWithValue(key, items[key]);
 
@@ -354,12 +354,12 @@ namespace Soway.Model.SqlServer
                     commnad.Parameters.Add(new System.Data.SqlClient.SqlParameter(tagetCol, targetId));
                     commnad.CommandText += String.Format("\r\n {0}=@{0},", tagetCol);
                 }
-                
+
             }
-                
+
             commnad.CommandText = commnad.CommandText.Substring(0, commnad.CommandText.Length - 1);
             commnad.CommandText += string.Format(" WHERE {0}=@{0}", SqlHelper.GetKeyCol(proxy.Model));
-            commnad.Parameters.Add(new System.Data.SqlClient.SqlParameter(SqlHelper.GetKeyCol(proxy.Model), proxy.OldId??
+            commnad.Parameters.Add(new System.Data.SqlClient.SqlParameter(SqlHelper.GetKeyCol(proxy.Model), proxy.OldId ??
                 proxy.GetOld(proxy.Model.IdProperty)));
             commnad.ExecuteNonQuery();
             foreach (var property in proxy.Model.Properties.Where(
@@ -416,21 +416,21 @@ namespace Soway.Model.SqlServer
 
         }
         #endregion
-       
-        
-        private void  CreateComplexRelationBuild(IObjectProxy proxy,
-            System.Data.SqlClient.SqlTransaction trans, 
+
+
+        private void CreateComplexRelationBuild(IObjectProxy proxy,
+            System.Data.SqlClient.SqlTransaction trans,
             Relation relation, IObjectProxy itemProxy)
         {
-            if (IsExits(itemProxy,trans)==false )
+            if (IsExits(itemProxy, trans) == false)
             {
 
                 Create(itemProxy, trans);
- 
+
             }
 
             System.Data.SqlClient.SqlCommand command = new System.Data.SqlClient.SqlCommand();
- 
+
             command.CommandText = String.Format(@"IF NOT EXISTS(SELECT * FROM {0}  WHERE {1}=@{1} AND {2} =@{2}) 
                 BEGIN
                     INSERT {0}  ({1},{2}) VALUES (@{1},@{2})
@@ -447,7 +447,7 @@ namespace Soway.Model.SqlServer
             {
                 //这个应该是对的。。。
                 command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@" + relation.PropertyColumn, itemProxy.ID));
-                command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@" + relation.TargetColumn,  proxy.ID));
+                command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@" + relation.TargetColumn, proxy.ID));
 
             }
             command.Transaction = trans;
@@ -499,7 +499,7 @@ namespace Soway.Model.SqlServer
             if (trans != null)
                 commnad.Transaction = trans;
 
-            commnad.CommandText = string.Format("DELETE  {0} WHERE {1}=@{1} ", proxy.Model.DataTableName,SqlHelper.GetKeyCol(proxy.Model));
+            commnad.CommandText = string.Format("DELETE  {0} WHERE {1}=@{1} ", proxy.Model.DataTableName, SqlHelper.GetKeyCol(proxy.Model));
             commnad.Parameters.Add(new System.Data.SqlClient.SqlParameter("@" + SqlHelper.GetKeyCol(proxy.Model), proxy.ID));
             commnad.ExecuteNonQuery();
             foreach (var property in proxy.Model.Properties.Where(p => p.IsArray))
@@ -516,30 +516,31 @@ namespace Soway.Model.SqlServer
                     }
                 }
             }
-            
+
 
 
         }
 
 
 
-         public void Delete(IObjectProxy proxy) {
+        public void Delete(IObjectProxy proxy)
+        {
 
 
-             foreach (var trigger in proxy.Model.Triggers.Where(p => p.ModelTriggerType == ModelTriggerType.Delete))
-                 new ModelMethodContext(this.sqlCon,this.ConFac).ExcuteOperation(proxy, trigger);
-             using (System.Data.SqlClient.SqlConnection con = new System.Data.SqlClient.SqlConnection(this.GetSqlCon(proxy.Model).ToString()))
-             {
-                 con.Open();
-                 System.Data.SqlClient.SqlTransaction trans = con.BeginTransaction();
-                 delete(proxy, trans);
-                 trans.Commit();
-             }
-             
-         }
-        
+            foreach (var trigger in proxy.Model.Triggers.Where(p => p.ModelTriggerType == ModelTriggerType.Delete))
+                new ModelMethodContext(this.sqlCon, this.ConFac).ExcuteOperation(proxy, trigger);
+            using (System.Data.SqlClient.SqlConnection con = new System.Data.SqlClient.SqlConnection(this.GetSqlCon(proxy.Model).ToString()))
+            {
+                con.Open();
+                System.Data.SqlClient.SqlTransaction trans = con.BeginTransaction();
+                delete(proxy, trans);
+                trans.Commit();
+            }
 
-     
+        }
+
+
+
 
 
 
@@ -550,17 +551,17 @@ namespace Soway.Model.SqlServer
             else if (model.Module.SqlCon != null)
                 return model.Module.SqlCon;
             else
-            return this.sqlCon;
+                return this.sqlCon;
         }
 
- 
-        public IObjectProxy GetDetail(Model model, object id,bool LoadDetail=true)
+
+        public IObjectProxy GetDetail(Model model, object id, bool LoadDetail = true)
         {
 
-             
+
             if (String.IsNullOrEmpty((id ?? "").ToString()))
                 return null;
-            IObjectProxy proxy = SqlDataLoader.getProxy(model, id,this.sqlCon,this.ConFac);
+            IObjectProxy proxy = SqlDataLoader.getProxy(model, id, this.sqlCon, this.ConFac);
             LoadDataDetail(model, id, LoadDetail, proxy);
             return proxy;
         }
@@ -573,11 +574,11 @@ namespace Soway.Model.SqlServer
         }
         private bool CheckDecimal(object ob)
         {
-            var result =  ob is int || ob is long || ob is uint || ob is ulong || ob is short;
+            var result = ob is int || ob is long || ob is uint || ob is ulong || ob is short;
             if (result)
                 return result;
             long lob = 0;
-            result |=long.TryParse((ob ?? "").ToString(), out lob);
+            result |= long.TryParse((ob ?? "").ToString(), out lob);
             if (result)
                 return result;
             decimal dob = 0;
@@ -588,8 +589,8 @@ namespace Soway.Model.SqlServer
 
         public void LoadDataDetail(Model model, object id, bool LoadDetail, IObjectProxy proxy)
         {
-          
-            if (proxy.IsLoad == LoadType.Null ||proxy.IsLoad == LoadType.NoObj|| proxy.IsLoad == LoadType.Partial)
+
+            if (proxy.IsLoad == LoadType.Null || proxy.IsLoad == LoadType.NoObj || proxy.IsLoad == LoadType.Partial)
             {
                 proxy.IsLoad = LoadType.Complete;
                 if (model.ModelType == ModelType.Enum)
@@ -607,45 +608,51 @@ namespace Soway.Model.SqlServer
                         var keycols = SqlHelper.GetKeyCols(model);
                         int j = 0;
                         bool isAdd = false;
-                        for (int i =0;i<keycols.Length;i++)// keycol in keycols)
+                        for (int i = 0; i < keycols.Length; i++)// keycol in keycols)
                         {
                             var keycol = keycols[i];
 
-                            
-                             
+
+
 
                             var property = model.Properties.FirstOrDefault(p => p.DBName == keycol);
-                            if(property != null)
+                            if (property != null)
                             {
                                 Guid guid;
                                 DateTime date;
-                                if (property.PropertyType == PropertyType.DateTime && DateTime.TryParse((id ?? "").ToString(), out date)){
+                                if (property.PropertyType == PropertyType.DateTime && DateTime.TryParse((id ?? "").ToString(), out date))
+                                {
                                     isAdd = true;
                                 }
-                                else if (property.PropertyType == PropertyType.Time && DateTime.TryParseExact((id ?? "").ToString(), property.Format, null, System.Globalization.DateTimeStyles.NoCurrentDateDefault, out date)){
+                                else if (property.PropertyType == PropertyType.Time && DateTime.TryParseExact((id ?? "").ToString(), property.Format, null, System.Globalization.DateTimeStyles.NoCurrentDateDefault, out date))
+                                {
                                     isAdd = true;
                                 }
-                                else if (property.PropertyType == PropertyType.Time && DateTime.TryParseExact((id ?? "").ToString(), property.Format, null, System.Globalization.DateTimeStyles.AllowInnerWhite, out date)){
+                                else if (property.PropertyType == PropertyType.Time && DateTime.TryParseExact((id ?? "").ToString(), property.Format, null, System.Globalization.DateTimeStyles.AllowInnerWhite, out date))
+                                {
                                     isAdd = true;
-                                }else
+                                }
+                                else
                                 if (PropertyTypeAdaper.GetPropertyType(id.GetType()) == property.PropertyType ||
-                                   ( property.PropertyType == PropertyType.IdentifyId && CheckDecimal(id))||property.PropertyType == PropertyType.SerialNo)
-                                {
-                                    isAdd = true;
-                                }else if (
-                                    property.PropertyType == PropertyType.Guid 
-                                    && Guid.TryParse ((id??"").ToString(),out guid) == true)
+                                   (property.PropertyType == PropertyType.IdentifyId && CheckDecimal(id)) || property.PropertyType == PropertyType.SerialNo)
                                 {
                                     isAdd = true;
                                 }
-                            }else 
+                                else if (
+                                   property.PropertyType == PropertyType.Guid
+                                   && Guid.TryParse((id ?? "").ToString(), out guid) == true)
+                                {
+                                    isAdd = true;
+                                }
+                            }
+                            else
                             if (keycols.Length == 1)
                                 isAdd = true;
                             else
                             {
 
                                 isAdd = CheckDecimal(id);
-                               
+
                             }
 
                             if (isAdd)
@@ -659,28 +666,28 @@ namespace Soway.Model.SqlServer
                             }
                         }
 
-                     
+
                         var table = SqlDataLoader.GetSqlData(command);
 
                         if (table.Rows.Count > 0)
                         {
-                            SqlDataLoader.LoadSqlData(proxy, table.Rows[0],this.sqlCon,this.ConFac);
+                            SqlDataLoader.LoadSqlData(proxy, table.Rows[0], this.sqlCon, this.ConFac);
 
 
                             if (LoadDetail)
                             {
                                 proxy.IsLoad = LoadType.Complete;
-                                foreach (var property in 
+                                foreach (var property in
                                     model.Properties.Where(p => p.IsArray == false
                                     && p.PropertyType == PropertyType.BusinessObject))
                                 {
 
                                     ObjectProxyClass propertyProxy = proxy[property] as ObjectProxyClass;
-                                    if ((propertyProxy != null 
+                                    if ((propertyProxy != null
                                         && propertyProxy.IsLoad != LoadType.Complete)
-                                        ||(property.PropertySqlCon!=null &&property.PropertySqlCon.ToString()!= propertyProxy.Con.ToString()))
+                                        || (property.PropertySqlCon != null && property.PropertySqlCon.ToString() != propertyProxy.Con.ToString()))
                                     {
-                                        proxy[property] = new dbContext(GetPropertyCon(property),this.ConFac).  GetDetail(propertyProxy.Model, propertyProxy.ID, false);
+                                        proxy[property] = new dbContext(GetPropertyCon(property), this.ConFac).GetDetail(propertyProxy.Model, propertyProxy.ID, false);
                                     }
                                 }
 
@@ -700,13 +707,13 @@ namespace Soway.Model.SqlServer
 
         }
 
-       
-        internal     List<IObjectProxy> LoadArrayProperty(
+
+        internal List<IObjectProxy> LoadArrayProperty(
            IObjectProxy ParentProxy,
            Property property)
         {
 
-            var sql =  SqlHelper.GetSqlCon(property, this.sqlCon, (property.Model ==null?ParentProxy.Model:property.Model));
+            var sql = SqlHelper.GetSqlCon(property, this.sqlCon, (property.Model == null ? ParentProxy.Model : property.Model));
             if (sql != null)
                 using (System.Data.SqlClient.SqlConnection con = new System.Data.SqlClient.SqlConnection(
                     sql.ToString()
@@ -719,21 +726,21 @@ namespace Soway.Model.SqlServer
 
                     System.Diagnostics.Trace.WriteLine(sqlCommand.CommandText);
                     var table2 = SqlDataLoader.GetSqlData(sqlCommand);
-                    
+
                     List<IObjectProxy> result = new List<IObjectProxy>();
                     if (table2.Rows.Count > 0)
                     {
                         for (int i = 0; i < table2.Rows.Count; i++)
                         {
-                            var itemproxy = SqlDataLoader.getProxy(property.Model, table2.Rows[i][itemKeyCol],this.sqlCon,this.ConFac                                         );
-                            
+                            var itemproxy = SqlDataLoader.getProxy(property.Model, table2.Rows[i][itemKeyCol], this.sqlCon, this.ConFac);
+
                             if (itemproxy != null)
                             {
                                 itemproxy.Owner = ParentProxy;
                                 result.Add(itemproxy);
-                                SqlDataLoader.LoadSqlData(itemproxy, table2.Rows[i],this.sqlCon,this.ConFac);
-                               
-                                itemproxy.IsLoad =  LoadType.Complete;
+                                SqlDataLoader.LoadSqlData(itemproxy, table2.Rows[i], this.sqlCon, this.ConFac);
+
+                                itemproxy.IsLoad = LoadType.Complete;
 
                             }
                         }
@@ -751,14 +758,14 @@ namespace Soway.Model.SqlServer
                 con.Open();
                 command.Connection = con;
                 command.ExecuteNonQuery();
-                
+
             }
 
         }
 
-         
 
-        private   System.Data.SqlClient.SqlCommand BuildCreateCommand(IObjectProxy proxy,
+
+        private System.Data.SqlClient.SqlCommand BuildCreateCommand(IObjectProxy proxy,
             System.Data.SqlClient.SqlTransaction trans,
             string ParentCol = "",
             object id = null)
@@ -770,7 +777,7 @@ namespace Soway.Model.SqlServer
             string values = "\r\n VALUES(";
             command.CommandText = "INSERT " + proxy.Model.DataTableName + "(";
 
-   foreach (var property in proxy.Model.Properties.Where(p => p.PropertyType == PropertyType.SerialNo))
+            foreach (var property in proxy.Model.Properties.Where(p => p.PropertyType == PropertyType.SerialNo))
             {
 
                 if (String.IsNullOrEmpty((property.DBName ?? "").Replace("[", "").Replace("]", "")) == false)
@@ -778,15 +785,15 @@ namespace Soway.Model.SqlServer
                     var serialNo = createSerialNo(proxy, property);
                     proxy[property] = serialNo;
 
-                    if(proxy.Model.AutoSysId ==false &&proxy.Model.IdProperty == property)
+                    if (proxy.Model.AutoSysId == false && proxy.Model.IdProperty == property)
                     {
                         proxy.ID = serialNo;
                     }
                 }
-                 
+
             }
             var items = GetColsAndValues(proxy, trans, OperationType.Insert);
-         
+
             foreach (var item in items)
             {
 
@@ -795,7 +802,7 @@ namespace Soway.Model.SqlServer
                 command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@" + item.Key, item.Value));
 
             }
-            if (String.IsNullOrEmpty(ParentCol) == false )
+            if (String.IsNullOrEmpty(ParentCol) == false)
             {
 
                 if (command.Parameters.Contains("@" + ParentCol) == false)
@@ -810,7 +817,7 @@ namespace Soway.Model.SqlServer
             }
             command.CommandText = command.CommandText.Substring(0, command.CommandText.Length - 1);
             command.CommandText += ")\r\n" + values.Substring(0, values.Length - 1) + ")\r\n ";
-            if(proxy.Model.Properties.Count(p=>p.PropertyType == PropertyType.IdentifyId )>0 ||proxy.Model.AutoSysId)
+            if (proxy.Model.Properties.Count(p => p.PropertyType == PropertyType.IdentifyId) > 0 || proxy.Model.AutoSysId)
                 command.CommandText += "select @@IDENTITY \r\n";
 
 
@@ -822,12 +829,12 @@ namespace Soway.Model.SqlServer
 
         private enum OperationType
         {
-            Insert =0,
-            CheckIsExits=1,
-            Update =2
+            Insert = 0,
+            CheckIsExits = 1,
+            Update = 2
         }
-          private    Dictionary<String, object> 
-              GetColsAndValues(IObjectProxy proxy, System.Data.SqlClient.SqlTransaction trans, OperationType operationType)
+        private Dictionary<String, object>
+            GetColsAndValues(IObjectProxy proxy, System.Data.SqlClient.SqlTransaction trans, OperationType operationType)
         {
             Dictionary<String, object> result = new Dictionary<string, object>();
             List<string> temp = new List<string>();
@@ -835,16 +842,16 @@ namespace Soway.Model.SqlServer
             ///
 
             //当check为真是用来校验是否已经存在，这时
-            foreach (var property in proxy.Model.Properties.Where(p => 
-            
-                p.IsArray == false 
-                && 
+            foreach (var property in proxy.Model.Properties.Where(p =>
+
+                p.IsArray == false
+                &&
                 (string.IsNullOrEmpty(p.DBName) == false || p.IsMultiMap == true)
                 ))
             {
                 if (temp.Contains(property.Name))
                 {
-                   
+
                     //已经包含
                     continue;
                 }
@@ -875,39 +882,52 @@ namespace Soway.Model.SqlServer
 
                     //日期
                     if (property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInSert
-                        && (operationType== OperationType.Insert || IsExits(proxy) == false))
+                        && (operationType == OperationType.Insert || IsExits(proxy) == false))
                     {
                         result.Add(property.DBName, DateTime.Now);
 
                     }
                     else if ((property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInsertAndUpate
-                       || property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnUpdate) &&( operationType== OperationType.Update ) )
+                       || property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnUpdate) && (operationType == OperationType.Update))
                     {
                         result.Add(property.DBName, DateTime.Now);
                     }
-                    else if((property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInSert)
-                        && operationType!= OperationType.Insert)
+                    else if ((property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInSert)
+                        && operationType != OperationType.Insert)
                     {
                         continue;
-                    }else 
+                    }
+                    else
                     {
-
-                        var str = (proxy[property] ?? DateTime.Now).ToString();
-                        object ob = DBNull.Value;
-                        if (String.IsNullOrEmpty(str))
-                            ob = DBNull.Value;
+                        if (!(proxy[property] is DateTime))
+                        {
+                            var str = (proxy[property] ?? DateTime.Now).ToString();
+                            object ob = DBNull.Value;
+                            if (String.IsNullOrEmpty(str))
+                                ob = DBNull.Value;
+                            else
+                            {
+                                DateTime fmt;
+                                if (DateTime.TryParseExact(str.Replace('/', ' ').Replace(':', ' ').Replace(" ", ""), "yyyyMMddHHmmss", null, System.Globalization.DateTimeStyles.AssumeLocal, out fmt) == true)
+                                {
+                                    ob = fmt;
+                                }
+                            }
+                            result.Add(property.DBName, ob);
+                        }
                         else
                         {
-                            DateTime fmt;
-                            if(DateTime.TryParseExact(str.Replace('/',' ').Replace(':',' ').Replace(" ",""),"yyyyMMddHHmmss",null,System.Globalization.DateTimeStyles.AssumeLocal,out fmt) == true)
-                            {
-                                ob = fmt;
-                            }
+                            var dt = (DateTime)proxy[property];
+                            if (dt == DateTime.MinValue)
+                                continue;
+                            else
+                                result.Add(property.DBName, dt);
+
                         }
-                        result.Add(property.DBName, ob);
                     }
-                }else if(property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInSert
-                    && operationType!= OperationType.CheckIsExits && property.PropertyType!= PropertyType.SerialNo)
+                }
+                else if (property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInSert
+                   && operationType != OperationType.CheckIsExits && property.PropertyType != PropertyType.SerialNo)
                 {
 
                     continue;
@@ -915,7 +935,7 @@ namespace Soway.Model.SqlServer
                 else if (property.PropertyType == PropertyType.Guid &&
                     (String.IsNullOrEmpty((proxy[property] ?? "").ToString()) == true
                     || Guid.Parse((proxy[property] ?? "").ToString()) == Guid.Empty)
-                    && operationType!= OperationType.CheckIsExits)
+                    && operationType != OperationType.CheckIsExits)
                 {
                     proxy[property] = Guid.NewGuid();//.ToString();
                     result.Add(property.DBName, proxy[property]);
@@ -931,7 +951,7 @@ namespace Soway.Model.SqlServer
                     {
 
                         var valueOb = proxy[property];
-                         if (valueOb is DateTime && (DateTime)valueOb == DateTime.MinValue)
+                        if (valueOb is DateTime && (DateTime)valueOb == DateTime.MinValue)
                             result.Add(property.DBName, DBNull.Value);
                         else
                             result.Add(property.DBName, valueOb ?? "");
@@ -952,7 +972,7 @@ namespace Soway.Model.SqlServer
 
 
                             //???
-                            if (operationType== OperationType.CheckIsExits)
+                            if (operationType == OperationType.CheckIsExits)
                                 return null;
                             //不存在,先加到里面 
                             bool chk = IsExits(propertyProxy, trans);
@@ -991,7 +1011,8 @@ namespace Soway.Model.SqlServer
 
                         }
 
-                    } if(objValue != null)
+                    }
+                    if (objValue != null)
                     {
                         result.Add(property.DBName, objValue);
                     }
@@ -1012,70 +1033,71 @@ namespace Soway.Model.SqlServer
 
                         }
                     }
-                } }
+                }
+            }
             return result;
         }
 
-          private String createSerialNo(IObjectProxy proxy,Property property )
-          {
-              var str = property.Format;
-              var nostrs = str.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
-              string Fomate = "";
-              int len = 0;
-              var dataFormat = "";
+        private String createSerialNo(IObjectProxy proxy, Property property)
+        {
+            var str = property.Format;
+            var nostrs = str.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
+            string Fomate = "";
+            int len = 0;
+            var dataFormat = "";
             int prelen = 0;
-              foreach (var item in nostrs)
-              {
-                  if (item == "S")
-                  {
-                      
-                  }
-                  else if (item[0] == 'S')
-                  {
+            foreach (var item in nostrs)
+            {
+                if (item == "S")
+                {
 
-                      //时间
-                      var strs = item.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-                      len = System.Convert.ToInt32(strs[0].Substring(1));
-                      if (strs.Length > 1)
-                          prelen = System.Convert.ToInt32(strs[1]);
+                }
+                else if (item[0] == 'S')
+                {
 
-
-
-                  }
-                  else if (item[0] == 'D')
-                  {
-
-                      var date = new Soway.DB.DBContext(GetSqlCon(proxy.Model).ToString()).GetServerDateTime().ToString(item.Substring(1));
-                      Fomate += date;
-                  }
-                  else if (item[0] == 's')
-                  {
-                      Fomate += item.Substring(1);
-                  }
-                  else
-                      Fomate += item.Trim();
+                    //时间
+                    var strs = item.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                    len = System.Convert.ToInt32(strs[0].Substring(1));
+                    if (strs.Length > 1)
+                        prelen = System.Convert.ToInt32(strs[1]);
 
 
-              }
-              string getPreStr = Fomate;
-        
-              if (prelen == 0)
-                  prelen = Fomate.Length;
-              if(string.IsNullOrEmpty(Fomate)==false )
-              getPreStr = Fomate.Substring(0, prelen);
-          //   //// // System.Diagnostics.Trace.WriteLine("preLen:" + getPreStr);
-              var s = new Soway.DB.DBContext(GetSqlCon(proxy.Model).ToString()).GetSerialNo(getPreStr, len, "");
-              return s.Insert(prelen, Fomate.Substring(prelen, Fomate.Length - prelen));
-          }
 
- 
+                }
+                else if (item[0] == 'D')
+                {
+
+                    var date = new Soway.DB.DBContext(GetSqlCon(proxy.Model).ToString()).GetServerDateTime().ToString(item.Substring(1));
+                    Fomate += date;
+                }
+                else if (item[0] == 's')
+                {
+                    Fomate += item.Substring(1);
+                }
+                else
+                    Fomate += item.Trim();
+
+
+            }
+            string getPreStr = Fomate;
+
+            if (prelen == 0)
+                prelen = Fomate.Length;
+            if (string.IsNullOrEmpty(Fomate) == false)
+                getPreStr = Fomate.Substring(0, prelen);
+            //   //// // System.Diagnostics.Trace.WriteLine("preLen:" + getPreStr);
+            var s = new Soway.DB.DBContext(GetSqlCon(proxy.Model).ToString()).GetSerialNo(getPreStr, len, "");
+            return s.Insert(prelen, Fomate.Substring(prelen, Fomate.Length - prelen));
+        }
+
+
 
         /// <summary>
         /// 得到一个父对像
         /// </summary>
         /// <param name="proxy"></param>
         /// <returns></returns>
-          public IObjectProxy GetParent(IObjectProxy proxy)
+        public IObjectProxy GetParent(IObjectProxy proxy)
         {
 
             //1 得到关系
@@ -1117,7 +1139,7 @@ namespace Soway.Model.SqlServer
 
 
 
-        public List<dynamic> GetBySqlCommand(Model model,System.Data.SqlClient.SqlCommand command)
+        public List<dynamic> GetBySqlCommand(Model model, System.Data.SqlClient.SqlCommand command)
         {
             using (System.Data.SqlClient.SqlConnection con = new System.Data.SqlClient.SqlConnection(SqlHelper.GetSqlCon(this.sqlCon, model).ToString()))
             {
@@ -1145,12 +1167,12 @@ namespace Soway.Model.SqlServer
             }
 
 
-            }
-
-        public List<dynamic> GetBySqlCommand(Model model,String sqlScript)
-        {
-            return GetBySqlCommand(model,new System.Data.SqlClient.SqlCommand() { CommandText = sqlScript });
         }
-        
+
+        public List<dynamic> GetBySqlCommand(Model model, String sqlScript)
+        {
+            return GetBySqlCommand(model, new System.Data.SqlClient.SqlCommand() { CommandText = sqlScript });
+        }
+
     }
 }
