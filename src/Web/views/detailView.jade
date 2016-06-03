@@ -41,7 +41,9 @@ block content
                              data-fmtvalue=     "#{view.Data.SimpleData[i].FmtValue}"
                              data-propertyModel="#{view.Data.SimpleData[i].PrpModelId}"
                              data-viewitem=     "#{view.Data.SimpleData[i].PrpShowName}"
-                             data-propertyType= "#{view.Data.SimpleData[i].PrpType}")
+                             data-propertyType= "#{view.Data.SimpleData[i].PrpType}"
+                             data-edittype =    "#{view.Data.SimpleData[i].EditType}"
+                             data-readonly=     "#{view.Data.SimpleData[i].ReadOnly}")
                                 -if (view.Data.SimpleData[i].FmtValue) {
                                     p #{view.Data.SimpleData[i].FmtValue} 
                                 -}else{
@@ -72,7 +74,9 @@ block content
                                                 th(  data-property=     "#{view.Data.Items[i].Properties[j].PrpId}"
                                                      data-propertyModel="#{view.Data.Items[i].Properties[j].PrpModelId}"
                                                      data-viewitem=     "#{view.Data.Items[i].Properties[j].PrpShowName}"
-                                                     data-propertyType= "#{view.Data.Items[i].Properties[j].PrpType}")   #{view.Data.Items[i].Properties[j].Name}
+                                                     data-propertyType= "#{view.Data.Items[i].Properties[j].PrpType}"
+                                                     data-edittype= "#{view.Data.Items[i].Properties[j].EditType}"
+                                                     data-readonly= "#{view.Data.Items[i].Properties[j].ReadOnly}")   #{view.Data.Items[i].Properties[j].Name}
                                             -}
                                             th(colspan="2") 操作
                                         -for(j=0;j<view.Data.Items[i].Items.length;j++){
@@ -84,7 +88,9 @@ block content
                                                      data-property=     "#{view.Data.Items[i].Properties[k].PrpId}"
                                                      data-propertyModel="#{view.Data.Items[i].Properties[k].PrpModelId}"
                                                      data-viewitem=     "#{view.Data.Items[i].Properties[k].PrpShowName}"
-                                                     data-propertyType= "#{view.Data.Items[i].Properties[k].PrpType}") 
+                                                     data-propertyType= "#{view.Data.Items[i].Properties[k].PrpType}"
+                                                     data-edittype =    "#{view.Data.Items[i].Items[j].Values[k].EditType}"
+                                                     data-readonly=     "#{view.Data.Items[i].Items[j].Values[k].ReadOnly}") 
                                                         p   #{view.Data.Items[i].Items[j].Values[k].FmtValue}
                                                 -}
                                                 td 
