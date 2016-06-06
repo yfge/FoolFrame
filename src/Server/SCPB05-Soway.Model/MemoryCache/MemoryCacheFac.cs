@@ -8,6 +8,7 @@ namespace Soway.Model.MemoryCache
     class MemoryCacheFac
     {
 
+  
        
     }
 }
