@@ -21,8 +21,6 @@
                             $scope.editflag = [];
                             $scope.deleteitems = [];
                             $scope.detailviews = [];
-
-
                             $scope.currenteditview = '';
                             $scope.currentedititem = '';
                             $scope.currenteditoption = '';
@@ -30,8 +28,6 @@
                             $scope.currenteditviewname = '';
                             $scope.lastclick = '';
                             $scope.queryviewId = '';
-
-
                             /***
                             *选择后设定值*/
                             var setSelect = function (item, id) {
