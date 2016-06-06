@@ -22,7 +22,11 @@ namespace Soway.Model.Manage
             var dbtable = new Soway.DB.DBContext(this.Con.ToString()).GetDataTable(sql);
             if (dbtable.Rows.Count == 0)
                 return null;
-            return new Soway.Model.SqlServer.ObjectContext<Model>(this.Con,this.ConFac).GetDetail(dbtable.Rows[0][0]);
+            var obj = new Soway.Model.SqlServer.DynamicContext(
+                this.Con.ToString(), this.ConFac).GetById(
+                typeof(Model), dbtable.Rows[0][0]);
+            return (Model)new Soway.Model.ModelHelper(this.ConFac).GetFromProxy(obj);
+            //return new Soway.Model.SqlServer.ObjectContext<Model>(this.Con,this.ConFac).GetDetail(dbtable.Rows[0][0]);
 
         }
 
