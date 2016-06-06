@@ -27,9 +27,10 @@
             var toucolspan = 1;
             var lenth = [];
             var tree = [];
+            var everycol = [];
             var Sequences = [];
+            var jiedian = [];
             $scope.add = function () {
-
                 var colselected = $($rootScope.lbcandidate + selected);
                 if (colselected.length > 0) {
                     var colselecttype = $($rootScope.lbselecttye + selected);
@@ -190,8 +191,7 @@
             var treeindex = [];
             var treetou = [];
             var treetoulenth = [];
-            var td2 = [],td2c=[];
-            var td3 = [],td3c=[];
+            var delid = [];
             var getcondition = function (callback) {
                 var select = $rootScope.rptcondition + " tr[data-inputfor]";
                 var Exp = {};
@@ -244,7 +244,7 @@
             $scope.addcondition = function (trid) {
                 $rootScope.viewid = mkreport.getviewid();
                 var str = '<tr data-inputfor="condition" id="con-' + $scope.conditionindex + '">';
-                str += '<td><div  class =" glyphicon glyphicon-plus" ng-click="addcondition(\'con-' + $scope.conditionindex + '\')" ></div></td>';
+                str += '<td style="width:22px"></td>';
                 str += '<td><div class =" glyphicon glyphicon-remove" ng-click="removecondition(' + $scope.conditionindex + ')" ><span/></div></td>';
                 str += '<td><input type="checkbox"  data-inputfor="mergecondition" id="chkbox' + $scope.conditionindex + '" /></td>'
                 str += '<td style="width:22px" colspan='+toucolspan+' id="kong' + $scope.conditionindex + '"></td>'
@@ -271,7 +271,7 @@
 
                 str += '</td>';
                 str += '</tr>';
-
+                everycol[$scope.conditionindex] = toucolspan;
                 treeindex.push($scope.conditionindex);
                 if (trid == undefined) {
                     $($compile(str)($scope)).insertBefore(
@@ -466,27 +466,29 @@
                     }
                     var j = tree.pop();
                     shuzu.push(j);
-                    treeture=removesame();
-                    
+                    jiedian[j] = $('#con-' + j + ' td:eq(4)').attr("rowspan");
+                    if (jiedian[j]=='undefined') jiedian[j] = 1;
+                    treeture = removesame();
+                    //alert(shuzu + ";" + jiedian[j])
+                     
                     if (treeture.length == 0 || geshu(shuzu, treeture) == 0) {
-                        $('#con-' + j + ' td:eq(3)').attr("rowspan", 1);
-                        $('#con-' + j + ' td:eq(3)').attr('bgcolor', ' #FFFFFF');
+                        //$('#con-' + j + ' td:eq(3)').attr("colspan", toucolspan);
+                        // $('#con-' + j + ' td:eq(3)').attr('bgcolor', ' #FFFFFF');
+                        for (var n = 0; n < i; n++) {
+                            $('#con-' + j + ' td:eq(3)').attr("colspan", toucolspan);
+                            $('#con-' + j + ' td:eq(3)').attr("rowspan", 1);
+                            $('#con-' + j + ' td:eq(3)').attr('bgcolor', ' #FFFFFF');
+                            j++;
+                        }
+                    }
+                     else {
                         
-                    }
-                    else if (weizhi(shuzu, treeture) == 0) {
-                        toucolspan--;
-                        for (var i = 0; i < treetou.length - 1; i++) {
-                            $('#kong' + treetou[i]).attr("colspan", toucolspan);
+                        for (var i = 0; i < everycol.length; i++) {
+                            if (everycol[i] != toucolspan) $('#con-' + i + ' td:eq(3)').remove();
+                           
                         }
-                    }
-                    else if (weizhi(shuzu, treeture) == (shuzu.length-1)) {
+
                         toucolspan--;
-                         
-                    } else {
-                        toucolspan--;
-                        for (var i = 0; i < treetou.length - 1; i++) {
-                            $('#kong' + treetou[i]).attr("colspan", toucolspan);
-                        }
                     }
 
              
@@ -496,7 +498,7 @@
                     
                     lenth.pop();
                     treetou.pop();
-                    var newtree = a();
+                    var newtree = a(treeindex, treeture);
                     for (var n = 0; n < newtree.length; n++) {
                         $('#con-' + newtree[n] + ' td:eq(2)').attr("colspan", 1);
                         $('#con-' + newtree[n] + ' td:eq(3)').attr("colspan", toucolspan);
@@ -506,7 +508,11 @@
             var lastcount = [];
             var samegeshu = [];
             $scope.mergecondition = function () {
-                treeture=removesame();
+                treeture = removesame();
+                for (var i = 0; i < everycol.length; i++) {
+                   
+                    everycol[i] = toucolspan;
+                }
                 var count = new Array();
                 var j = 0;
                 var contiues = false;
@@ -567,11 +573,12 @@
                     }
                     else count[0] = count[0].substr(count[0].length - 1, 1);
 
-                    
+
                     firstCon = count[0];
                     lastone = count[count.length - 1];
                     treetou.push(firstCon);
                     treetoulenth[firstCon] = count.length;
+                    var row = 0;
                     var same = geshu(count, treeture);
                     var coun = count.toString();
                     if (same == 0 || countlenth == 1) {
@@ -582,131 +589,42 @@
                             lastone--;
                             c--;
                         }
-
-                        $($compile('<div style="vertical-align:middle;" ng-click="removechange(' + coun + ')" title="拆分分组" id="he' + hebin + '" rowspan="' + count.length + '" aria-hidden="true" class="glyphicon glyphicon-indent-right" ></div>')($scope))
+                        jiedian[count[0]] = count.length;
+                        $($compile('<div style="vertical-align:middle;" ng-click="removechange(' + coun + ')" title="拆分分组" id="he' + hebin + '" aria-hidden="true" class="glyphicon glyphicon-indent-right" ></div>')($scope))
                            .appendTo($('#con-' + firstCon + ' td:eq(3)'));
                         $('#con-' + firstCon + ' td:eq(3)').attr("rowspan", count.length);
                         $('#con-' + firstCon + ' td:eq(3)').css('vertical-align', 'middle');
-                         $('#con-' + firstCon + ' td:eq(3)').attr('bgcolor', '#FFEBCD');
+                        $('#con-' + firstCon + ' td:eq(3)').attr('bgcolor', '#FFEBCD');
 
                         countlenth++;
-                        } 
-                    else if(weizhi(count,tree)==0){
-                        c = count.length - 1;
-                        toucolspan++;
-                        $('#tou th:eq(3)').attr("colspan", toucolspan);
-                        var t = tree;
-                        for (var i = 0; i < count.length; i++) {
-                            t.pop();
-                        }
-                        
-                        if (zhen() < treetou.length) {
-                            var row = count.length + lenth[lenth.length - 1] - same;
-
-                            $($compile('<td style="width:22px; vertical-align:middle;" rowspan="' + row + '" ng-click="removechange(' + coun + ')" title="拆分分组" id="he' + hebin + '"aria-hidden="true"><div  class="glyphicon glyphicon-indent-right" ></div></td>')($scope))
-                                .insertBefore($('#con-' + firstCon + ' td:eq(3)'));
-                            for (var i = 1; i < (treetou.length - 1) ; i++) {
-                                $('#kong' + treetou[i]).attr("colspan", toucolspan);
-                            }
-                        } else {
-                            var row = count.length + treeture.length - same;
-                            $($compile('<td style="width:22px; vertical-align:middle;" rowspan="' + row + '" ng-click="removechange(' + coun + ')" title="拆分分组" id="he' + hebin + '"aria-hidden="true"><div  class="glyphicon glyphicon-indent-right" ></div></td>')($scope))
-                                .insertBefore($('#con-' + firstCon + ' td:eq(3)'));
-                        }
-                        while (c) {
-                            $('#' + 'chkbox' + count[c] + '').remove();
-                            //$('#con-' + count[c] + ' td:eq(3)').attr("colspan", toucolspan);
-                            lastone--;
-                            c--;
-                        }
-
-
-                        //for (var i = 1; i < treetou.length; i++) {
-                        //    $('#kong' + treetou[i]).attr("colspan", toucolspan);
-                        //}
-                        // alert("树" + count + "，个数" + treeture + ",same:" + same);
-
-                        if (toucolspan % 2 == 0) {
-                            $('#con-' + firstCon + ' td:eq(3)').attr('bgcolor', '#B2DFEE');
-                        } else {
-                            $('#con-' + firstCon + ' td:eq(3)').attr('bgcolor', '#FFEBCD');
-                        }
-                       
-                        } 
-                    else if(same>=2){
-                        c = count.length - 1;
-                        toucolspan++;
-                        $('#tou th:eq(3)').attr("colspan", toucolspan);
-                        var row = treeture.length+count.length-same;
-                         
-                        $($compile('<td style="width:22px; vertical-align:middle;" rowspan="' + row + '" ng-click="removechange(' + coun + ')" title="拆分分组" id="he' + hebin + '"aria-hidden="true"><div  class="glyphicon glyphicon-indent-right" ></div></td>')($scope))
-                            .insertBefore($('#con-' + firstCon + ' td:eq(3)'));
-                        while (c) {
-                            $('#' + 'chkbox' + count[c] + '').remove();
-                            //$('#con-' + count[c] + ' td:eq(3)').attr("colspan", toucolspan);
-                            lastone--;
-                            c--;
-                        }
-                         
-                        // alert("树" + count + "，个数" + treeture + ",same:" + same);
-
-                        if (toucolspan % 2 == 0) {
-                            $('#con-' + firstCon + ' td:eq(3)').attr('bgcolor', '#B2DFEE');
-                        } else {
-                            $('#con-' + firstCon + ' td:eq(3)').attr('bgcolor', '#FFEBCD');
-                        }
-                    } else if (weizhi(count, lastcount) == (count.length-1)) {
-                        c = count.length - 1;
-                        toucolspan++;
-                        $('#tou th:eq(3)').attr("colspan", toucolspan);
-                        if (zhen() < treetou.length) {
-                            var row = count.length + lenth[lenth.length - 1] - same;
-
-                            $($compile('<td style="width:22px; vertical-align:middle;" rowspan="' + row + '" ng-click="removechange(' + coun + ')" title="拆分分组" id="he' + hebin + '"aria-hidden="true"><div  class="glyphicon glyphicon-indent-right" ></div></td>')($scope))
-                                .insertBefore($('#con-' + firstCon + ' td:eq(3)'));
-                            for (var i = 1; i < (treetou.length - 1) ; i++) {
-                                $('#kong' + treetou[i]).attr("colspan", toucolspan);
-                            }
-                        } else {
-                            var row = count.length + treeture.length - same;
-
-                            $($compile('<td style="width:22px; vertical-align:middle;" rowspan="' + row + '" ng-click="removechange(' + coun + ')" title="拆分分组" id="he' + hebin + '"aria-hidden="true"><div  class="glyphicon glyphicon-indent-right" ></div></td>')($scope))
-                                .insertBefore($('#con-' + firstCon + ' td:eq(3)'));
-
-
-                        }
-                        // alert("树" + count + "，个数" + treeture + ",same:" + same);
-
-                        if (toucolspan % 2 == 0) {
-                            $('#con-' + firstCon + ' td:eq(3)').attr('bgcolor', '#B2DFEE');
-                        } else {
-                            $('#con-' + firstCon + ' td:eq(3)').attr('bgcolor', '#FFEBCD');
-                        }
                     } else {
-                        c = count.length - 1;
-                        toucolspan++;
-                        $('#tou th:eq(3)').attr("colspan", toucolspan);
-                        var row = count.length + lenth[lenth.length - 1] - same;
-
-                        $($compile('<td style="width:22px; vertical-align:middle;" rowspan="' + row + '" ng-click="removechange(' + coun + ')" title="拆分分组" id="he' + hebin + '"aria-hidden="true"><div  class="glyphicon glyphicon-indent-right" ></div></td>')($scope))
-                            .insertBefore($('#con-' + firstCon + ' td:eq(3)'));
-                        while (c) {
-                            $('#' + 'chkbox' + count[c] + '').remove();
-                            $('#con-' + count[c] + ' td:eq(3)').attr("colspan", 1);
-                            lastone--;
-                            c--;
+                        
+                        for (var i = 0; i < count.length;i++){
+                            if (jiedian[count[i]]) row = parseInt(row) + parseInt(jiedian[count[i]]);
                         }
-                        for (var i = 0; i < treetou.length - 2; i++) {
-                            $('#kong' + treetou[i]).attr("colspan", toucolspan);
-                        }
+                         c = count.length - 1;
+                         toucolspan++;
+                         $('#tou th:eq(3)').attr("colspan", toucolspan);
+                         row = count.length + row - same;
+                         jiedian[count[0]] = row;
+                         $($compile('<td style="width:22px; vertical-align:middle;" rowspan="' + row + '" ng-click="removechange(' + coun + ')" title="拆分分组" id="he' + hebin + '"aria-hidden="true"><div  class="glyphicon glyphicon-indent-right" ></div></td>')($scope))
+                             .insertBefore($('#con-' + firstCon + ' td:eq(3)'));
+                         while (c) {
+                             $('#' + 'chkbox' + count[c] + '').remove();   
+                             lastone--;
+                             c--;
+                         }
 
-                        // alert("树" + count + "，个数" + treeture + ",same:" + same);
+                         for (var i = 0; i < row; i++) {
+                             everycol[parseInt(firstCon) + parseInt(i)] = toucolspan;
 
-                        if (toucolspan % 2 == 0) {
-                            $('#con-' + firstCon + ' td:eq(3)').attr('bgcolor', '#B2DFEE');
-                        } else {
-                            $('#con-' + firstCon + ' td:eq(3)').attr('bgcolor', '#FFEBCD');
-                        }
+                         }
+                         if (toucolspan % 2 == 0) {
+                             $('#con-' + firstCon + ' td:eq(3)').attr('bgcolor', '#B2DFEE');
+                         } else {
+                             $('#con-' + firstCon + ' td:eq(3)').attr('bgcolor', '#FFEBCD');
+                         }//隔行变色
+                       
                     }
                     lastcount = count;
                     samegeshu.push(same);
@@ -714,21 +632,36 @@
 
                     hebin++;
                     $scope.mergs(count);
-                    var newctree = a();
-                    //alert(newctree);
-                   
-                        for (var n = 0; n < newctree.length; n++) {
-                                $('#con-' + newctree[n] + ' td:eq(2)').attr("colspan", 1);
-                                $('#con-' + newctree[n] + ' td:eq(3)').attr("colspan", toucolspan);
-                        
+                    
+                    var newctree = a(treeindex, treeture);
+                    for (var n = 0; n < newctree.length; n++) {
+                        $('#con-' + newctree[n] + ' td:eq(2)').attr("colspan", 1);
+                        $('#con-' + newctree[n] + ' td:eq(3)').attr("colspan", toucolspan);
+                        everycol[newctree[n]] = toucolspan;
                     }
-
-
+                    for (var i = 0; i < everycol.length; i++) {
+                        if (everycol[i] != toucolspan) $('#con-' + i + ' td:eq(2)').after('<td></td>');
+                        //everycol[i] = toucolspan; //保证每行colspan相等
+                    }
                 }
-            }
-            var a=function () {
-                var arr1 = treeindex;
-                var arr2 = treeture;
+ }
+            var paixu = function (adta) {
+                var tem;
+                for (var i = 0; i < adta.length; i++) {
+                    for (var j = 0; j < adta.length; j++) {
+                        if (adta[i] < adta[j]) {
+                            tem=adta[i]
+                            adta[i] = adta[j];
+                            adta[j] = tem;
+                        }
+                    }
+                }
+                return adta;
+            }//冒泡排序
+
+            var a=function (arr1,arr2) {
+                //var arr1 = treeindex;
+                //var arr2 = treeture;
                 var arr3 = [];
                 var hash3 = {};
                 for (var index in arr1) {
