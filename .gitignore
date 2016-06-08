@@ -245,3 +245,6 @@ ModelManifest.xml
 .fake/
 /dll
 /scr/Server/Soway.Server/.nuget
+/src/Server/SCPB03 -Soway.DB.Manage/SCPB01.dll
+/src/Server/SCPB03 -Soway.DB.Manage/SCPB02.dll
+/src/Server/SCPB03 -Soway.DB.Manage/SCPB03.dll

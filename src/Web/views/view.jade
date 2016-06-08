@@ -2,13 +2,11 @@
 block content
     .panel.panel-default
         .panel-heading #{view.data.Name}
-        
         .panel-body(ng-controller="QuerylistdataController"
          ng-init="viewid='#{view.data.ID}';tableid = 'datalist'; page='1' ; size=10;count='0';pages='0';orderitem='0';ordertype='0';filter=''")
 
             for op in view.data.Operations
-                    .hidden(ng-init="addop(#{op.ID},#{op.RequireSelect},#{op.ViewID},'#{op.Name}')")
-                    
+                    .hidden(ng-init="addop(#{op.ID},#{op.RequireSelect},#{op.ViewID},'#{op.Name}')")   
             form.navbar-form.navbar-right(role="search" ng-init="token='#{view.Token}'; detailId='#{view.data.DetailViewId}'")
                 .form-group
                     input.form-control(type="text" ng-model="filter" nplaceholder="输入条件")

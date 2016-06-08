@@ -12,7 +12,7 @@ namespace SCPB07.TESTS
             global::Soway.Model.App.AppFac fac = new global::Soway.Model.App.AppFac(
                 new Soway.Model.SqlCon()
                 {
-                    DataSource = "www.cloud-social.com",
+                    DataSource = "localhost",
                     InitialCatalog = "NY_2016_SW_NEW_SYS",
                     Password = "xwlyrfid",
                     UserID = "rfid"

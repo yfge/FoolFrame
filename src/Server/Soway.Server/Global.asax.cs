@@ -36,10 +36,7 @@ namespace Soway.Service
 
            
             Soway.Event.EventMakeService service = new Soway.Event.EventMakeService(
-
-            // 
             new EvtConfac());
-            //
            service.Start();
 
             

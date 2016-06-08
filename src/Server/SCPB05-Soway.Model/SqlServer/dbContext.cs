@@ -839,8 +839,6 @@ namespace Soway.Model.SqlServer
             Dictionary<String, object> result = new Dictionary<string, object>();
             List<string> temp = new List<string>();
             ///简单数据
-            ///
-
             //当check为真是用来校验是否已经存在，这时
             foreach (var property in proxy.Model.Properties.Where(p =>
 
@@ -851,19 +849,17 @@ namespace Soway.Model.SqlServer
             {
                 if (temp.Contains(property.Name))
                 {
-
-                    //已经包含
+                    //Check 
                     continue;
                 }
                 else
                 {
-
                     temp.Add(property.Name);
                 }
                 if (property.PropertyType == PropertyType.RadomDECS)
                 {
                     //加密，加入
-
+                    //DESC Entrypt
                     var enDic = EncryptionClass.GetEncryptionValus(property, proxy[property]);
                     foreach (var str in enDic.Keys)
                     {
@@ -882,14 +878,16 @@ namespace Soway.Model.SqlServer
 
                     //日期
                     if (property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInSert
-                        && (operationType == OperationType.Insert || IsExits(proxy) == false))
+                        && (operationType == OperationType.Insert))
                     {
+                        //DateTime Auto Gernerated On Inserted ..
                         result.Add(property.DBName, DateTime.Now);
-
                     }
-                    else if ((property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInsertAndUpate
+                    else if (
+                        (property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInsertAndUpate
                        || property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnUpdate) && (operationType == OperationType.Update))
                     {
+                        //DateTime Auto gernerated Update 
                         result.Add(property.DBName, DateTime.Now);
                     }
                     else if ((property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInSert)
@@ -901,6 +899,8 @@ namespace Soway.Model.SqlServer
                     {
                         if (!(proxy[property] is DateTime))
                         {
+                            //Not Datetime ..
+                            //TO format ...
                             var str = (proxy[property] ?? DateTime.Now).ToString();
                             object ob = DBNull.Value;
                             if (String.IsNullOrEmpty(str))
@@ -927,7 +927,8 @@ namespace Soway.Model.SqlServer
                     }
                 }
                 else if (property.AutoGenerationType == Data.Discription.ORM.GenerationType.OnInSert
-                   && operationType != OperationType.CheckIsExits && property.PropertyType != PropertyType.SerialNo)
+                   && operationType != OperationType.CheckIsExits 
+                   && property.PropertyType != PropertyType.SerialNo)
                 {
 
                     continue;
@@ -937,44 +938,39 @@ namespace Soway.Model.SqlServer
                     || Guid.Parse((proxy[property] ?? "").ToString()) == Guid.Empty)
                     && operationType != OperationType.CheckIsExits)
                 {
-                    proxy[property] = Guid.NewGuid();//.ToString();
+                    proxy[property] = Guid.NewGuid();
                     result.Add(property.DBName, proxy[property]);
-
-
                 }
                 else
-
-
                     if (property.PropertyType != PropertyType.BusinessObject)
                 {
+                    //Simple Data Property ...
                     if (String.IsNullOrEmpty((property.DBName ?? "").Replace("[", "").Replace("]", "")) == false)
                     {
 
                         var valueOb = proxy[property];
-                        if (valueOb is DateTime && (DateTime)valueOb == DateTime.MinValue)
-                            result.Add(property.DBName, DBNull.Value);
-                        else
-                            result.Add(property.DBName, valueOb ?? "");
+                        result.Add(property.DBName, valueOb ?? "");
                     }
 
                 }
                 else
                 {
+
+                    //Business Obj...
                     var objValue = proxy[property];
 
                     IObjectProxy propertyProxy = proxy[property] as IObjectProxy;
                     if (propertyProxy != null)
                     {
+                        //Is OB 
                         if (propertyProxy.ID == null
                             || (propertyProxy.ID is long && System.Convert.ToInt64(propertyProxy.ID) == 0)
                             || (propertyProxy.ID is Guid && (Guid)propertyProxy.ID == Guid.Empty))
                         {
 
-
                             //???
                             if (operationType == OperationType.CheckIsExits)
                                 return null;
-                            //不存在,先加到里面 
                             bool chk = IsExits(propertyProxy, trans);
                             if (chk == false)
                             {
@@ -1012,8 +1008,10 @@ namespace Soway.Model.SqlServer
                         }
 
                     }
+
                     if (objValue != null)
                     {
+                        if(result.ContainsKey(property.DBName)==false)
                         result.Add(property.DBName, objValue);
                     }
                     else
@@ -1023,13 +1021,16 @@ namespace Soway.Model.SqlServer
                         {
                             foreach (var propertymaps in property.DBMaps)
                             {
+                                if(result.ContainsKey(propertymaps.DBColName)==false)
                                 result.Add(propertymaps.DBColName, DBNull.Value);
 
                             }
                         }
                         else
                         {
-                            result.Add(property.DBName, DBNull.Value);
+                            if (result.ContainsKey(property.DBName) == false)
+
+                                result.Add(property.DBName, DBNull.Value);
 
                         }
                     }
