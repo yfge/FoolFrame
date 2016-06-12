@@ -32,7 +32,8 @@ namespace Soway.Service
                     if (Info == null)
                     {
 
-                        Errors = new ErrorInfo(ErrorDescription.TOKEN_INVALIDAT, ErrorDescription.TOKEN_INVALIDAT_MSG);
+                        Errors = new ErrorInfo(ErrorDescription.TOKEN_INVALIDAT, ErrorDescription.TOKEN_INVALIDAT_MSG,true)
+                        ;
                         return;
 
                     }
@@ -41,7 +42,7 @@ namespace Soway.Service
                 {
                     //SowayLog.Log.Error("check session fail", e);
 
-                    Errors = new ErrorInfo(ErrorDescription.TOKEN_INVALIDAT, ErrorDescription.TOKEN_INVALIDAT_MSG);
+                    Errors = new ErrorInfo(ErrorDescription.TOKEN_INVALIDAT, ErrorDescription.TOKEN_INVALIDAT_MSG,true);
                 }
             }
 
@@ -73,7 +74,7 @@ namespace Soway.Service
 
                
 
-                Errors = new ErrorInfo(ErrorDescription.CODE_SYSTEM_ERROR, ErrorDescription.MESSAGE_SYSTEM_ERROR);
+                Errors = new ErrorInfo(ErrorDescription.CODE_SYSTEM_ERROR, ErrorDescription.MESSAGE_SYSTEM_ERROR,true);
             }
 
             return chkImg;

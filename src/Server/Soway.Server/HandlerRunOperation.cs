@@ -54,7 +54,7 @@ namespace Soway.Service
                 catch (Exception e)
                 {
 
-                    Data.Error = new ErrorInfo(ErrorDescription.CODE_RUN_OPERATION_ERROR, ErrorDescription.MESSAGE_RUN_OPERATION_ERROR);
+                    Data.Error = new ErrorInfo(ErrorDescription.CODE_RUN_OPERATION_ERROR, ErrorDescription.MESSAGE_RUN_OPERATION_ERROR,false);
                     Data.IsSuccess = false;
                     Data.ReturnMsg = method.Operation.ErrorMsg+e.ToString();
 

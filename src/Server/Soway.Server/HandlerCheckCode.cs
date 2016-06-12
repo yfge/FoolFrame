@@ -40,7 +40,7 @@ namespace Soway.Service
         {
             if (code.Key == null || code.Code == null)
             {
-                Errors = new ErrorInfo(ErrorDescription.CHECK_CODE_ERROR, ErrorDescription.CHECK_CODE_ERROR_MSG);
+                Errors = new ErrorInfo(ErrorDescription.CHECK_CODE_ERROR, ErrorDescription.CHECK_CODE_ERROR_MSG,true);
                 return false;
             }
             try
@@ -59,7 +59,7 @@ namespace Soway.Service
 
                 //SowayLog.Log.Error("set session fail", e);
 
-                Errors = new ErrorInfo(ErrorDescription.CODE_SYSTEM_ERROR, ErrorDescription.MESSAGE_SYSTEM_ERROR);
+                Errors = new ErrorInfo(ErrorDescription.CODE_SYSTEM_ERROR, ErrorDescription.MESSAGE_SYSTEM_ERROR,true);
             }
             return false;
         }

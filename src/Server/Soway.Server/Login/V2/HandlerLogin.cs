@@ -26,7 +26,7 @@ namespace Soway.Service.Login.V2
             if(!isCodeValid)
             {
                 Data.Error = new ErrorInfo(ErrorDescription.CHECK_CODE_ERROR,
-                         ErrorDescription.CHECK_CODE_ERROR_MSG);
+                         ErrorDescription.CHECK_CODE_ERROR_MSG,true);
                 return;
             }
             global::Soway.Model.App.AppFac fac = new global::Soway.Model.App.AppFac(new bean.ConHelper().GetSysCon(),this);
@@ -37,7 +37,7 @@ namespace Soway.Service.Login.V2
                 var datacurrentCon = app.DataBase.FirstOrDefault(p => p.StoreBaseId.ToString().Trim().ToLower() == Option.DbId.Trim());
                 if (datacurrentCon == null)
                 {
-                    Data.Error = new ErrorInfo(ErrorDescription.DB_SELECT_ERROR, ErrorDescription.DB_SELECT_ERROR_MSG);
+                    Data.Error = new ErrorInfo(ErrorDescription.DB_SELECT_ERROR, ErrorDescription.DB_SELECT_ERROR_MSG,true);
                     return;
                 }
                 var user = new global::SOWAY.ORM.AUTH.LoginFactory(
@@ -86,7 +86,7 @@ namespace Soway.Service.Login.V2
                     catch (Exception e)
                     {
                         //SowayLog.Log.Error("get token fail.", e);
-                        Data.Error = new ErrorInfo(ErrorDescription.CODE_SYSTEM_ERROR, ErrorDescription.MESSAGE_SYSTEM_ERROR);
+                        Data.Error = new ErrorInfo(ErrorDescription.CODE_SYSTEM_ERROR, ErrorDescription.MESSAGE_SYSTEM_ERROR,true);
                     }
                    
                     try
@@ -97,14 +97,14 @@ namespace Soway.Service.Login.V2
                     {
                         //SowayLog.Log.Error("store session fail.", sessionex);
                         Data.Error = new ErrorInfo(ErrorDescription.SET_SESSION_FAIL,
-                            ErrorDescription.SET_SESSION_FAIL_MSG);
+                            ErrorDescription.SET_SESSION_FAIL_MSG,true);
                         return;
                     }
                 }
                 else
                 {
                     Data.Error = new ErrorInfo(ErrorDescription.CODE_AUTHENTICATE_FAIL,
-                        ErrorDescription.MESSAGE_AUTHENTICATE_FAIL);
+                        ErrorDescription.MESSAGE_AUTHENTICATE_FAIL,true);
                 }
             }
      

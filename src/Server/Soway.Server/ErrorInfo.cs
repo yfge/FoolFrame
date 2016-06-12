@@ -13,15 +13,18 @@ namespace Soway.Service
         {
 
         }
-        public ErrorInfo(int code, string message)
+        public ErrorInfo(int code, string message,bool requireLogin)
         {
             this.Code = code;
             this.Message = message;
+            this.RequireLogin = requireLogin;
         }
 
         [DataMember]
         public int Code;
         [DataMember]
         public string Message;
+        [DataMember]
+        public bool RequireLogin { get; set; }
     }
 }

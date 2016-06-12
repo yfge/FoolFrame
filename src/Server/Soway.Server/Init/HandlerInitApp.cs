@@ -47,7 +47,7 @@ namespace Soway.Service
 
                 if (app == null)
                 {
-                    this.Data.Error = new ErrorInfo(ErrorDescription.CODE_AUTHENTICATE_APPUNAUTH, ErrorDescription.MESSAGE_AUTHENTICATE_PUUUNAUTH);
+                    this.Data.Error = new ErrorInfo(ErrorDescription.CODE_AUTHENTICATE_APPUNAUTH, ErrorDescription.MESSAGE_AUTHENTICATE_PUUUNAUTH,true);
 
                 }
                 else

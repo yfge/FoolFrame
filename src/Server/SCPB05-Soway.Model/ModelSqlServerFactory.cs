@@ -124,18 +124,9 @@ namespace Soway.Model
                    chsql = chsql.Substring(0, chsql.Length - 1);
                    emptySql = emptySql.Substring(0, emptySql.Length - 1);
                    chsql += string.Format(" FROM {0}", model.DataTableName);
-               // set   @p =  (case when  exists(select * from sys.tables where name = 'Customer') then 
-//('SELECT [cCusCode] AS [cCode],[cCusName] AS [cName],[cCusAbbName] AS [cAbbName],[CusClass] AS [cCCode] FROM [Customer]')
-//else ('select null as cCode,null as cName,null as cAbbName,null as cCode') end)
                    chsql = string.Format(@"set @p =@p+(case when exists(select * from sys.tables where
                         name ='{0}') then ('{1}') else ('{2}') end);", model.DataTableName.Replace("[","").Replace("]",""), chsql, emptySql);
-
-
-                
                    sql += chsql;
-           
-                   
-           
                if (childrenModels.Last() != model)
                    sql += "set @p = @p +' union ';";
               

@@ -396,6 +396,8 @@ exports.savenew = function (req, res, next) {
 }
 exports.redirectToLogin = function (req, res){
     
+    
+
     console.log('check session on server failed'.green+' clear cookie:'+ req.hostname.green + '_token'.green);
     res.clearCookie(req.hostname + '_token');
     res.cookie[req.hostname + '_token'] = undefined;
@@ -435,10 +437,14 @@ exports.runoperation = function (req, res, next){
     req.body.opid,
     function (data) {
   console.log(data);
-        if (data.Error == undefined) {
+        if (data.Error == undefined
+
+            || data.Error.RequireLogin == false
+            ) {
           
             res.send(data);
-        } else {
+        } 
+        else {
             next();
         }
     });

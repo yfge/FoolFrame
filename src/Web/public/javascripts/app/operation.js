@@ -16,7 +16,10 @@
                                 opid: operationid
                             }).success(function (data, status, headers, config) {
 
-                                showerror.showdetailinfo(data.IsSuccess, '执行结果', data.ReturnMsg);
+                                if (data.Error==undefined)
+                                    showerror.showdetailinfo(data.IsSuccess, '执行结果', data.ReturnMsg);
+                                else
+                                    showerror.showdetailinfo(data.IsSuccess, '执行结果', data.Error.Message);
                             });
                     }
 

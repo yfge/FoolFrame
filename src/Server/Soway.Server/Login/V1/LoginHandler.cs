@@ -33,7 +33,7 @@ namespace Soway.Service.Login.V1
                 if (user == null)
                 {
                     Data.Error = new ErrorInfo(ErrorDescription.CODE_AUTHENTICATE_FAIL,
-                     ErrorDescription.MESSAGE_AUTHENTICATE_FAIL);
+                     ErrorDescription.MESSAGE_AUTHENTICATE_FAIL,true);
 
                 }
                 else

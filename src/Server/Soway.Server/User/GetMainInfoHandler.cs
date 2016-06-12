@@ -58,7 +58,7 @@ namespace Soway.Service.Session
                 {
                     //Data.IsLogin = false;
                     Data.Error = new ErrorInfo(ErrorDescription.CODE_AUTHENTICATE_FAIL,
-                        ErrorDescription.MESSAGE_AUTHENTICATE_FAIL);
+                        ErrorDescription.MESSAGE_AUTHENTICATE_FAIL,true);
                 }
             }
         }
