@@ -40,6 +40,7 @@ namespace Soway.Data.Discription.ORM
     [AttributeUsage(AttributeTargets.Property,AllowMultiple=true)]
     public class ColumnAttribute :Attribute 
     {
+        public bool KeyCanBeNullOrEmpty { get; set; }
 
         public ColumnAttribute()
         {

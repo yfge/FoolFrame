@@ -94,6 +94,7 @@ namespace Soway.Model
                         property.DBName = helper.GetColName(type, propertyInfo.Name);
                         property.IsCheck = cols[0].IsKey;
                         property.IXGroup = cols[0].KeyGroupName;
+                        property.KeysCanBeDefault = cols[0].KeyCanBeNullOrEmpty;
                         property.AutoGenerationType = cols[0].IsAutoGenerate;
                         if (cols[0].EncrpytType == Data.Discription.ORM.EncryptType.RadomDECS)
                             property.PropertyType = PropertyType.RadomDECS;

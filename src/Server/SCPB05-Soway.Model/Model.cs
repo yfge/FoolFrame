@@ -23,7 +23,7 @@ namespace Soway.Model
         /// 类名称
         /// </summary>
         /// 
-        [Soway.Data.Discription.ORM.Column(ColumnName = "MODEL_CLASS", IsKey = true, KeyGroupName = "CLASSNAME")]
+        [Soway.Data.Discription.ORM.Column(ColumnName = "MODEL_CLASS", IsKey = true, KeyGroupName = "NAME",KeyCanBeNullOrEmpty = true)]
         [DataMember]
         public string ClassName
         {

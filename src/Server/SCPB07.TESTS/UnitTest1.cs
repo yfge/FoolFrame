@@ -19,5 +19,11 @@ namespace SCPB07.TESTS
                 },null);
             var app = fac.GetApp("E4BEE30B-F38B-41D3-8B83-4C08E5E25FDE", "159753");
         }
+
+        [TestMethod]
+        public void TestIsExits()
+        {
+
+        }
     }
 }

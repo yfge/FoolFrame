@@ -40,19 +40,35 @@ namespace Soway.Model.SqlServer
                 proxy.IsSave = SaveType.Exists;
                 return true;
             }
-            if (proxy.Model != null && proxy.Model.IdProperty != null && proxy.Model.IdProperty.PropertyType == PropertyType.Guid
+            if (proxy.Model != null && proxy.Model.IdProperty != null
                 )
             {
-                if (String.IsNullOrEmpty((proxy.ID ?? "").ToString().Trim()) || (Guid)proxy.ID == Guid.Empty)
+                if (proxy.Model.IdProperty.PropertyType == PropertyType.Guid)
                 {
-                    if (proxy.Model.Properties.Count
-                        (p => p.IsCheck == true && String.IsNullOrEmpty(p.IXGroup) == false) == 0)
+
+                    if (String.IsNullOrEmpty((proxy.ID ?? "").ToString().Trim()) || (Guid)proxy.ID == Guid.Empty)
                     {
-                        proxy.IsSave = SaveType.UnExists;
-                        return false;
+                        if (proxy.Model.Properties.Count
+                            (p => p.IsCheck == true && String.IsNullOrEmpty(p.IXGroup) == false) == 0)
+                        {
+                            proxy.IsSave = SaveType.UnExists;
+                            return false;
+                        }
+                    }
+                } else 
+                if(proxy.Model.IdProperty.PropertyType == PropertyType.IdentifyId)
+                {
+                   if( proxy.ID != null && System.Convert.ToInt64(proxy.ID) != 0)
+                    {
+
+                        proxy.IsSave = SaveType.Exists;
+                        return true;
+
                     }
                 }
+                
             }
+          
             if (proxy.Model != null && proxy.Model.AutoSysId == true)
             {
 
@@ -114,6 +130,7 @@ namespace Soway.Model.SqlServer
                         var goupProperty = proxy.Model.Properties.Where(p => p.IsCheck && p.IXGroup == i);//&& items.ContainsKey(p.DBName));
                         if (goupProperty.Count() > 0)
                         {
+
 
                             commnad.CommandText += "\r\n OR ( '1'='1'  ";
                             foreach (var property in goupProperty)

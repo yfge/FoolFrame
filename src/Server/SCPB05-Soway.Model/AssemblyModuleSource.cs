@@ -82,11 +82,6 @@ namespace Soway.Model
                 result.Add(ob);
                 moduleRelation.Remove(ob);
             }
-
-
-
-             
-            
             return result;
              
         }

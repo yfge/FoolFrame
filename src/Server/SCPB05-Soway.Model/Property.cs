@@ -154,6 +154,13 @@ namespace Soway.Model
             set;
         }
 
+
+        [Soway.Data.Discription.ORM.Column(NoMap =true)]
+        public bool KeysCanBeDefault
+        {
+            get;set;
+
+        }
         /// <summary>
         /// 生成方式
         /// </summary>
