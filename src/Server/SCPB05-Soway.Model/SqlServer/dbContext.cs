@@ -609,9 +609,10 @@ namespace Soway.Model.SqlServer
 
             if (proxy.IsLoad == LoadType.Null || proxy.IsLoad == LoadType.NoObj || proxy.IsLoad == LoadType.Partial)
             {
-                proxy.IsLoad = LoadType.Complete;
+              
                 if (model.ModelType == ModelType.Enum)
                 {
+                    proxy.IsLoad = LoadType.Complete;
                     proxy.ID = id;
                 }
                 else
@@ -688,6 +689,8 @@ namespace Soway.Model.SqlServer
 
                         if (table.Rows.Count > 0)
                         {
+                            //
+                            proxy.IsLoad = LoadType.Partial;
                             SqlDataLoader.LoadSqlData(proxy, table.Rows[0], this.sqlCon, this.ConFac);
 
 

@@ -348,7 +348,7 @@ namespace Soway.Service
 
                 result.SimpleData.Add(addItem);
             }
-            foreach (var item in view.Items)
+            foreach (dynamic item in view.Items)
             {
 
                 if (item.Property.IsArray==false)
@@ -369,7 +369,7 @@ namespace Soway.Service
                     PropertyItems.SelectedView = item.SelectedView.ID;
                     PropertyItems.SelectFromExists = true;
                 }
-                foreach (var viewItem in item.ListView.Items)
+                foreach (dynamic viewItem in item.ListView.Items)
                 {
                     PropertyItems.Properties.Add(
                         new ReadItemViewItem()
@@ -386,7 +386,8 @@ namespace Soway.Service
 
                         });
                 }
-                var items = objectProxy[item.Property.Name] as Model.ModelBindingList;
+                dynamic items = objectProxy[item.Property.Name]  ;
+                if(items!= null)
                 foreach (dynamic pitem in items)
                 {
                     var detailItem = new DataItem()
