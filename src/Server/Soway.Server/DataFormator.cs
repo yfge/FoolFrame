@@ -198,6 +198,62 @@ namespace Soway.Service
         }
 
 
+        private static ObjValuePair GetAddItem(IObjectProxy objectProxy, dynamic item)
+        {
+            var addItem = new ObjValuePair()
+            {
+                PrpId = item.Property.Name,
+                PrpShowName = item.Name,
+                ObjId = (objectProxy[item.Property.Name] ?? "").ToString(),
+                FmtValue = (objectProxy[item.Property.Name] ?? "").ToString(),
+                PrpType = (Data.PropertyType) item.Property.PropertyType,
+                ReadOnly =  item.ReadOnly,
+                EditType = (Model.View.ItemEditType) item.EditType,
+                PrpModelId = item.Property.Model == null ? 0 : item.Property.Model.ID,
+            };
+
+            if ((Data.PropertyType) item.Property.PropertyType == Data.PropertyType.Date)
+            {
+                var date = (DateTime)objectProxy[item.Property.Name];
+                if (date != null)
+                    addItem.FmtValue = date.ToString("yyyy-MM-dd");
+            }
+             
+            if ((Data.PropertyType) item.Property.PropertyType == Data.PropertyType.Time)
+            {
+                var date = (DateTime)objectProxy[item.Property.Name];
+                if (date != null)
+                    addItem.FmtValue = date.ToString("HH:mm:ss");
+            }
+
+            if ((Data.PropertyType)item.Property.PropertyType == Data.PropertyType.BusinessObject)
+            {
+                addItem.FmtValue = (objectProxy[item.Property.Name] ?? "").ToString();
+                if (objectProxy[item.Property.Name] != null)
+                    addItem.ObjId = ((objectProxy[item.Property.Name] as IObjectProxy).ID ?? "").ToString();
+                else
+                    addItem.ObjId = "";
+            }
+            else if ((Data.PropertyType) item.Property.PropertyType == Data.PropertyType.Enum)
+            {
+                addItem.FmtValue = (objectProxy[item.Property.Name] ?? "").ToString();
+                addItem.ObjId = (objectProxy[item.Property.Name] ?? "").ToString();
+                foreach (dynamic enumitem in item.Property.Model.EnumValues)
+                {
+                    if(enumitem.Value == objectProxy[item.Property.Name])
+                    {
+                        addItem.FmtValue = enumitem.String;
+                        addItem.ObjId = enumitem.Value.ToString();
+
+
+                    }
+                }
+                 
+            }
+            return addItem;
+        }
+
+
         public static void  ObjUpdateToProxy(ObjDetail.Obj obj,IObjectProxy proxy)
         {
             
@@ -269,5 +325,89 @@ namespace Soway.Service
              
             }
         }
+
+
+        public static DataDetail IObjectProxyToDetail(IObjectProxy objectProxy, dynamic view)
+        {
+            DataDetail result = new DataDetail();
+
+            if (objectProxy.ID != null)
+                result.ObjId = objectProxy.ID.ToString();
+            result.Name = view.Name;
+            result.Model = view.Model.Name;
+
+            result.SimpleData = new List<ObjValuePair>();
+            result.Items = new List<PropertyDataItems>();
+            if (objectProxy.Owner != null)
+                result.ParentId = (objectProxy.Owner.ID ?? "").ToString();
+            foreach (dynamic item in view.Items)
+            {
+                if (item.Property.IsArray)
+                    continue;
+                var addItem = GetAddItem(objectProxy, item);
+
+                result.SimpleData.Add(addItem);
+            }
+            foreach (var item in view.Items)
+            {
+
+                if (item.Property.IsArray==false)
+                    continue;
+                var PropertyItems = new PropertyDataItems();
+
+                PropertyItems.Properties = new List<ReadItemViewItem>();
+                PropertyItems.Items = new List<DataItem>();
+                PropertyItems.Name = item.ListView.Name;
+                PropertyItems.ItemName = item.Name;
+                PropertyItems.PrpId = item.Property.Name;
+                if (item.EditView != null)
+                    PropertyItems.DetailViewId = item.EditView.ID;
+                if (item.ListView != null)
+                    PropertyItems.ListViewId = item.ListView.ID;
+                if (item.SelectedView != null)
+                {
+                    PropertyItems.SelectedView = item.SelectedView.ID;
+                    PropertyItems.SelectFromExists = true;
+                }
+                foreach (var viewItem in item.ListView.Items)
+                {
+                    PropertyItems.Properties.Add(
+                        new ReadItemViewItem()
+                        {
+                            ID = viewItem.Name,
+                            PrpModelId = (viewItem.Property.Model == null ? 0 : viewItem.Property.Model.ID),
+                            Name = viewItem.Name,
+                            PrpType = (Data.PropertyType) viewItem.Property.PropertyType,
+                            PrpId = viewItem.Property.Name,
+                            PrpShowName = viewItem.Name,
+                            ReadOnly = viewItem.ReadOnly,
+                            EditType = (Model.View.ItemEditType) viewItem.EditType
+
+
+                        });
+                }
+                var items = objectProxy[item.Property.Name] as Model.ModelBindingList;
+                foreach (dynamic pitem in items)
+                {
+                    var detailItem = new DataItem()
+                    {
+                        DataID = (pitem.ID ?? "").ToString(),
+                        Values = new List<ObjValuePair>()
+                    };
+                    PropertyItems.Items.Add(detailItem
+                   );
+                    foreach (dynamic propertyItem in item.ListView.Items)
+                    {
+                        detailItem.Values.Add(
+                            GetAddItem(pitem, propertyItem)
+                          );
+                    }
+                }
+
+                result.Items.Add(PropertyItems);
+            }
+            return result;
+        }
+
     }
 }

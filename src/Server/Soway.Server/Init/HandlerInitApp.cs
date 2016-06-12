@@ -43,9 +43,13 @@ namespace Soway.Service
         {
             try {
                 global::Soway.Model.App.AppFac fac = new global::Soway.Model.App.AppFac(new ConHelper().GetSysCon(),this);
-                var app = fac.GetApp(this.AppId, this.AppKey);
+                var cxt = new Soway.Model.SqlServer.DynamicContext
+                    (new ConHelper().GetSysCon().ToString(), this);
+                var app = cxt.GetById(typeof(Soway.Model.App.Application), this.AppId);
+                 
+                //var app = fac.GetApp(this.AppId, this.AppKey);
 
-                if (app == null)
+                if (app == null || app.AppKey != this.AppKey)
                 {
                     this.Data.Error = new ErrorInfo(ErrorDescription.CODE_AUTHENTICATE_APPUNAUTH, ErrorDescription.MESSAGE_AUTHENTICATE_PUUUNAUTH,true);
 
@@ -65,7 +69,7 @@ namespace Soway.Service
                     this.Data.CheckCode = chk;
                     this.Data.Dbs = new List<Init.StoreBaseInfo>();
 
-                    foreach (var appdb in app.DataBase)
+                    foreach (dynamic appdb in app.DataBase)
                     {
                         this.Data.Dbs.Add(new Init.StoreBaseInfo()
                         {

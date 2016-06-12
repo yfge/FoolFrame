@@ -30,17 +30,20 @@ namespace Soway.Service
             
             Data.Token = this.PostData.Token;
             AutoViewFactory factory = new AutoViewFactory(Info.AppSqlCon,this);
-            View view = factory.GetView(Option.ViewId);
+            var context = new Soway.Model.SqlServer.DynamicContext(
+                Info.AppSqlCon.ToString(), this);
+            var view = context.GetById(typeof(Soway.Model.View.View), Option.ViewId);
+           // View view = factory.GetView(Option.ViewId);
             MapViewToResult(view);
         }
 
-        private void MapViewToResult(View view)
+        private void MapViewToResult(dynamic view)
         {
             ViewData viewData = new ViewData();
             viewData.ID = view.ID;
             List<ViewItem> viewItems = new List<ViewItem>();
            
-            foreach (global::Soway.Model.ViewItem item in view.Items)
+            foreach (dynamic item in view.Items)
             {
                 ViewItem viewItem = new ViewItem();
                 viewItem.Name = item.Name;
@@ -53,15 +56,14 @@ namespace Soway.Service
                 viewItem.ListViewType = (item.ListView == null ? 0 :(int) item.ListView.ViewType);
                 viewItem.Width = item.Width;
                 viewItem.ShowIndex = item.ShowIndex;
-                viewItem.PropertyType = item.Property != null ? item.Property.PropertyType : Soway.Data.PropertyType.String;
-                viewItem.EditType = item.EditType;
+                viewItem.PropertyType =( Soway.Data.PropertyType) (item.Property != null ? item.Property.PropertyType : Soway.Data.PropertyType.String);
+                viewItem.EditType =  (ItemEditType) item.EditType;
                
                 if(item.Property!= null && item.Property.Model != null)
                 {
                     viewItem.PropertyModel = item.Property.Model.ID;
                 }
-                //viewItem.PropertyId = item.Property ==
-            
+             
                 if (item.ItemFile != null  )
                 {
                     viewItem.ViewFile = item.ItemFile.FileName;
@@ -79,8 +81,8 @@ namespace Soway.Service
                 viewData.TempFile = view.ViewFile.FileName;
             else
                 viewData.TempFile = "";
-            viewData.ShowType = view.ViewType;
-            foreach (var opreaion in view.Operations)
+            viewData.ShowType =( Model.ViewType) view.ViewType;
+            foreach (dynamic opreaion in view.Operations)
             {
                 viewData.Operations.Add(new ViewOperation()
                 {

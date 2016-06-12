@@ -117,6 +117,44 @@ namespace Soway.Service
             }
         }
 
+
+        protected Model.SqlCon GetViewSql(dynamic view)
+        {
+            switch ((Model.ConnectionType)view.ConnectionType)
+            {
+                case Model.ConnectionType.AppSys:
+                    if (this.Info == null)
+                    {
+                        return null;
+                    }
+                    return this.Info.AppSqlCon;
+                case Model.ConnectionType.Current:
+                    if (this.Info == null)
+                    {
+                        return null;
+                    }
+                    return this.Info.CurrentSqlCon;
+                case Model.ConnectionType.Default:
+                    if (this.Info == null)
+                    {
+                        return null;
+                    }
+                    return this.Info.CurrentSqlCon;
+                case Model.ConnectionType.ModelSys:
+                    if (view.Model.SqlCon != null)
+                        return view.Model.SqlCon;
+                    else if (view.Model.Module.SqlCon != null)
+                        return view.Model.Module.SqlCon;
+                    return null;
+                case Model.ConnectionType.System:
+                    return new bean.ConHelper().GetSysCon();
+                default:
+                    return null;
+
+
+            }
+        }
+
         public CurrentContext GetCurrentContext()
         {
 

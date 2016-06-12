@@ -38,9 +38,11 @@ namespace Soway.Service
         protected override void ImplementBusinessLogic()
         {
         
-            AutoViewFactory factory = new AutoViewFactory(this.Info.AppSqlCon,this);
-            View view = factory.GetView(this.Option.viewId);
-             
+            //AutoViewFactory factory = new AutoViewFactory(this.Info.AppSqlCon,this);
+            //View view = factory.GetView(this.Option.viewId);
+
+            var cxt = new Soway.Model.SqlServer.DynamicContext(this.Info.AppSqlCon.ToString(), this);
+            var view = cxt.GetById(typeof(View), this.Option.viewId);
             var sql = GetViewSql(view);
             Data.AutoFreshTime = view.AutoFreshInterval;
 
