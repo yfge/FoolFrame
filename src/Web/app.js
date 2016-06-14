@@ -20,14 +20,8 @@ app.set('view engine', 'jade');
 
 app.use(bodyParser.json());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
-//
 app.use(express.static(path.join(__dirname, 'public')));
-//
 app.use(logger('dev'));
-//// development only
-//if ('development' == app.get('env')) {
-//    app.use(express.errorHandler());
-//}
 
 app.get('/', routes.index,routes.redirectToLogin);
 app.get('/about', routes.about);

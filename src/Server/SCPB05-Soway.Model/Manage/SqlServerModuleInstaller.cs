@@ -474,7 +474,8 @@ namespace Soway.Model.Manage
                 {
                     DataSource = dataSqlCon.DataSource,
                     UserID = dataSqlCon.UserID,
-                    Password = dataSqlCon.Password
+                    Password = dataSqlCon.Password,
+                    InitialCatalog = dataSqlCon.InitialCatalog
                 }.ToString()))
             {
                 con.Open();

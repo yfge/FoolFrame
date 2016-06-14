@@ -102,11 +102,15 @@ namespace Soway.Model.SqlServer
                 result.Add("SYSID");
             else
                 result.Add(model.IdProperty.DBName);
-            foreach(var property in model.Properties .Where(p=>p.IsCheck == true).GroupBy(p => p.IXGroup).Where(q=>q.Count()==1))
+            foreach(var property in model.Properties .Where(p=>p.IsCheck == true).GroupBy(p => p.IXGroup))
             {
 
-                if(result.Contains(property.First().DBName)==false)
-                result.Add(property.First().DBName);
+                foreach(var dbcol in property)
+                {
+                    if (String.IsNullOrEmpty(dbcol.DBName) == false
+                        && result.Contains(dbcol.DBName) == false)
+                        result.Add(dbcol.DBName);
+                }
 
             }
             return result.ToArray();

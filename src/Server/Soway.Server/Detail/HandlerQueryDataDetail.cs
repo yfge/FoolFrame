@@ -42,7 +42,7 @@ namespace Soway.Service
             //View view = factory.GetView(this.Option.viewId);
 
             var cxt = new Soway.Model.SqlServer.DynamicContext(this.Info.AppSqlCon.ToString(), this);
-            var view = cxt.GetById(typeof(View), this.Option.viewId);
+            dynamic view = cxt.GetById(typeof(View), this.Option.viewId);
             var sql = GetViewSql(view);
             Data.AutoFreshTime = view.AutoFreshInterval;
 

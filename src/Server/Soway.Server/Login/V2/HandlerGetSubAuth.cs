@@ -27,8 +27,6 @@ namespace Soway.Service.Login.V2
         {
 
             var info = Info;
-
-
             Data.Token = this.PostData.Token;
             Data.Items = new List<AuthItem>();
             Data.Token = this.PostData.Token;
@@ -60,10 +58,7 @@ namespace Soway.Service.Login.V2
                         AuthNo = menu.ID.ToString()
                     };
                     Data.Items.Add(item);
-                }
-
-
-               
+                }              
             }
             else
             {

@@ -1,4 +1,5 @@
-﻿using Soway.Service.Login.V1;
+﻿using Soway.Service.bean;
+using Soway.Service.Login.V1;
 using Soway.Service.ThriftClient;
 using Soway.Service.User;
 using System;
@@ -29,17 +30,28 @@ namespace Soway.Service.Login.V2
                          ErrorDescription.CHECK_CODE_ERROR_MSG,true);
                 return;
             }
-            global::Soway.Model.App.AppFac fac = new global::Soway.Model.App.AppFac(new bean.ConHelper().GetSysCon(),this);
-            var app = fac.GetApp(Option.AppId, Option.AppKey);
+            var cxt = new Soway.Model.SqlServer.DynamicContext
+         (new ConHelper().GetSysCon().ToString(), this);
+            dynamic app = cxt.GetById(typeof(Soway.Model.App.Application), this.Option.AppId);
             if (app != null)
             {
-
-                var datacurrentCon = app.DataBase.FirstOrDefault(p => p.StoreBaseId.ToString().Trim().ToLower() == Option.DbId.Trim());
+                dynamic datacurrentCon = null;
+                foreach (dynamic con in app.DataBase)
+                {
+                    if(con.StoreBaseId.ToString().Trim().ToLower() == Option.DbId.Trim()){
+                        datacurrentCon = con;
+                    }
+                }
+             
                 if (datacurrentCon == null)
                 {
                     Data.Error = new ErrorInfo(ErrorDescription.DB_SELECT_ERROR, ErrorDescription.DB_SELECT_ERROR_MSG,true);
                     return;
                 }
+
+
+                dynamic loginUser = cxt.GetById(typeof(SOWAY.ORM.AUTH.User), this.Option.UserId);
+
                 var user = new global::SOWAY.ORM.AUTH.LoginFactory(
                     new bean.ConHelper().GetSysCon(),this).Login(Option.UserId, Option.PassWord);
                 if (user != null)

@@ -1,4 +1,5 @@
-﻿define('groupview', ['swapp', 'showerror', 'ngCookies'], function (swapp) {
+﻿define('groupview', ['swapp', 'showerror', 'ngCookies'],
+function (swapp) {
     swapp.regmodule('groupview', ['ngCookies', 'showerror'], function (groupview, $) {
         groupview.controller('GroupViewController',
                     function ($scope, $location, $compile, $http, $window, $cookies, showerror) {

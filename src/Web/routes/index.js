@@ -42,7 +42,8 @@ exports.index = function (req, res,next) {
             if (maindata.Error == undefined) {
                 if (maindata.App.DefaultViewId != 0 && maindata.App.DefaultViewId != undefined) {
                     soway.getlistview(
-                        res.cookie[req.hostname + '_token'], maindata.App.DefaultViewId, function (data) {
+                        res.cookie[req.hostname + '_token'],
+                         maindata.App.DefaultViewId, function (data) {
                             console.log('get main success');
                             if (data.data.TempFile != '')
                                 res.render(data.data.TempFile, { data: maindata, view: data , app: data.data.TempFile });
