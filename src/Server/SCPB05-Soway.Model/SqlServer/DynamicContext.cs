@@ -106,7 +106,7 @@ namespace Soway.Model.SqlServer
             conStrCaches = new System.Collections.Concurrent.ConcurrentDictionary<string, System.Collections.Concurrent.ConcurrentDictionary<Type, SqlCon>>();
         public SqlCon GetTypeSqlCon(Type refType)
         {
-            if (!conStrCaches.ContainsKey(this.SqlCon.ToString()) == false)
+            if (conStrCaches.ContainsKey(this.SqlCon.ToString()) == false)
                 while (false == conStrCaches.TryAdd(this.SqlCon.ToString(), new System.Collections.Concurrent.ConcurrentDictionary<Type, SqlCon>())) ;
             var sqlCons = conStrCaches[this.SqlCon.ToString()];
             if (!sqlCons.ContainsKey(refType))

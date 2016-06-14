@@ -32,17 +32,14 @@ namespace Soway.Service.Login.V2
             Data.Token = this.PostData.Token;
 
 
-            var user = new Soway.Model.SqlServer.ObjectContext<SOWAY.ORM.AUTH.User>(new bean.ConHelper().GetSysCon(),this).GetDetail(info.User.UserId);
-            if (user != null)
-            {
-
-
-                var authuser = new SOWAY.ORM.AUTH.AuthoriezedFactory(new Model.App.Application() { SysCon = info.AppSqlCon },this).GetAuthrizedUser(user);
+                var appSyscxt = new Soway.Model.SqlServer.DynamicContext(info.AppSqlCon.ToString(), this);
+            dynamic authUser = appSyscxt.GetById(
+                typeof(SOWAY.ORM.AUTH.AuthorizedUser), info.User.UserId);
                 List<SOWAY.ORM.AUTH.MenuItem> auths = new List<SOWAY.ORM.AUTH.MenuItem>();
                 if (String.IsNullOrEmpty(this.Option.ParentAuthCode))
-                    auths = new SOWAY.ORM.AUTH.MenuItemFactory(info.CurrentSqlCon,this).GetTopMenus(authuser);
+                    auths = new SOWAY.ORM.AUTH.MenuItemFactory(info.CurrentSqlCon,this).GetTopMenus(authUser);
                 else
-                    auths = new SOWAY.ORM.AUTH.MenuItemFactory(info.CurrentSqlCon,this).GetMenus(authuser, System.Convert.ToInt64(this.Option.ParentAuthCode));
+                    auths = new SOWAY.ORM.AUTH.MenuItemFactory(info.CurrentSqlCon,this).GetMenus(authUser, System.Convert.ToInt64(this.Option.ParentAuthCode));
                 foreach (var menu in auths.OrderBy(p=>p.Index))
                 {
                     var item = new Login.V2.AuthItem()
@@ -59,16 +56,7 @@ namespace Soway.Service.Login.V2
                     };
                     Data.Items.Add(item);
                 }              
-            }
-            else
-            {
-                this.Result.Error = new ErrorInfo()
-                {
-                    Code = ErrorDescription.TOKEN_INVALIDAT,
-                    Message = ErrorDescription.TOKEN_INVALIDAT_MSG
-                }
-                ;
-            }
+        
         }
 
     }

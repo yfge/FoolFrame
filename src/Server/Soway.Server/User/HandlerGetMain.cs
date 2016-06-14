@@ -27,12 +27,11 @@ namespace Soway.Service.User
             result.TopMenu = new List<Login.V2.AuthItem>();
 
 
-            var user = new Soway.Model.SqlServer.ObjectContext<SOWAY.ORM.AUTH.User>(new bean.ConHelper().GetSysCon(),this).GetDetail(info.User.UserId);
-            if (user != null)
-            {
-
-                var authuser = new SOWAY.ORM.AUTH.AuthoriezedFactory(new Model.App.Application() { SysCon = info.AppSqlCon },this).GetAuthrizedUser(user);
-                List<SOWAY.ORM.AUTH.MenuItem> auths = new SOWAY.ORM.AUTH.MenuItemFactory(info.CurrentSqlCon,this).GetTopMenus(authuser);
+            var appSyscxt = new Soway.Model.SqlServer.DynamicContext(info.AppSqlCon.ToString(), this);
+            dynamic authUser = appSyscxt.GetById(
+                typeof(SOWAY.ORM.AUTH.AuthorizedUser), info.User.UserId);
+           
+                List<SOWAY.ORM.AUTH.MenuItem> auths = new SOWAY.ORM.AUTH.MenuItemFactory(info.CurrentSqlCon,this).GetTopMenus(authUser);
                 foreach (var menu in auths)
                 {
                     var item = new Login.V2.AuthItem()
@@ -51,6 +50,6 @@ namespace Soway.Service.User
 
 
             }
-        }
+         
     }
 }

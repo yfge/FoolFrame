@@ -40,5 +40,10 @@ namespace Soway.Service
 
         public static readonly int DB_SELECT_ERROR = 10007;
         public static readonly string DB_SELECT_ERROR_MSG = "Unauthorized DataBase .";
+
+
+        public const int CODE_AUTHENTICATE_NOUSER = 10008;
+        public const string MESSAGE_AUTHENTICATE_NOUSER = "No User Info.";
+
     }
 }

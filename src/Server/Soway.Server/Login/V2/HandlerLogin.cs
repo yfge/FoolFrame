@@ -1,4 +1,5 @@
-﻿using Soway.Service.bean;
+﻿using Soway.Model;
+using Soway.Service.bean;
 using Soway.Service.Login.V1;
 using Soway.Service.ThriftClient;
 using Soway.Service.User;
@@ -51,73 +52,93 @@ namespace Soway.Service.Login.V2
 
 
                 dynamic loginUser = cxt.GetById(typeof(SOWAY.ORM.AUTH.User), this.Option.UserId);
-
-                var user = new global::SOWAY.ORM.AUTH.LoginFactory(
-                    new bean.ConHelper().GetSysCon(),this).Login(Option.UserId, Option.PassWord);
-                if (user != null)
-                {
-                    var authuser = new SOWAY.ORM.AUTH.AuthoriezedFactory(app,this).GetAuthrizedUser(user);
-                    CacheInfo info = new CacheInfo();
-                    info.AppSqlCon = app.SysCon;
-                    info.CurrentDataBaseName = datacurrentCon.Name;
-                    info.CurrentSqlCon = datacurrentCon.Conection;
-                    info.App = new AppInfo()
-                    {
-                        AppLogoUrl = app.Avatar,
-                        AppName = app.Name,
-                        AppNote = app.Note,
-                        AppPowerBy = app.Company,
-                        AppPowerUrl = app.Url,
-                        AppVer = app.Version,
-                        AppId = app.APPID.ToString(),
-                        DefaultViewId = app.DefaultView
-                    };
-                    info.User = new User.UserInfo()
-                    {
-                        UserId = user.UserID,
-                        UserName = user.FirstName,
-                        LoginName = user.LoginName,
-                        UserAvtarUrl = user.Avtar,
-                        CompanyName = "",
-                        DepartmentName = ""
-
-
-                    };
-                    
-
-
-                    try
-                    {
-                        ITokenAoStub stub = new LocaTokenAoStub();
-                        
-                        Data.Token = stub.getToken(3000, new TokenKeyGenerator().GetTokenKey(info.User,info.App));
-                        Data.LoginSucess = true;
-                        
                
-                    }
-                    catch (Exception e)
-                    {
-                        //SowayLog.Log.Error("get token fail.", e);
-                        Data.Error = new ErrorInfo(ErrorDescription.CODE_SYSTEM_ERROR, ErrorDescription.MESSAGE_SYSTEM_ERROR,true);
-                    }
-                   
-                    try
-                    {
-                        new CacheStore().Store(Data.Token, info);
-                    }
-                    catch (Exception sessionex)
-                    {
-                        //SowayLog.Log.Error("store session fail.", sessionex);
-                        Data.Error = new ErrorInfo(ErrorDescription.SET_SESSION_FAIL,
-                            ErrorDescription.SET_SESSION_FAIL_MSG,true);
-                        return;
-                    }
-                }
-                else
+                if(loginUser == null)
                 {
-                    Data.Error = new ErrorInfo(ErrorDescription.CODE_AUTHENTICATE_FAIL,
-                        ErrorDescription.MESSAGE_AUTHENTICATE_FAIL,true);
+                    Data.Error = new ErrorInfo(ErrorDescription.CODE_AUTHENTICATE_NOUSER,
+                        ErrorDescription.MESSAGE_AUTHENTICATE_NOUSER, true);
+                }else
+                {
+                    if(loginUser.PassWord != Soway.Data.DS.EncryptUtil.ToMD5(this.Option.PassWord))
+                    {
+                        Data.Error = new ErrorInfo(ErrorDescription.CODE_AUTHENTICATE_FAIL,
+                      ErrorDescription.MESSAGE_AUTHENTICATE_FAIL, true);
+
+                    }else
+                    {
+
+
+                        var syscon = new SqlCon()
+                        {
+                            DataSource = app.SysCon.DataSource,
+                            InitialCatalog = app.SysCon.InitialCatalog,
+                            UserID = app.SysCon.UserID,
+                            Password = app.SysCon.Password
+                        };
+                        var appSyscxt = new Soway.Model.SqlServer.DynamicContext(syscon.ToString(), this);
+                        var authUser = appSyscxt.GetById(
+                            typeof(SOWAY.ORM.AUTH.AuthorizedUser), loginUser.UserID);
+                        CacheInfo info = new CacheInfo();
+                        info.AppSqlCon = syscon;
+                        info.CurrentDataBaseName = datacurrentCon.Name;
+                        info.CurrentSqlCon = 
+                           new Model.ModelHelper(this).GetFromProxy( datacurrentCon.Conection) as SqlCon;
+                        info.App = new AppInfo()
+                        {
+                            AppLogoUrl = app.Avatar,
+                            AppName = app.Name,
+                            AppNote = app.Note,
+                            AppPowerBy = app.Company,
+                            AppPowerUrl = app.Url,
+                            AppVer = app.Version,
+                            AppId = app.APPID.ToString(),
+                            DefaultViewId = app.DefaultView
+                        };
+                        info.User = new User.UserInfo()
+                        {
+                            UserId = loginUser.UserID,
+                            UserName = loginUser.FirstName,
+                            LoginName = loginUser.LoginName,
+                            UserAvtarUrl = loginUser.Avtar,
+                            CompanyName = "",
+                            DepartmentName = ""
+
+
+                        };
+
+
+
+                        try
+                        {
+                            ITokenAoStub stub = new LocaTokenAoStub();
+
+                            Data.Token = stub.getToken(3000, new TokenKeyGenerator().GetTokenKey(info.User, info.App));
+                            Data.LoginSucess = true;
+
+
+                        }
+                        catch (Exception e)
+                        {
+                            //SowayLog.Log.Error("get token fail.", e);
+                            Data.Error = new ErrorInfo(ErrorDescription.CODE_SYSTEM_ERROR, ErrorDescription.MESSAGE_SYSTEM_ERROR, true);
+                        }
+
+                        try
+                        {
+                            new CacheStore().Store(Data.Token, info);
+                        }
+                        catch (Exception sessionex)
+                        {
+                            //SowayLog.Log.Error("store session fail.", sessionex);
+                            Data.Error = new ErrorInfo(ErrorDescription.SET_SESSION_FAIL,
+                                ErrorDescription.SET_SESSION_FAIL_MSG, true);
+                            return;
+                        }
+
+                    }
                 }
+
+                
             }
      
         }
