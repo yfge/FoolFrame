@@ -89,18 +89,15 @@ namespace Soway.Model
                     }
                     if (items != null)
                     {
-
+                        
 
                         dynamic modelItem = proxy[proerty];
-
-
-
                         foreach (var i in modelItem)
                         {
 
                             if (proerty.PropertyType != PropertyType.BusinessObject)
                                 items.Add(i);
-                            else
+                            else  
                             {
                                 items.Add(getFromProxy(i as IObjectProxy, ProxyDic));
 

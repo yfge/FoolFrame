@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Soway.Data.Discription.ORM;
 using Soway.Model.View;
-using Soway.Data.Discription.ORM;
 
 namespace Soway.Event
 {

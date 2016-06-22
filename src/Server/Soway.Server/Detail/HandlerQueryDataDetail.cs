@@ -37,15 +37,10 @@ namespace Soway.Service
 
         protected override void ImplementBusinessLogic()
         {
-        
-            //AutoViewFactory factory = new AutoViewFactory(this.Info.AppSqlCon,this);
-            //View view = factory.GetView(this.Option.viewId);
-
             var cxt = new Soway.Model.SqlServer.DynamicContext(this.Info.AppSqlCon.ToString(), this);
             dynamic view = cxt.GetById(typeof(View), this.Option.viewId);
             var sql = GetViewSql(view);
             Data.AutoFreshTime = view.AutoFreshInterval;
-
             var objid = this.Option.objId;
             if(string.IsNullOrEmpty((objid ??"").ToString().Trim()))
 
@@ -56,14 +51,16 @@ namespace Soway.Service
                 }
                 else
                 {
-                   
-                    var getidcontext = new Soway.Model.Context.InputContext(sql).Query(view.Model, "", null, "", 10);
-                    objid = getidcontext.First().id;
+                    var getidcontext = new Soway.Model.Context.InputContext(sql).Query(view["Model"], "", null, "", 10);
+                    objid = getidcontext[0].id;
 
                 }
             }
-            global::Soway.Model.SqlServer.dbContext context = new global::Soway.Model.SqlServer.dbContext(sql,this);
-            IObjectProxy iObjectProxy = context.GetDetail(view.Model, objid);
+            var con = GetViewSql(view);
+            var context = new Soway.Model.SqlServer.DynamicContext(
+                con.ToString(), this);
+            IObjectProxy iObjectProxy = context.GetById( 
+                (Soway.Model.Model)new Soway.Model.ModelHelper(this).GetFromProxy(view["Model"]), con, objid);
             Data.CanEdit = view.CanEdit;
             Data.Data =  DataFormator.IObjectProxyToDetail(iObjectProxy, view);
             Data.Operations = new List<ViewOperation>();

@@ -42,12 +42,9 @@ namespace Soway.Service
         protected override void ImplementBusinessLogic()
         {
             try {
-                global::Soway.Model.App.AppFac fac = new global::Soway.Model.App.AppFac(new ConHelper().GetSysCon(),this);
                 var cxt = new Soway.Model.SqlServer.DynamicContext
                     (new ConHelper().GetSysCon().ToString(), this);
                 var app = cxt.GetById(typeof(Soway.Model.App.Application), this.AppId);
-                 
-                //var app = fac.GetApp(this.AppId, this.AppKey);
 
                 if (app == null || app.AppKey != this.AppKey)
                 {

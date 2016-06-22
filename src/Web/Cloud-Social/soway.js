@@ -15,7 +15,8 @@ var getinitoption = function (invoketype, method) {
 var postandget = function (method, data, callback){
     
 
-    var req1 = http.request(getinitoption('POST', method), function (res) {
+    var req1 = http.request(getinitoption('POST', method),
+         function (res) {
         console.log('request :' + method);
         res.setEncoding('utf8');
         var alldata = '';

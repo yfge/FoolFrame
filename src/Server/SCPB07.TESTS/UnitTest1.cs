@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace SCPB07.TESTS
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTest1 
     {
         [TestMethod]
         public void GetGetApp()

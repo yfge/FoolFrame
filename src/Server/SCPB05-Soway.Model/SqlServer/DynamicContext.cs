@@ -85,7 +85,13 @@ namespace Soway.Model.SqlServer
         {
             var model = getModel(refType);
             return new Soway.Model.SqlServer.dbContext(GetTypeSqlCon(refType), this.Fac).GetDetail(
-          model, id);
+          model, id,false);
+        }
+        public dynamic GetById(Model model,SqlCon con, object id)
+        {
+           
+            return new Soway.Model.SqlServer.dbContext(con, this.Fac).GetDetail(
+          model, id, false);
         }
 
         public dynamic InitNew(Type refType)
@@ -114,7 +120,7 @@ namespace Soway.Model.SqlServer
                 var db = new Soway.Model.SqlServer.dbContext(this.SqlCon, this.Fac);
                 var manager = new Soway.Model.Manage.SqlServerModuleInstaller(this.Fac);
                 var sysmodel = getModel(typeof(Soway.Model.Model));
-                SqlCon con = null;
+                SqlCon con = this.SqlCon;
                 if (manager.IsModelInstalled(sysmodel, this.SqlCon))
                 {
                     dynamic model = new Soway.Model.SqlServer.dbContext(this.SqlCon, this.Fac).GetDetail(sysmodel, refType.FullName);
@@ -150,7 +156,6 @@ namespace Soway.Model.SqlServer
             return sqlCons[refType];
         }
 
-
-        
+ 
     }
 }

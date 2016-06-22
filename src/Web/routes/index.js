@@ -33,7 +33,8 @@ exports.checkauth = function (req, res, next){
 
 }
  
-exports.index = function (req, res,next) {
+exports.index = function (req, res, next) {
+    console.log('route index...');
     if (res.cookie[req.hostname + '_token'] != undefined) {
         console.log('token:' + res.cookie[req.hostname + '_token']);
         soway.getmain(res.cookie[req.hostname + '_token'],
@@ -63,7 +64,6 @@ exports.index = function (req, res,next) {
         }
         );
     } else {
-        
         soway.initapp(req.hostname, function (data) {
             console.log(data.AppName);
             res.render('index', { data: data });
@@ -208,12 +208,9 @@ exports.querylistdata = function (req, res,next){
 }
 exports.refrechchkcode = function (req, res,next){
     soway.refreshcheckcode(function (data) {
-        console.log(data);
-        console.log('chk:' + data.Error);
-        console.log(data.Key);
-        console.log(data.ChkCodeImg);
+      
         if (data.Error == undefined) {
-            console.log('chk send');
+          
             res.send({
                 chkkey: data.Key,
                 chkimg: data.ChkCodeImg

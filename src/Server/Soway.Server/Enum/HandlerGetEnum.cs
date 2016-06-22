@@ -21,8 +21,9 @@ namespace Soway.Service.Enum
         protected override void ImplementBusinessLogic()
         {
             this.Data.EnumValues = new List<EnumValues>();
-            var model = new Model.SqlServer.ObjectContext<Soway.Model.Model>(Info.AppSqlCon,this).GetDetail(this.Option.ModelId);
-            foreach (var item in model.EnumValues)
+            var cxt = new Soway.Model.SqlServer.DynamicContext(this.Info.AppSqlCon.ToString(), this);
+            dynamic model = cxt.GetById(typeof(Model.Model), this.Option.ModelId);
+            foreach (dynamic item in model.EnumValues)
             {
                 this.Data.EnumValues.Add(new EnumValues()
                 {

@@ -20,10 +20,20 @@ namespace Soway.Model.Context
                 return QueryFromSource(source, text, Fileter);
 
         }
-       
+
+        public List<InputQueryResult> Query(dynamic model, string text, ModelBindingList source, string Fileter = null, int Size = 10)
+        {
+            this.Size = Size;
+            if (source == null)
+                return QueryFromSql(model, text, Fileter);
+            else
+                return QueryFromSource(source, text, Fileter);
+
+        }
 
 
-         
+
+
         public SqlCon Con { get; set; }
         public int Size { get; private set; }
 
@@ -70,6 +80,55 @@ namespace Soway.Model.Context
             //else
             //    ShowCol = "";
             if (string.IsNullOrEmpty(ShowCol) == false && ShowCol !=IdCol)
+                command.CommandText += string.Format(",{0} ", ShowCol);
+
+            command.CommandText += string.Format("FROM {0} WHERE ", model.DataTableName);
+            if (String.IsNullOrEmpty(Fileter) == false)
+            {
+                command.CommandText += string.Format(" {0} AND ", Fileter);
+
+            }
+            command.CommandText += string.Format("{0} like '%'+@{0}+'%'", paramCol);
+            command.Parameters.Add(new System.Data.SqlClient.SqlParameter("@" + paramCol, text));
+
+            command.CommandText += string.Format(" ORDER BY {0} DESC", IdCol);
+
+            var table = SqlDataLoader.GetSqlData(command);
+            List<InputQueryResult> result = new List<InputQueryResult>();
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                result.Add(new InputQueryResult() { Text = table.Rows[i][ShowCol].ToString(), id = table.Rows[i][IdCol] });
+            }
+            command.Connection.Close();
+            return result;
+        }
+
+
+
+        private List<InputQueryResult> QueryFromSql(dynamic model, string text, string Fileter)
+        {
+
+
+
+
+            System.Data.SqlClient.SqlCommand command = new System.Data.SqlClient.SqlCommand();
+            command.Connection = new System.Data.SqlClient.SqlConnection(this.Con.ToString());
+
+            string IdCol = "SysId";
+            string paramCol = "";
+            if (model.IdProperty != null)
+                IdCol = model.IdProperty.DBName;
+            command.CommandText = string.Format("SELECT TOP {0} {1} ", this.Size, IdCol);
+            string ShowCol = IdCol;
+            paramCol = IdCol;
+            if (model.ShowProperty != model.IdProperty && model.ShowProperty != null)
+            {
+                ShowCol = model.ShowProperty.DBName;
+                paramCol = ShowCol;
+            }
+            //else
+            //    ShowCol = "";
+            if (string.IsNullOrEmpty(ShowCol) == false && ShowCol != IdCol)
                 command.CommandText += string.Format(",{0} ", ShowCol);
 
             command.CommandText += string.Format("FROM {0} WHERE ", model.DataTableName);

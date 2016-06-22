@@ -7,7 +7,7 @@ using System.Data;
 
 namespace Soway.Model.SqlServer
 {
-    public class dbContext
+    public class dbContext 
     {
 
 
@@ -1028,32 +1028,13 @@ namespace Soway.Model.SqlServer
                         }
 
                     }
-
+                    else
                     if (objValue != null)
                     {
-                        if(result.ContainsKey(property.DBName)==false)
+                        if(property.IsMultiMap==false &&String.IsNullOrEmpty(property.DBName)==false && result.ContainsKey(property.DBName)==false)
                         result.Add(property.DBName, objValue);
                     }
-                    else
-                    {
-
-                        if (property.IsMultiMap)
-                        {
-                            foreach (var propertymaps in property.DBMaps)
-                            {
-                                if(result.ContainsKey(propertymaps.DBColName)==false)
-                                result.Add(propertymaps.DBColName, DBNull.Value);
-
-                            }
-                        }
-                        else
-                        {
-                            if (result.ContainsKey(property.DBName) == false)
-
-                                result.Add(property.DBName, DBNull.Value);
-
-                        }
-                    }
+                    
                 }
             }
             return result;

@@ -23,7 +23,7 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 
-app.get('/', routes.index,routes.redirectToLogin);
+app.get('/', routes.index);
 app.get('/about', routes.about);
 app.get('/contact', routes.contact);
 app.post('/user/login', routes.login);

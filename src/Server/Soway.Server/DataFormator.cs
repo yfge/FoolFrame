@@ -209,7 +209,7 @@ namespace Soway.Service
                 PrpType = (Data.PropertyType) item.Property.PropertyType,
                 ReadOnly =  item.ReadOnly,
                 EditType = (Model.View.ItemEditType) item.EditType,
-                PrpModelId = item.Property.Model == null ? 0 : item.Property.Model.ID,
+                PrpModelId = item.Property["Model"] == null ? 0 : item.Property["Model"].ID,
             };
 
             if ((Data.PropertyType) item.Property.PropertyType == Data.PropertyType.Date)
@@ -238,15 +238,17 @@ namespace Soway.Service
             {
                 addItem.FmtValue = (objectProxy[item.Property.Name] ?? "").ToString();
                 addItem.ObjId = (objectProxy[item.Property.Name] ?? "").ToString();
-                foreach (dynamic enumitem in item.Property.Model.EnumValues)
+                foreach (dynamic enumitem in item.Property["Model"].EnumValues)
                 {
-                    if(enumitem.Value == objectProxy[item.Property.Name])
+                    if(enumitem.Value.ToString() == addItem.ObjId)
                     {
                         addItem.FmtValue = enumitem.String;
                         addItem.ObjId = enumitem.Value.ToString();
+                        break;
 
 
                     }
+
                 }
                  
             }
